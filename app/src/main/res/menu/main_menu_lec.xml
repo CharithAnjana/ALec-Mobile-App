@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_dash"
+            android:title="Dashboard"
+            android:icon="@drawable/dashboard_icon"
+            />
+        <item
+            android:id="@+id/nav_ques"
+            android:title="Ask Question"
+            android:icon="@drawable/question_icon"
+            />
+        <item
+            android:id="@+id/nav_course"
+            android:title="My Courses"
+            android:icon="@drawable/course_icon"
+            />
+        <item
+            android:id="@+id/nav_review"
+            android:title="Review"
+            android:icon="@drawable/review_icon"
+            />
+        <item
+            android:id="@+id/nav_forum"
+            android:title="Forum"
+            android:icon="@drawable/forum_icon"
+            />
+        <item
+            android:id="@+id/nav_lgout"
+            android:title="Logout"
+            android:icon="@drawable/logout_icon"
+            />
+
+
+    </group>
+
+</menu>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/abeezee</item>
+        <item>@font/aclonica</item>
+        <item>@font/adamina</item>
+        <item>@font/aladin</item>
+        <item>@font/alegreya_sans</item>
+        <item>@font/alegreya_sans_italic</item>
+        <item>@font/allan</item>
+        <item>@font/almendra_display</item>
+        <item>@font/aref_ruqaa</item>
+        <item>@font/atomic_age</item>
+        <item>@font/convergence</item>
+        <item>@font/cousine_italic</item>
+        <item>@font/poppins</item>
+        <item>@font/poppins_bold</item>
+        <item>@font/poppins_light</item>
+        <item>@font/poppins_medium</item>
+        <item>@font/poppins_semibold</item>
+    </array>
+</resources>
