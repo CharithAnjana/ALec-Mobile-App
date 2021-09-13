@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LecHomeActivity"/>
+        <activity android:name=".CourseActivity"></activity>
+        <activity android:name=".LecHomeActivity" />
         <activity android:name=".StuHomeActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
