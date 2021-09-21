@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CourseActivity"></activity>
         <activity android:name=".LecHomeActivity" />
         <activity android:name=".StuHomeActivity" />
         <activity android:name=".LoginActivity" />
