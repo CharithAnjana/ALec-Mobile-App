@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
-                String us_type = sessionManagement.getSession();
+                String us_type = sessionManagement.getSessionKey();
                 if(us_type.equals("no")){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
-        String us_type = sessionManagement.getSession();
+        String us_type = sessionManagement.getSessionKey();
 
         if(us_type.equals("stu")){
             Intent intent = new Intent(MainActivity.this, StuHomeActivity.class);
