@@ -10,6 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void OnLogin(View view){
+    public void OnLogin(View view) throws IOException {
         if(validateEmail(EmailEt) && validatePass(PassEt)) {
             String email = EmailEt.getText().toString();
             String pass = PassEt.getText().toString();
@@ -41,28 +48,36 @@ public class LoginActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            if (reg.equals("stu")) {
 
-                UserClass userClass = new UserClass(reg);
-                SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                sessionManagement.saveSession(userClass);
+            if(!(reg.equals("Login fail"))){
+                if(!(reg.equals("No Access"))) {
 
-                Intent intent = new Intent(LoginActivity.this, StuHomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+                    String[] val = reg.split(",");
+                    if (val[2].equals("stu")) {
 
-            if (reg.equals("lec")) {
+                        UserClass userClass = new UserClass(val[2], val[1]);
+                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                        sessionManagement.saveSession(userClass);
 
-                UserClass userClass = new UserClass(reg);
-                SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                sessionManagement.saveSession(userClass);
+                        Intent intent = new Intent(LoginActivity.this, StuHomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
 
-                Intent intent = new Intent(LoginActivity.this, LecHomeActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                    if (val[2].equals("lec")) {
+
+                        UserClass userClass = new UserClass(val[2], val[1]);
+                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                        sessionManagement.saveSession(userClass);
+
+                        Intent intent = new Intent(LoginActivity.this, LecHomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                }
             }
         }
+
     }
 
     //to validate email
