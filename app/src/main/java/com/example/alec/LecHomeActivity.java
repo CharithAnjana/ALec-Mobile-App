@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +21,7 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    Button BtnAskQu,BtnMyCour,BtnReview,BtnForum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,16 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         drawerLayout = findViewById(R.id.drawer_layout_lec);
         navigationView = findViewById(R.id.nav_bar_lec);
         toolbar = findViewById(R.id.toolbar_lec);
+        BtnMyCour = findViewById(R.id.BtnMyCour);
+
+        BtnMyCour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                startActivity(LecMyCourses);
+            }
+        });
 
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
@@ -59,8 +72,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
                 SessionManagement sessionManagement = new SessionManagement(LecHomeActivity.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
+                Intent Logout = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(Logout);
                 finish();
                 break;
         }

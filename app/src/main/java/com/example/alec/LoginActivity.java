@@ -3,20 +3,13 @@ package com.example.alec;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = EmailEt.getText().toString();
             String pass = PassEt.getText().toString();
             String type = "Login";
-            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+            BackgroundWorkerLogin backgroundWorker = new BackgroundWorkerLogin(this);
             String reg = null;
             try {
                 reg = backgroundWorker.execute(type, email, pass).get();
@@ -59,9 +52,9 @@ public class LoginActivity extends AppCompatActivity {
                         SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
                         sessionManagement.saveSession(userClass);
 
-                        Intent intent = new Intent(LoginActivity.this, StuHomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        Intent StuHomeActivity = new Intent(LoginActivity.this, StuHomeActivity.class);
+                        StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(StuHomeActivity);
                     }
 
                     if (val[2].equals("lec")) {
@@ -70,9 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                         SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
                         sessionManagement.saveSession(userClass);
 
-                        Intent intent = new Intent(LoginActivity.this, LecHomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        Intent LecHomeActivity = new Intent(LoginActivity.this, LecHomeActivity.class);
+                        LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(LecHomeActivity);
                     }
                 }
             }
