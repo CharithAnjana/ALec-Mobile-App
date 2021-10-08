@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
         String us_type = sessionManagement.getSessionKey();
 
         if(us_type.equals("stu")){
-            Intent intent = new Intent(MainActivity.this, StuHomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            Intent StuHomeActivity = new Intent(MainActivity.this, StuHomeActivity.class);
+            StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(StuHomeActivity);
         }
         if (us_type.equals("lec")){
-            Intent intent = new Intent(MainActivity.this, LecHomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            Intent LecHomeActivity = new Intent(MainActivity.this, LecHomeActivity.class);
+            LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(LecHomeActivity);
         }
 
     }

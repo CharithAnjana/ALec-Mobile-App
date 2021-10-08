@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +21,7 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    Button BtnAtmptQu,BtnMyCour,BtnMyAct,BtnForum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,16 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         drawerLayout = findViewById(R.id.drawer_layout_stu);
         navigationView = findViewById(R.id.nav_bar_stu);
         toolbar = findViewById(R.id.toolbar_stu);
+        BtnMyCour = findViewById(R.id.BtnMyCour);
+
+        BtnMyCour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent StuMyCourses = new Intent(StuHomeActivity.this, StuMyCourses.class);
+                startActivity(StuMyCourses);
+            }
+        });
 
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
@@ -55,12 +68,16 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         switch (item.getItemId()){
             case R.id.nav_dash:
                 break;
+            case R.id.nav_course:
+                Intent StuMyCourses = new Intent(getApplicationContext(), StuMyCourses.class);
+                startActivity(StuMyCourses);
+                break;
             case R.id.nav_lgout:
                 SessionManagement sessionManagement = new SessionManagement(StuHomeActivity.this);
                 sessionManagement.removeSession();
 
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
+                Intent logout = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(logout);
                 finish();
                 break;
         }
