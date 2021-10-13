@@ -21,7 +21,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="Quiz-Name"
-            android:textColor="#2962FF"
+            android:textColor="#008799"
             android:textSize="21dp"
             android:visibility="visible"
             app:backgroundTint="#43A047"

@@ -21,7 +21,7 @@
             android:fontFamily="@font/poppins_medium"
             android:gravity="fill_vertical"
             android:text="Topic-Name"
-            android:textColor="#00BFA5"
+            android:textColor="#008799"
             android:textSize="21dp"
             android:visibility="visible"
             app:backgroundTint="#43A047"
