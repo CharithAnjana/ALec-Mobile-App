@@ -33,7 +33,7 @@ public class LecDeleteTopicPop extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.7),(int)(height*.4));
+        getWindow().setLayout((int)(width*.7),(int)(height*.3));
 
         Intent intent =getIntent();
         tID = intent.getStringExtra("tID");

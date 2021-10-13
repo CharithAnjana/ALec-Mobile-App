@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_lec"
         android:layout_width="412dp"
         android:layout_height="50dp"
-        android:background="#FFFFFF"
+        android:background="#9fa8da"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,10 +40,9 @@
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411"
         android:onClick="Back"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
@@ -52,12 +51,12 @@
         android:id="@+id/cName"
         android:layout_width="329dp"
         android:layout_height="43dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:text="SCS2201 - DataBase"
         android:textColor="@color/AlecGreen"
-        android:textSize="18dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NewTopic" />
@@ -93,7 +92,7 @@
         android:layout_width="282dp"
         android:layout_height="64dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="352dp"
         android:ems="10"
         android:gravity="left"
         android:inputType="textPersonName"
@@ -120,7 +119,7 @@
         app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.454" />
 
 
     <TextView

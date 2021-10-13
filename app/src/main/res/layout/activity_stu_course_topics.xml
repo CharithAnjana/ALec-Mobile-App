@@ -15,7 +15,7 @@
             android:id="@+id/toolbar_stu"
             android:layout_width="412dp"
             android:layout_height="50dp"
-            android:background="#FFFFFF"
+            android:background="#9fa8da"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,10 +45,9 @@
             android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar_stu"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.018"
+            app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.411"
             android:onClick="Back"
             app:srcCompat="?attr/homeAsUpIndicator" />
 

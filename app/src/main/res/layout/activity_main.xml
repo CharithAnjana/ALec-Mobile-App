@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/atomic_age"
+        android:fontFamily="@font/poppins_bold"
         android:text="Interactive Teaching And Learning Module"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

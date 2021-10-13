@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LecViewQuiz"></activity>
+        <activity android:name=".LecForumAddNewDiscTopic"></activity>
+        <activity android:name=".LecForumDiscTopic" />
+        <activity android:name=".LecForumCourseSelect" />
+        <activity android:name=".LecViewQuiz" />
         <activity android:name=".LecEditTopic" />
         <activity
             android:name=".LecDeleteTopicPop"
