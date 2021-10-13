@@ -4,40 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LecCourseTopics">
+    tools:context=".LecForumDiscTopic"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="142dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_lec"
-            android:layout_width="412dp"
-            android:layout_height="50dp"
-            android:background="#9fa8da"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/cTopic"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="Course Topic"
-            android:textColor="#1B3B56"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_lec"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        android:background="#9fa8da"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/back"
@@ -52,7 +38,7 @@
             app:srcCompat="?attr/homeAsUpIndicator" />
 
         <TextView
-            android:id="@+id/Stu"
+            android:id="@+id/Lec"
             android:layout_width="61dp"
             android:layout_height="27dp"
             android:layout_marginEnd="32dp"
@@ -63,6 +49,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.571" />
 
+        <TextView
+            android:id="@+id/Course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Discussion Forum"
+            android:textColor="#1B3B56"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -75,6 +74,7 @@
         android:layout_marginRight="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="158dp"
             android:fontFamily="@font/poppins_medium"
-            android:onClick="NewTopic"
+            android:onClick="NewDiscTopic"
             android:text="Add New Topic"
             app:backgroundTint="#00BFA5"
             app:layout_constraintEnd_toEndOf="parent"

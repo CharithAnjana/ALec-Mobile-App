@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#cfd8dc">
 
     <Button
         android:id="@+id/button4"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="132dp"
         android:onClick="Cancel"
         android:text="Cancel"
         app:backgroundTint="#26C6DA"
@@ -21,7 +22,7 @@
         android:id="@+id/button5"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="132dp"
         android:layout_marginEnd="16dp"
         android:onClick="DeleteConfirm"
         android:text="Delete"
@@ -31,13 +32,13 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="250dp"
-        android:layout_height="140dp"
+        android:layout_width="247dp"
+        android:layout_height="101dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:text="If you delete this topic all the quizzes in this topic will be deleted!"
-        android:textColor="#C51162"
+        android:textColor="#000000"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

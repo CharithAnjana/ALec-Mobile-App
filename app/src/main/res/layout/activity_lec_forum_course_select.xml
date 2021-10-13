@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LecMyCourses">
+    tools:context=".LecForumCourseSelect">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,10 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="My Courses"
+            android:text="Select Course"
             android:textColor="#1B3B56"
             android:textSize="26sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +52,7 @@
             app:srcCompat="?attr/homeAsUpIndicator" />
 
         <TextView
-            android:id="@+id/Stu"
+            android:id="@+id/Lec"
             android:layout_width="61dp"
             android:layout_height="27dp"
             android:layout_marginEnd="32dp"
@@ -68,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/courseList"
+        android:id="@+id/courseSelectList"
         android:layout_width="wrap_content"
         android:layout_height="519dp"
         android:layout_marginLeft="20dp"

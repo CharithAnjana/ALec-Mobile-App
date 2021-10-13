@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LecAddNewTopic">
+    tools:context=".LecForumAddNewDiscTopic">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_lec"
@@ -24,11 +23,11 @@
     <TextView
         android:id="@+id/NewTopic"
         android:layout_width="232dp"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Add New Topic"
+        android:text="Add New  Discussion Topic"
         android:textColor="#1B3B56"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +96,7 @@
         android:layout_marginEnd="57dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Enter Topic Description Here.."
+        android:hint="Enter Question Here.."
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,7 +111,7 @@
         android:layout_marginTop="300dp"
         android:ems="10"
         android:gravity="left"
-        android:hint="Enter New Topic Here.."
+        android:hint="Enter Topic Heading Here.."
         android:inputType="textPersonName"
         android:textColor="#131313"
         android:textColorHint="#8C8C8C"
@@ -128,7 +127,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Topic Name "
+        android:text="Heading"
         android:textColor="#131313"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -146,7 +145,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Topic Description "
+        android:text="Question"
         android:textColor="#131313"
         android:textSize="16sp"
         android:textStyle="bold"

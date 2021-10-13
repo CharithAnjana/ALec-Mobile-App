@@ -96,7 +96,7 @@
             android:id="@+id/toolbar_lec"
             android:layout_width="412dp"
             android:layout_height="50dp"
-            android:background="@color/ic_launcher_background"
+            android:background="#9fa8da"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintBottom_toBottomOf="parent"
