@@ -68,6 +68,7 @@ public class LecDeleteTopicPop extends AppCompatActivity {
                 LecCourseTopics.putExtra("cID",cID);
                 LecCourseTopics.putExtra("cName",cName);
                 LecCourseTopics.putExtra("UserID",User_ID);
+                LecCourseTopics.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(LecCourseTopics);
                 finish();
             }

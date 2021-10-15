@@ -25,13 +25,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LecViewQuiz extends AppCompatActivity {
+public class LecAddQuizQuestion extends AppCompatActivity {
 
+    TextView qID, cName, quizname;
+    String quizID, quizName, courseName, qtCount;
+    ListView quizListView;
     String questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php";
-
-    String qID,qName,cID,cName,User_ID,tID,tName,qtCount;
-    TextView Course, Quiz;
-    ListView qQuestionListView;
 
     private static String[] qtNo;
     private static String[] qtID;
@@ -61,30 +60,51 @@ public class LecViewQuiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_view_quiz);
+        setContentView(R.layout.activity_lec_add_quiz_question);
 
-        Course = findViewById(R.id.cName);
-        Quiz = findViewById(R.id.quizName);
+        qID = findViewById(R.id.qID);
+        cName = findViewById(R.id.cName);
+        quizname = findViewById(R.id.quizName);
+        quizListView = findViewById(R.id.quizList);
 
         Intent intent =getIntent();
-        qID = intent.getStringExtra("qID");
-        qName = intent.getStringExtra("qName");
-        tID = intent.getStringExtra("tID");
-        tName = intent.getStringExtra("tName");
-        cID = intent.getStringExtra("cID");
-        cName = intent.getStringExtra("cName");
-        User_ID = intent.getStringExtra("UserID");
+        quizID = intent.getStringExtra("qID");
+        courseName = intent.getStringExtra("cName");
+        quizName = intent.getStringExtra("qName");
+        qID.setText(quizID);
+        cName.setText(courseName);
+        quizname.setText(quizName);
 
-        Course.setText(cName);
-        Quiz.setText(qName);
+        questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php?quiz_ID="+quizID;
+        fetch_data_into_array(quizListView);
+    }
 
-        questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php?quiz_ID="+qID;
+    public void Back(View view){
+        finish();
+    }
+    public void Mcq(View view){
+        Intent LecAddQuizMcq = new Intent(this,LecAddQuizMcq.class);
+        LecAddQuizMcq.putExtra("quizID",quizID);
+        LecAddQuizMcq.putExtra("cName",courseName);
+        LecAddQuizMcq.putExtra("quizName",quizName);
+        startActivity(LecAddQuizMcq);
+    }
+    public void ShortAns(View view){
+        Intent LecAddQuizShort = new Intent(this,LecAddQuizShort.class);
+        LecAddQuizShort.putExtra("quizID",quizID);
+        LecAddQuizShort.putExtra("cName",courseName);
+        LecAddQuizShort.putExtra("quizName",quizName);
+        startActivity(LecAddQuizShort);
+    }
+    public void Submit(View view){
 
-        qQuestionListView = (ListView)findViewById(R.id.quizQuestionList);
-        fetch_data_into_array(qQuestionListView);
+    }
+    public void Cancel(View view){
 
     }
 
+
+    //load quiz question to the list view
     private void fetch_data_into_array(ListView topicListView) {
         class dbManager extends AsyncTask<String,Void,String> {
 
@@ -174,9 +194,9 @@ public class LecViewQuiz extends AppCompatActivity {
 
 
                     MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qtNo,qtID,question,
-                                                        chName1,chName2,chName3,chName4,chName5,
-                                                        ap,bp,cp,dp,ep,
-                                                        chPoint1,chPoint2,chPoint3,chPoint4,chPoint5);
+                            chName1,chName2,chName3,chName4,chName5,
+                            ap,bp,cp,dp,ep,
+                            chPoint1,chPoint2,chPoint3,chPoint4,chPoint5);
                     topicListView.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -322,32 +342,5 @@ public class LecViewQuiz extends AppCompatActivity {
 
             return row;
         }
-
-    }
-
-    public void Back(View view){
-        Intent LecQuizList = new Intent(this,LecQuizList.class);
-        LecQuizList.putExtra("tID",tID);
-        LecQuizList.putExtra("tName",tName);
-        LecQuizList.putExtra("cID",cID);
-        LecQuizList.putExtra("cName",cName);
-        LecQuizList.putExtra("UserID",User_ID);
-        LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(LecQuizList);
-    }
-
-    public void EditQuiz(View view){
-        //Intent intent = new Intent(this,LecAddNewTopic.class);
-        //intent.putExtra("cName",cName);
-        //intent.putExtra("cID",cID);
-        //intent.putExtra("User_ID",User_ID);
-        //startActivity(intent);
-        finish();
-    }
-
-    public void DeleteQuiz(View view){
-        //Intent LecMyCourse = new Intent(this,LecMyCourses.class);
-        //startActivity(LecMyCourse);
-        finish();
     }
 }

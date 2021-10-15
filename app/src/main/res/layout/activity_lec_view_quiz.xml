@@ -64,7 +64,7 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
 
         <TextView
-            android:id="@+id/qName"
+            android:id="@+id/quizName"
             android:layout_width="363dp"
             android:layout_height="47dp"
             android:layout_marginTop="136dp"

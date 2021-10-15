@@ -162,6 +162,7 @@ public class LecQuizList extends AppCompatActivity {
     public void Back(View view){
 
         Intent LecCourseTopics = new Intent(getApplicationContext(), LecCourseTopics.class);
+        LecCourseTopics.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         LecCourseTopics.putExtra("cID",cID);
         LecCourseTopics.putExtra("cName",cName);
         LecCourseTopics.putExtra("UserID",User_ID);

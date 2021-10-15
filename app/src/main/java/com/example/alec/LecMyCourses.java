@@ -147,7 +147,7 @@ public class LecMyCourses extends AppCompatActivity {
 
     public void Back(View view){
         Intent LecHomeActivity = new Intent(this,LecHomeActivity.class);
+        LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(LecHomeActivity);
-        finish();
     }
 }

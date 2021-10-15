@@ -56,8 +56,8 @@ public class LecAddNewTopic extends AppCompatActivity {
                     LecCourseTopics.putExtra("cID",course_ID);
                     LecCourseTopics.putExtra("cName",course_Name);
                     LecCourseTopics.putExtra("UserID",lecturer_ID);
+                    LecCourseTopics.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(LecCourseTopics);
-                    finish();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

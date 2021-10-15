@@ -33,12 +33,22 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         navigationView = findViewById(R.id.nav_bar_lec);
         toolbar = findViewById(R.id.toolbar_lec);
         BtnMyCour = findViewById(R.id.BtnMyCour);
+        BtnAskQu = findViewById(R.id.BtnAskQu);
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                startActivity(LecMyCourses);
+            }
+        });
+
+        BtnAskQu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent LecMyCourses = new Intent(LecHomeActivity.this, LecAddQuizSeltCurs.class);
                 startActivity(LecMyCourses);
             }
         });

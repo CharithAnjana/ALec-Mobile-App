@@ -3,4 +3,24 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="answer_point_short">
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="answer_point_mcq">
+        <item>100%</item>
+        <item>75%</item>
+        <item>50%</item>
+        <item>33.33%</item>
+        <item>25%</item>
+        <item>20%</item>
+        <item>0%</item>
+        <item>-20%</item>
+        <item>-25%</item>
+        <item>-33.33%</item>
+        <item>-50%</item>
+        <item>-75%</item>
+        <item>-100%</item>
+    </string-array>
 </resources>
