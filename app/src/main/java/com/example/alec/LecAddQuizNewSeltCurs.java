@@ -22,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class LecAddQuizSeltCurs extends AppCompatActivity {
+public class LecAddQuizNewSeltCurs extends AppCompatActivity {
 
     Spinner spCourse;
     ArrayList<String> courseList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class LecAddQuizSeltCurs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_add_quiz_selt_curs);
+        setContentView(R.layout.activity_lec_add_quiz_new_selt_curs);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -140,7 +140,7 @@ public class LecAddQuizSeltCurs extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "No Courses Available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Courses Available", Toast.LENGTH_LONG).show();
             return false;
         }
     }

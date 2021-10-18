@@ -9,6 +9,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class LecAddQuizShort extends AppCompatActivity {
     Spinner pointsSpinner;
     EditText q, a;
     String quizID, quizName, course;
+    TextView quname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +28,13 @@ public class LecAddQuizShort extends AppCompatActivity {
 
         Intent intent = getIntent();
         quizID = intent.getStringExtra("quizID");
-        quizName = intent.getStringExtra("cName");
-        course = intent.getStringExtra("quizName");
+        course = intent.getStringExtra("cName");
+        quizName = intent.getStringExtra("quizName");
 
         q = findViewById(R.id.editTextTextMultiLine);
         a = findViewById(R.id.editTextAnswer);
+        quname = findViewById(R.id.QuizName);
+        quname.setText(quizName);
 
         pointsSpinner = findViewById(R.id.spinnerPoints);
         ArrayAdapter<CharSequence> pointadapter = ArrayAdapter.createFromResource(this,
@@ -51,10 +55,10 @@ public class LecAddQuizShort extends AppCompatActivity {
             String qutype = "short ans";
             String type = "NewQuestShort";
 
-            BackgroundWorkerAddQuiz backgroundWorkerAddQuiz = new BackgroundWorkerAddQuiz(this);
+            BackgroundWorkerQuizQuestion backgroundWorkerQuizQuestion = new BackgroundWorkerQuizQuestion(this);
             String result;
             try {
-                result = backgroundWorkerAddQuiz.execute(type, quizID, question, qutype, answer, point).get();
+                result = backgroundWorkerQuizQuestion.execute(type, quizID, question, qutype, answer, point).get();
 
                 if(result.equals("Success")){
 
@@ -84,12 +88,12 @@ public class LecAddQuizShort extends AppCompatActivity {
                 return true;
             }
             else {
-                Toast.makeText(this, "Invalid Answer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid Answer", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
         else {
-            Toast.makeText(this, "Invalid Question", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Question", Toast.LENGTH_LONG).show();
             return false;
         }
     }

@@ -66,11 +66,10 @@
             android:layout_width="363dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:layout_marginBottom="20dp"
             android:fontFamily="@font/poppins_medium"
-            android:gravity="fill_vertical"
+            android:gravity="center"
             android:text="Course Name"
-            android:textColor="#1B3B56"
+            android:textColor="#305890"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +77,7 @@
 
         <TextView
             android:id="@+id/quizName"
-            android:layout_width="363dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -92,9 +91,6 @@
             app:layout_constraintTop_toBottomOf="@+id/cName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="456dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,7 +100,7 @@
             <ListView
                 android:id="@+id/quizList"
                 android:layout_width="wrap_content"
-                android:layout_height="393dp"
+                android:layout_height="363dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
@@ -114,22 +110,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/mcq"
                     android:layout_width="130dp"
-                    android:layout_height="64dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="7dp"
+
                     android:onClick="Mcq"
                     android:text="MCQ"
-                    app:backgroundTint="#305890"
+                    app:backgroundTint="#1976d2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.167"
@@ -138,14 +133,14 @@
                 <Button
                     android:id="@+id/shtans"
                     android:layout_width="130dp"
-                    android:layout_height="64dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
+
                     android:onClick="ShortAns"
                     android:text="SHORT ANSWER"
-                    app:backgroundTint="#305890"
+                    app:backgroundTint="#1976d2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.846"
@@ -155,8 +150,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -165,14 +158,14 @@
 
         <Button
             android:id="@+id/cancel"
-            android:layout_width="130dp"
-            android:layout_height="64dp"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:onClick="Back"
-            android:text="SAVE"
+            android:text="SAVE QUIZ"
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -181,14 +174,14 @@
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="130dp"
-            android:layout_height="64dp"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             android:onClick="Submit"
-            android:text="SUBMIT"
+            android:text="SUBMIT QUIZ"
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

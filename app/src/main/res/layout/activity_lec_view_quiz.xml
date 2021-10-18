@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="197dp">
+        android:layout_height="167dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_lec"
@@ -52,30 +52,32 @@
         <TextView
             android:id="@+id/cName"
             android:layout_width="363dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
             android:fontFamily="@font/poppins_medium"
-            android:gravity="fill_vertical"
+            android:gravity="center"
             android:text="Course Name"
-            android:textColor="#1B3B56"
-            android:textSize="20sp"
+            android:textColor="#305890"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
 
         <TextView
             android:id="@+id/quizName"
-            android:layout_width="363dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="136dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:gravity="fill_vertical"
             android:text="Quiz Name"
             android:textColor="#1B3B56"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.338"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
+            app:layout_constraintTop_toBottomOf="@+id/cName"
+            app:layout_constraintVertical_bias="0.242" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

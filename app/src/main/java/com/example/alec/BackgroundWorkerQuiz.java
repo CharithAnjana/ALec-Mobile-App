@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
@@ -15,26 +14,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class BackgroundWorkerAddQuiz extends AsyncTask<String, Void, String> {
+public class BackgroundWorkerQuiz extends AsyncTask<String, Void, String> {
 
-
+    AlertDialog alertDialog;
     Context context;
-    public BackgroundWorkerAddQuiz(Context ctx){
+    public BackgroundWorkerQuiz(Context ctx) {
         context = ctx;
     }
 
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        if(type.equals("NewQuiz")) {
+        if (type.equals("Create")) {
             try {
-                String topic_ID = params[1];
-                String lecturer_ID = params[2];
-                String quizName = params[3];
-                String dur = params[4];
-                String new_quiz_URL = "http://10.0.2.2/ALec/public/api/V1/addnewquiz.php";
+                String quiz_ID = params[1];
+                String new_question_URL = "http://10.0.2.2/ALec/public/api/V1/createquizstatechange.php";
 
-                URL url = new URL(new_quiz_URL);
+                URL url = new URL(new_question_URL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -43,10 +39,7 @@ public class BackgroundWorkerAddQuiz extends AsyncTask<String, Void, String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("topic_ID", "UTF-8") + "=" + URLEncoder.encode(topic_ID, "UTF-8") + "&"
-                        + URLEncoder.encode("lecturer_ID", "UTF-8") + "=" + URLEncoder.encode(lecturer_ID, "UTF-8") + "&"
-                        + URLEncoder.encode("quiz_Name", "UTF-8") + "=" + URLEncoder.encode(quizName, "UTF-8") + "&"
-                        + URLEncoder.encode("dur", "UTF-8") + "=" + URLEncoder.encode(dur, "UTF-8");
+                String post_data = URLEncoder.encode("quiz_ID", "UTF-8") + "=" + URLEncoder.encode(quiz_ID, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -66,24 +59,25 @@ public class BackgroundWorkerAddQuiz extends AsyncTask<String, Void, String> {
                 httpURLConnection.disconnect();
 
                 return result;
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-
-
         return null;
     }
 
     @Override
     protected void onPreExecute() {
+        alertDialog = new AlertDialog.Builder(context).create();
     }
 
     @Override
     protected void onPostExecute(String result) {
+        alertDialog.setMessage(result);
+        alertDialog.show();
     }
+
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);

@@ -48,8 +48,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
 
-                Intent LecMyCourses = new Intent(LecHomeActivity.this, LecAddQuizSeltCurs.class);
-                startActivity(LecMyCourses);
+                Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
+                startActivity(LecAddQuizSelectOption);
             }
         });
 
@@ -77,6 +77,20 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_dash:
+                break;
+            case R.id.nav_ques:
+                Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
+                startActivity(LecAddQuizSelectOption);
+                break;
+            case R.id.nav_course:
+                Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                startActivity(LecMyCourses);
+                break;
+            case R.id.nav_review:
+                break;
+            case R.id.nav_forum:
+                Intent LecForumCourseSelect = new Intent(LecHomeActivity.this, LecForumCourseSelect.class);
+                startActivity(LecForumCourseSelect);
                 break;
             case R.id.nav_lgout:
                 SessionManagement sessionManagement = new SessionManagement(LecHomeActivity.this);

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -97,10 +98,39 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         startActivity(LecAddQuizShort);
     }
     public void Submit(View view){
+        if(ValidateQuiz(quizListView)){
+            String quiz_id = quizID;
+            String type= "Create";
 
+            BackgroundWorkerQuiz backgroundWorkerQuiz = new BackgroundWorkerQuiz(this);
+            String result;
+            try {
+                result = backgroundWorkerQuiz.execute(type, quiz_id).get();
+
+                if(result.equals("Success")){
+
+                    Intent LecQuizScheduleOption = new Intent(this, LecQuizScheduleOption.class);
+                    LecQuizScheduleOption.putExtra("qID",quizID);
+                    LecQuizScheduleOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(LecQuizScheduleOption);
+                    finish();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
-    public void Cancel(View view){
 
+
+    public Boolean ValidateQuiz(ListView listView){
+        int c = listView.getAdapter().getCount();
+        if(c>0){
+            return true;
+        }
+        else {
+            Toast.makeText(this, "Can't create an empty quiz!", Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 

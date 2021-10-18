@@ -169,7 +169,7 @@ public class LecAddQuizSetDetails extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "No Topics Available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Topics Available", Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -179,7 +179,7 @@ public class LecAddQuizSetDetails extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "Invalid Topic Name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Topic Name", Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -189,7 +189,7 @@ public class LecAddQuizSetDetails extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "Invalid Time Duration", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Time Duration", Toast.LENGTH_LONG).show();
             return false;
         }
     }

@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Password", Toast.LENGTH_LONG).show();
             return false;
         }
     }

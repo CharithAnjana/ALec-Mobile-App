@@ -75,7 +75,7 @@ public class LecEditTopic extends AppCompatActivity {
             return true;
         }
         else {
-            Toast.makeText(this, "Invalid Topic Name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid Topic Name", Toast.LENGTH_LONG).show();
             return false;
         }
     }

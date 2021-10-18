@@ -16,17 +16,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.081"
-        app:srcCompat="@drawable/profile_pic"
+        app:srcCompat="@drawable/user_avatar"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="209dp"
         android:layout_height="56dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:text="WELCOME"
-        android:textColor="#00004D"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,8 +154,8 @@
 
     <Button
         android:id="@+id/BtnLogin"
-        android:layout_width="267dp"
-        android:layout_height="55dp"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/loginbtn"
         android:fontFamily="@font/poppins"
         android:onClick="OnLogin"
@@ -163,7 +163,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:backgroundTint="#00B386"
+        app:backgroundTint="#305890"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.465"

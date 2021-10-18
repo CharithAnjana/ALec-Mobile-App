@@ -12,12 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LecAddQuizMcq"></activity>
+        <activity android:name=".LecQuizScheduleOption"></activity>
+        <activity android:name=".LecViewDraftQuiz" />
+        <activity
+            android:name=".LecAddQuizDraftSelectCurs"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecAddQuizSelectOption" />
+        <activity android:name=".LecAddQuizMcq" />
         <activity android:name=".LecAddQuizShort" />
         <activity android:name=".LecAddQuizQuestion" />
         <activity android:name=".LecAddQuizSetDetails" />
         <activity
-            android:name=".LecAddQuizSeltCurs"
+            android:name=".LecAddQuizNewSeltCurs"
             android:theme="@style/Theme.ALec.PopUp" />
         <activity android:name=".LecForumAddNewDiscTopic" />
         <activity android:name=".LecForumDiscTopic" />
