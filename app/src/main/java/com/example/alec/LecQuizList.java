@@ -190,4 +190,11 @@ public class LecQuizList extends AppCompatActivity {
         LecDeleteTopic.putExtra("UserID",User_ID);
         startActivity(LecDeleteTopic);
     }
+
+    public void AddNewQuiz(View view){
+        Intent LecAddQuizSetDetails = new Intent(this,LecAddQuizSetDetails.class);
+        LecAddQuizSetDetails.putExtra("course",cName);
+        LecAddQuizSetDetails.putExtra("courseId",cID);
+        startActivity(LecAddQuizSetDetails);
+    }
 }

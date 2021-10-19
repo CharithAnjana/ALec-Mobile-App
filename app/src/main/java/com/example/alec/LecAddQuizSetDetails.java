@@ -126,9 +126,12 @@ public class LecAddQuizSetDetails extends AppCompatActivity {
     }
     //end of the spinner-->
 
+
+
     public void Back(View view){
         finish();
     }
+
 
     public void Next(View view){
         if(validateTopic(topicList) && validateQName(qName) && validateTime(dur)) {
@@ -149,6 +152,7 @@ public class LecAddQuizSetDetails extends AppCompatActivity {
                     LecAddQuizQuestion.putExtra("qID",result);
                     LecAddQuizQuestion.putExtra("cName",course);
                     LecAddQuizQuestion.putExtra("qName",quizName);
+                    LecAddQuizQuestion.putExtra("qDuration",duHr);
                     LecAddQuizQuestion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(LecAddQuizQuestion);
                     finish();

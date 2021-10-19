@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ import java.net.URL;
 public class LecAddQuizQuestion extends AppCompatActivity {
 
     TextView qID, cName, quizname;
-    String quizID, quizName, courseName, qtCount;
+    String quizID, quizName, courseName, qtCount, qDuHr;
     ListView quizListView;
     String questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php";
 
@@ -72,17 +73,42 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         quizID = intent.getStringExtra("qID");
         courseName = intent.getStringExtra("cName");
         quizName = intent.getStringExtra("qName");
+        qDuHr = intent.getStringExtra("qDuration");
         qID.setText(quizID);
         cName.setText(courseName);
         quizname.setText(quizName);
 
         questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php?quiz_ID="+quizID;
         fetch_data_into_array(quizListView);
+
+        quizListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                int count = Integer.parseInt(chCount[i]);
+                if(count == 1){
+                    Intent LecQuizQuestionEditShort = new Intent(getApplicationContext(), LecQuizQuestionEditShort.class);
+                    LecQuizQuestionEditShort.putExtra("qtID",qtID[i]);
+                    LecQuizQuestionEditShort.putExtra("question",question[i]);
+                    LecQuizQuestionEditShort.putExtra("chName1",chName1[i]);
+                    LecQuizQuestionEditShort.putExtra("chPoint1",chPoint1[i]);
+                    startActivity(LecQuizQuestionEditShort);
+                }
+                else {
+                    Intent LecQuizQuestionEditMcq = new Intent(getApplicationContext(), LecQuizQuestionEditMcq.class);
+                    LecQuizQuestionEditMcq.putExtra("qtID",qtID[i]);
+                    LecQuizQuestionEditMcq.putExtra("question",question[i]);
+                    LecQuizQuestionEditMcq.putExtra("chName1",chName1[i]);
+                    LecQuizQuestionEditMcq.putExtra("chPoint1",chPoint1[i]);
+                    startActivity(LecQuizQuestionEditMcq);
+                }
+            }
+        });
     }
 
     public void Back(View view){
         finish();
     }
+
     public void Mcq(View view){
         Intent LecAddQuizMcq = new Intent(this,LecAddQuizMcq.class);
         LecAddQuizMcq.putExtra("quizID",quizID);
@@ -90,6 +116,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         LecAddQuizMcq.putExtra("quizName",quizName);
         startActivity(LecAddQuizMcq);
     }
+
     public void ShortAns(View view){
         Intent LecAddQuizShort = new Intent(this,LecAddQuizShort.class);
         LecAddQuizShort.putExtra("quizID",quizID);
@@ -97,27 +124,14 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         LecAddQuizShort.putExtra("quizName",quizName);
         startActivity(LecAddQuizShort);
     }
+
     public void Submit(View view){
         if(ValidateQuiz(quizListView)){
-            String quiz_id = quizID;
-            String type= "Create";
-
-            BackgroundWorkerQuiz backgroundWorkerQuiz = new BackgroundWorkerQuiz(this);
-            String result;
-            try {
-                result = backgroundWorkerQuiz.execute(type, quiz_id).get();
-
-                if(result.equals("Success")){
-
-                    Intent LecQuizScheduleOption = new Intent(this, LecQuizScheduleOption.class);
-                    LecQuizScheduleOption.putExtra("qID",quizID);
-                    LecQuizScheduleOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(LecQuizScheduleOption);
-                    finish();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Intent LecQuizScheduleOption = new Intent(this, LecQuizScheduleOption.class);
+            LecQuizScheduleOption.putExtra("qID",quizID);
+            LecQuizScheduleOption.putExtra("qName",quizName);
+            LecQuizScheduleOption.putExtra("qDuHr",qDuHr);
+            startActivity(LecQuizScheduleOption);
         }
     }
 
@@ -132,6 +146,8 @@ public class LecAddQuizQuestion extends AppCompatActivity {
             return false;
         }
     }
+
+
 
 
     //load quiz question to the list view
@@ -223,7 +239,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
                     }
 
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qtNo,qtID,question,
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qtNo,qtID,question,chCount,
                             chName1,chName2,chName3,chName4,chName5,
                             ap,bp,cp,dp,ep,
                             chPoint1,chPoint2,chPoint3,chPoint4,chPoint5);
@@ -272,6 +288,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         String[] qtNo;
         String[] qtID;
         String[] question;
+        String[] chCount;
 
         String[] chName1;
         String[] chName2;
@@ -291,7 +308,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         String[] chPoint4;
         String[] chPoint5;
 
-        MyAdepter(Context context, String[] qtNo, String[] qtID, String[] question,
+        MyAdepter(Context context, String[] qtNo, String[] qtID, String[] question, String[] chCount,
                   String[] chName1, String[] chName2, String[] chName3, String[] chName4, String[] chName5,
                   String[] a, String[] b, String[] c, String[] d, String[] e,
                   String[] chPoint1, String[] chPoint2, String[] chPoint3, String[] chPoint4, String[] chPoint5) {
@@ -301,6 +318,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
             this.qtID = qtID;
             this.qtNo = qtNo;
             this.question = question;
+            this.chCount = chCount;
 
             this.chName1 = chName1;
             this.chName2 = chName2;
@@ -329,6 +347,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
 
             TextView QI = row.findViewById(R.id.tvQI);
             TextView QN = row.findViewById(R.id.tvQN);
+            TextView CC = row.findViewById(R.id.chCount);
 
             TextView C1 = row.findViewById(R.id.tvC1);
             TextView C2 = row.findViewById(R.id.tvC2);
@@ -351,6 +370,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
             QI.setText(qtID[position]);
             QN.setText(question[position]);
             N.setText(qtNo[position]);
+            CC.setText(chCount[position]);
 
             C1.setText(chName1[position]);
             C2.setText(chName2[position]);
