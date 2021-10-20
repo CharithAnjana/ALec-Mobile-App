@@ -60,15 +60,15 @@ public class LecQuizList extends AppCompatActivity {
         quizListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent LecQuizList = new Intent(getApplicationContext(), LecViewQuiz.class);
-                LecQuizList.putExtra("qID",qID[i]);
-                LecQuizList.putExtra("qName",qName[i]);
-                LecQuizList.putExtra("tID",tID);
-                LecQuizList.putExtra("tName",tName);
-                LecQuizList.putExtra("cID",cID);
-                LecQuizList.putExtra("cName",cName);
-                LecQuizList.putExtra("UserID",User_ID);
-                startActivity(LecQuizList);
+                Intent LecViewQuizDetails = new Intent(getApplicationContext(), LecViewQuizDetails.class);
+                LecViewQuizDetails.putExtra("qID",qID[i]);
+                LecViewQuizDetails.putExtra("qName",qName[i]);
+                LecViewQuizDetails.putExtra("tID",tID);
+                LecViewQuizDetails.putExtra("tName",tName);
+                LecViewQuizDetails.putExtra("cID",cID);
+                LecViewQuizDetails.putExtra("cName",cName);
+                LecViewQuizDetails.putExtra("UserID",User_ID);
+                startActivity(LecViewQuizDetails);
             }
         });
 

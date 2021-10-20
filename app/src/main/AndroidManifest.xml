@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+        <activity android:name=".LecViewQuizDetails"></activity>
         <activity
             android:name=".LecQuizDeletePop"
-            android:theme="@style/Theme.ALec.PopUp"/>
+            android:theme="@style/Theme.ALec.PopUp" />
         <activity android:name=".LecQuizQuestionEditMcq" />
         <activity android:name=".LecQuizQuestionEditShort" />
         <activity android:name=".LecScheduleQuiz" />

@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="194dp">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_lec"
@@ -50,42 +50,40 @@
             app:layout_constraintVertical_bias="0.571" />
 
         <TextView
-            android:id="@+id/cName"
+            android:id="@+id/quizName"
             android:layout_width="363dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="74dp"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="Course Name"
+            android:text="Quiz Name"
             android:textColor="#305890"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
 
-        <TextView
-            android:id="@+id/quizName"
-            android:layout_width="200dp"
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="135dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="fill_vertical"
-            android:text="Quiz Name"
-            android:textColor="#1B3B56"
-            android:textSize="19sp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="101dp"
+            android:onClick="EditQuiz"
+            android:text="Edit Quiz"
+            android:textColor="#ffffff"
+            android:textSize="13dp"
+            app:backgroundTint="#1E88E5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cName"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/quizName" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:id="@+id/buttonDelete"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="32dp"
             android:onClick="DeleteQuiz"
@@ -95,43 +93,21 @@
             app:backgroundTint="#d63031"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/quizName"
-            app:layout_constraintTop_toBottomOf="@+id/cName"
-            app:layout_constraintVertical_bias="0.125" />
+            app:layout_constraintTop_toBottomOf="@+id/quizName"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
         android:id="@+id/quizQuestionList"
         android:layout_width="wrap_content"
-        android:layout_height="438dp"
+        android:layout_height="539dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="185dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="159dp"
-            android:layout_marginEnd="158dp"
-            android:fontFamily="@font/poppins_medium"
-            android:onClick="ScheduleQuiz"
-            android:text="SCHEDULE QUIZ"
-            app:backgroundTint="#305890"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
