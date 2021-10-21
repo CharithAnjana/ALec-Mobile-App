@@ -34,6 +34,7 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         toolbar = findViewById(R.id.toolbar_lec);
         BtnMyCour = findViewById(R.id.BtnMyCour);
         BtnAskQu = findViewById(R.id.BtnAskQu);
+        BtnForum = findViewById(R.id.BtnForum);
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,15 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
                 startActivity(LecAddQuizSelectOption);
+            }
+        });
+
+        BtnForum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent LecForumCourseSelect = new Intent(LecHomeActivity.this, LecForumCourseSelect.class);
+                startActivity(LecForumCourseSelect);
             }
         });
 

@@ -34,12 +34,12 @@
 
     <TextView
         android:id="@+id/NewTopic"
-        android:layout_width="232dp"
+        android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginTop="72dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Select One"
+        android:text="Select Any Option"
         android:textColor="#1B3B56"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
