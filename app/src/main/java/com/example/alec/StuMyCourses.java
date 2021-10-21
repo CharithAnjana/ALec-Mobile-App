@@ -151,6 +151,8 @@ public class StuMyCourses extends AppCompatActivity {
     }
 
     public void Back(View view){
-        finish();
+        Intent StuHomeActivity = new Intent(this,StuHomeActivity.class);
+        StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(StuHomeActivity);
     }
 }

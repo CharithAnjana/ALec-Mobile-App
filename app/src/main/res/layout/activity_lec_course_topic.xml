@@ -91,7 +91,7 @@
             android:fontFamily="@font/poppins_medium"
             android:onClick="NewTopic"
             android:text="Add New Topic"
-            app:backgroundTint="#00BFA5"
+            app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"

@@ -12,7 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LecForumAddNewDiscTopic"></activity>
+        <activity android:name=".LecQuizQuestionDeletePop"></activity>
+        <activity android:name=".LecViewQuizDetailsDraft" />
+        <activity android:name=".LecViewQuizDetails" />
+        <activity
+            android:name=".LecQuizDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecQuizQuestionEditMcq" />
+        <activity android:name=".LecQuizQuestionEditShort" />
+        <activity android:name=".LecScheduleQuiz" />
+        <activity
+            android:name=".LecQuizScheduleOption"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecViewDraftQuiz" />
+        <activity
+            android:name=".LecAddQuizDraftSelectCurs"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecAddQuizSelectOption" />
+        <activity android:name=".LecAddQuizMcq" />
+        <activity android:name=".LecAddQuizShort" />
+        <activity android:name=".LecAddQuizQuestion" />
+        <activity android:name=".LecAddQuizSetDetails" />
+        <activity
+            android:name=".LecAddQuizNewSeltCurs"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecForumAddNewDiscTopic" />
         <activity android:name=".LecForumDiscTopic" />
         <activity android:name=".LecForumCourseSelect" />
         <activity android:name=".LecViewQuiz" />

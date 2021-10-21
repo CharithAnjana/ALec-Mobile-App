@@ -139,6 +139,8 @@ public class StuCourseTopics extends AppCompatActivity {
     }
 
     public void Back(View view){
-        finish();
+        Intent StuMyCourses = new Intent(this,StuMyCourses.class);
+        StuMyCourses.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(StuMyCourses);
     }
 }

@@ -33,6 +33,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         navigationView = findViewById(R.id.nav_bar_lec);
         toolbar = findViewById(R.id.toolbar_lec);
         BtnMyCour = findViewById(R.id.BtnMyCour);
+        BtnAskQu = findViewById(R.id.BtnAskQu);
+        BtnForum = findViewById(R.id.BtnForum);
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,24 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
                 startActivity(LecMyCourses);
+            }
+        });
+
+        BtnAskQu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
+                startActivity(LecAddQuizSelectOption);
+            }
+        });
+
+        BtnForum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent LecForumCourseSelect = new Intent(LecHomeActivity.this, LecForumCourseSelect.class);
+                startActivity(LecForumCourseSelect);
             }
         });
 
@@ -67,6 +87,20 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_dash:
+                break;
+            case R.id.nav_ques:
+                Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
+                startActivity(LecAddQuizSelectOption);
+                break;
+            case R.id.nav_course:
+                Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                startActivity(LecMyCourses);
+                break;
+            case R.id.nav_review:
+                break;
+            case R.id.nav_forum:
+                Intent LecForumCourseSelect = new Intent(LecHomeActivity.this, LecForumCourseSelect.class);
+                startActivity(LecForumCourseSelect);
                 break;
             case R.id.nav_lgout:
                 SessionManagement sessionManagement = new SessionManagement(LecHomeActivity.this);

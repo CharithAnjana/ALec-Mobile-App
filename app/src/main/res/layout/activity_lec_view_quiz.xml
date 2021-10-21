@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="197dp">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_lec"
@@ -50,43 +50,64 @@
             app:layout_constraintVertical_bias="0.571" />
 
         <TextView
-            android:id="@+id/cName"
+            android:id="@+id/quizName"
             android:layout_width="363dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
             android:fontFamily="@font/poppins_medium"
-            android:gravity="fill_vertical"
-            android:text="Course Name"
-            android:textColor="#1B3B56"
+            android:gravity="center"
+            android:text="Quiz Name"
+            android:textColor="#305890"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
 
-        <TextView
-            android:id="@+id/qName"
-            android:layout_width="363dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="136dp"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="fill_vertical"
-            android:text="Quiz Name"
-            android:textColor="#1B3B56"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="101dp"
+            android:onClick="EditQuiz"
+            android:text="Edit Quiz"
+            android:textColor="#ffffff"
+            android:textSize="13dp"
+            app:backgroundTint="#1E88E5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
+            app:layout_constraintTop_toBottomOf="@+id/quizName" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="DeleteQuiz"
+            android:text="Delete Quiz"
+            android:textColor="#ffffff"
+            android:textSize="13dp"
+            app:backgroundTint="#d63031"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/quizName"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
         android:id="@+id/quizQuestionList"
         android:layout_width="wrap_content"
-        android:layout_height="495dp"
+        android:layout_height="539dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
+
+
 
 </LinearLayout>
