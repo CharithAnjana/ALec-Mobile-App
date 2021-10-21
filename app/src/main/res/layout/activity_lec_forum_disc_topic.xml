@@ -50,14 +50,15 @@
             app:layout_constraintVertical_bias="0.571" />
 
         <TextView
-            android:id="@+id/Course"
+            android:id="@+id/ForumTopic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Discussion Forum"
             android:textColor="#1B3B56"
-            android:textSize="26sp"
+            android:textSize="21sp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/topicList"
+        android:id="@+id/ftopicList"
         android:layout_width="wrap_content"
         android:layout_height="456dp"
         android:layout_marginLeft="20dp"
@@ -91,7 +92,7 @@
             android:fontFamily="@font/poppins_medium"
             android:onClick="NewDiscTopic"
             android:text="Add New Topic"
-            app:backgroundTint="#00BFA5"
+            app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"

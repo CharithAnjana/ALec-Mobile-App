@@ -65,6 +65,7 @@ public class LecCourseTopics extends AppCompatActivity {
                 LecQuizList.putExtra("cName",cName);
                 LecQuizList.putExtra("UserID",User_ID);
                 startActivity(LecQuizList);
+                finish();
             }
         });
     }
@@ -156,8 +157,8 @@ public class LecCourseTopics extends AppCompatActivity {
 
     public void Back(View view){
         Intent LecMyCourse = new Intent(this,LecMyCourses.class);
+        LecMyCourse.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(LecMyCourse);
-        finish();
     }
 
     public void NewTopic(View view){

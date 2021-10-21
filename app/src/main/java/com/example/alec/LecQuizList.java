@@ -53,22 +53,22 @@ public class LecQuizList extends AppCompatActivity {
         User_ID = intent.getStringExtra("UserID");
         Topic.setText("Quiz - "+tName);
 
-        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID="+tID;
+        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID="+tID+"&type=Create";
         quizListView = (ListView)findViewById(R.id.quizList);
         fetch_data_into_array(quizListView);
 
         quizListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent LecQuizList = new Intent(getApplicationContext(), LecViewQuiz.class);
-                LecQuizList.putExtra("qID",qID[i]);
-                LecQuizList.putExtra("qName",qName[i]);
-                LecQuizList.putExtra("tID",tID);
-                LecQuizList.putExtra("tName",tName);
-                LecQuizList.putExtra("cID",cID);
-                LecQuizList.putExtra("cName",cName);
-                LecQuizList.putExtra("UserID",User_ID);
-                startActivity(LecQuizList);
+                Intent LecViewQuizDetails = new Intent(getApplicationContext(), LecViewQuizDetails.class);
+                LecViewQuizDetails.putExtra("qID",qID[i]);
+                LecViewQuizDetails.putExtra("qName",qName[i]);
+                LecViewQuizDetails.putExtra("tID",tID);
+                LecViewQuizDetails.putExtra("tName",tName);
+                LecViewQuizDetails.putExtra("cID",cID);
+                LecViewQuizDetails.putExtra("cName",cName);
+                LecViewQuizDetails.putExtra("UserID",User_ID);
+                startActivity(LecViewQuizDetails);
             }
         });
 
@@ -162,6 +162,7 @@ public class LecQuizList extends AppCompatActivity {
     public void Back(View view){
 
         Intent LecCourseTopics = new Intent(getApplicationContext(), LecCourseTopics.class);
+        LecCourseTopics.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         LecCourseTopics.putExtra("cID",cID);
         LecCourseTopics.putExtra("cName",cName);
         LecCourseTopics.putExtra("UserID",User_ID);
@@ -188,5 +189,12 @@ public class LecQuizList extends AppCompatActivity {
         LecDeleteTopic.putExtra("cName",cName);
         LecDeleteTopic.putExtra("UserID",User_ID);
         startActivity(LecDeleteTopic);
+    }
+
+    public void AddNewQuiz(View view){
+        Intent LecAddQuizSetDetails = new Intent(this,LecAddQuizSetDetails.class);
+        LecAddQuizSetDetails.putExtra("course",cName);
+        LecAddQuizSetDetails.putExtra("courseId",cID);
+        startActivity(LecAddQuizSetDetails);
     }
 }

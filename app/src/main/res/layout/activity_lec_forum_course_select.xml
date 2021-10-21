@@ -67,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/courseSelectList"
+        android:id="@+id/fcourseSelectList"
         android:layout_width="wrap_content"
         android:layout_height="519dp"
         android:layout_marginLeft="20dp"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LecEditTopic extends AppCompatActivity {
 
@@ -41,28 +42,41 @@ public class LecEditTopic extends AppCompatActivity {
     }
 
     public void Update(View view){
-        String topic_ID = tID;
-        String topic_Name = TopicName.getText().toString();
-        String type = "EditTopic";
+        if(validateTopic(TopicName)) {
+            String topic_ID = tID;
+            String topic_Name = TopicName.getText().toString();
+            String type = "EditTopic";
 
-        BackgroundWorkerCourseTopic backgroundWorkerCourseTopic = new BackgroundWorkerCourseTopic(this);
-        String result;
-        try {
-            result = backgroundWorkerCourseTopic.execute(type, topic_ID, topic_Name).get();
+            BackgroundWorkerCourseTopic backgroundWorkerCourseTopic = new BackgroundWorkerCourseTopic(this);
+            String result;
+            try {
+                result = backgroundWorkerCourseTopic.execute(type, topic_ID, topic_Name).get();
 
-            if(result.equals("Success")){
-                Intent LecQuizList = new Intent(this,LecQuizList.class);
-                LecQuizList.putExtra("tID",tID);
-                LecQuizList.putExtra("tName",topic_Name);
-                LecQuizList.putExtra("cID",cID);
-                LecQuizList.putExtra("cName",cName);
-                LecQuizList.putExtra("UserID",User_ID);
-                startActivity(LecQuizList);
-                finish();
+                if (result.equals("Success")) {
+                    Intent LecQuizList = new Intent(this, LecQuizList.class);
+                    LecQuizList.putExtra("tID", tID);
+                    LecQuizList.putExtra("tName", topic_Name);
+                    LecQuizList.putExtra("cID", cID);
+                    LecQuizList.putExtra("cName", cName);
+                    LecQuizList.putExtra("UserID", User_ID);
+                    LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(LecQuizList);
+                    finish();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        finish();
+    }
+
+    private boolean validateTopic(EditText Topic){
+        String topic = Topic.getText().toString();
+        if(!topic.isEmpty()){
+            return true;
+        }
+        else {
+            Toast.makeText(this, "Invalid Topic Name", Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 }
