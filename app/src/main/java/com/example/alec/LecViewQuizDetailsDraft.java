@@ -18,9 +18,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LecViewQuizDetails extends AppCompatActivity {
+public class LecViewQuizDetailsDraft extends AppCompatActivity {
 
-    String qID,qName,cID,cName,User_ID,tID,tName;
+    String qID,qName,cName;
+    String cDate="", dur="", nofQues="";
     TextView quizName, courseName, createDate, duration, noQuestions;
 
     String quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php";
@@ -28,16 +29,15 @@ public class LecViewQuizDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_view_quiz_details);
+        setContentView(R.layout.activity_lec_view_quiz_details_draft);
 
         Intent intent =getIntent();
         qID = intent.getStringExtra("qID");
         qName = intent.getStringExtra("qName");
-        tID = intent.getStringExtra("tID");
-        tName = intent.getStringExtra("tName");
-        cID = intent.getStringExtra("cID");
         cName = intent.getStringExtra("cName");
-        User_ID = intent.getStringExtra("UserID");
+
+        quizName = findViewById(R.id.quizName);
+        courseName = findViewById(R.id.courseName);
 
         quizName = findViewById(R.id.quizName);
         courseName = findViewById(R.id.courseName);
@@ -50,7 +50,6 @@ public class LecViewQuizDetails extends AppCompatActivity {
 
         quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID=" + qID + "&type=QuizD";
         fetch_data_into_textviews();
-
     }
 
     private void fetch_data_into_textviews() {
@@ -60,8 +59,6 @@ public class LecViewQuizDetails extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
-
-                    String cDate="", dur="", nofQues="";
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
@@ -108,38 +105,18 @@ public class LecViewQuizDetails extends AppCompatActivity {
         dbManager.execute(quizURL);
     }
 
-
-
-    public void Back(View view){
-        Intent LecQuizList = new Intent(this,LecQuizList.class);
-        LecQuizList.putExtra("tID",tID);
-        LecQuizList.putExtra("tName",tName);
-        LecQuizList.putExtra("cID",cID);
-        LecQuizList.putExtra("cName",cName);
-        LecQuizList.putExtra("UserID",User_ID);
-        LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(LecQuizList);
-    }
-
-    public void PrewQuiz(View view){
-        Intent LecViewQuiz = new Intent(getApplicationContext(), LecViewQuiz.class);
-        LecViewQuiz.putExtra("qID",qID);
-        LecViewQuiz.putExtra("qName",qName);
-        LecViewQuiz.putExtra("tID",tID);
-        LecViewQuiz.putExtra("tName",tName);
-        LecViewQuiz.putExtra("cID",cID);
-        LecViewQuiz.putExtra("cName",cName);
-        LecViewQuiz.putExtra("UserID",User_ID);
-        startActivity(LecViewQuiz);
-    }
-
-    public void ScheduleQuiz(View view){
-        //Intent intent = new Intent(this,LecAddNewTopic.class);
-        //intent.putExtra("cName",cName);
-        //intent.putExtra("cID",cID);
-        //intent.putExtra("User_ID",User_ID);
-        //startActivity(intent);
+    public void Back(View view) {
         finish();
     }
-
+    public void EditQuiz(View view) {
+        Intent LecAddQuizQuestion = new Intent(this,LecAddQuizQuestion.class);
+        LecAddQuizQuestion.putExtra("qID",qID);
+        LecAddQuizQuestion.putExtra("cName",cName);
+        LecAddQuizQuestion.putExtra("qName",qName);
+        LecAddQuizQuestion.putExtra("qDuration",dur);
+        startActivity(LecAddQuizQuestion);
+    }
+    public void PrewQuiz(View view) {
+        finish();
+    }
 }

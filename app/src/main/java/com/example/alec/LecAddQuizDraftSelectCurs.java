@@ -129,6 +129,7 @@ public class LecAddQuizDraftSelectCurs extends AppCompatActivity {
             Intent LecViewDraftQuiz = new Intent(this, LecViewDraftQuiz.class);
             LecViewDraftQuiz.putExtra("course", course);
             LecViewDraftQuiz.putExtra("courseId", cID);
+            LecViewDraftQuiz.putExtra("topicId", "");
             startActivity(LecViewDraftQuiz);
             finish();
         }

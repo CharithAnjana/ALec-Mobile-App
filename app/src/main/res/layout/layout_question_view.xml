@@ -280,7 +280,7 @@
             android:layout_gravity="fill_horizontal"
             android:fontFamily="@font/poppins"
             android:gravity="fill_horizontal"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:backgroundTint="#43A047"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.446"

@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class LecQuizQuestionEditMcq extends AppCompatActivity {
 
-    String qtID, question, qtType;
+    String qtID, question, qtType, quizName;
+    TextView quiz;
     EditText ques, ans1, ans2, ans3, ans4, ans5;
     CheckBox type;
 
@@ -22,7 +24,10 @@ public class LecQuizQuestionEditMcq extends AppCompatActivity {
         Intent intent = getIntent();
         qtID = intent.getStringExtra("qtID");
         question = intent.getStringExtra("question");
+        quizName = intent.getStringExtra("quizName");
 
+        quiz = findViewById(R.id.QuizName);
+        quiz.setText(quizName);
         ques = findViewById(R.id.editTextTextMultiLine);
         ques.setText(question);
     }

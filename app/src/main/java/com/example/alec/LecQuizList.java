@@ -53,7 +53,7 @@ public class LecQuizList extends AppCompatActivity {
         User_ID = intent.getStringExtra("UserID");
         Topic.setText("Quiz - "+tName);
 
-        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID="+tID;
+        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID="+tID+"&type=Create";
         quizListView = (ListView)findViewById(R.id.quizList);
         fetch_data_into_array(quizListView);
 

@@ -93,7 +93,7 @@ public class LecAddQuizMcq extends AppCompatActivity {
                 if(!ans4.isEmpty()){
                     ans_count = "4";
                     ans5 = a5.getText().toString();
-                    if(!ans4.isEmpty()){
+                    if(!ans5.isEmpty()){
                         ans_count = "5";
                     }
                 }

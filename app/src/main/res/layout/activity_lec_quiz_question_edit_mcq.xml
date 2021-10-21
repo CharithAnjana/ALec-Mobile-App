@@ -75,36 +75,53 @@
 
             <TextView
                 android:id="@+id/QuizName"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="47dp"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
                 android:text="Quiz Name"
-                android:textColor="#1B3B56"
+                android:textColor="#305890"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.147"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NewQuestion" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="53dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:onClick="DeleteQuestion"
+                android:text="Delete Question"
+                android:textColor="#ffffff"
+                android:textSize="13dp"
+                app:backgroundTint="#d63031"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textViewQuestion"
+                app:layout_constraintTop_toBottomOf="@+id/QuizName" />
 
             <TextView
                 android:id="@+id/textViewQuestion"
                 android:layout_width="137dp"
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Question"
                 android:textColor="#131313"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.115"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/QuizName"
-                app:layout_constraintVertical_bias="0.029" />
+                app:layout_constraintTop_toBottomOf="@+id/QuizName" />
 
             <EditText
                 android:id="@+id/editTextTextMultiLine"
