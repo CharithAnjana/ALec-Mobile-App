@@ -31,6 +31,7 @@ public class LecEditTopic extends AppCompatActivity {
         TopicName = findViewById(R.id.editTextTopicName);
         TopicName.setText(tName);
         TopicDescrip = findViewById(R.id.editTextTextMultiLine);
+        Course.setText(cName);
     }
 
     public void Back(View view){
