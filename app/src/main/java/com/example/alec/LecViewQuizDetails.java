@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -21,8 +22,8 @@ import java.net.URL;
 public class LecViewQuizDetails extends AppCompatActivity {
 
     String qID,qName,cID,cName,User_ID,tID,tName;
-    TextView quizName, courseName, createDate, duration, noQuestions;
-
+    TextView quizName, courseName, createDate, publishedDate, closeDate, duration, noQuestions;
+    Button BtnSchedl;
     String quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php";
 
     @Override
@@ -42,8 +43,12 @@ public class LecViewQuizDetails extends AppCompatActivity {
         quizName = findViewById(R.id.quizName);
         courseName = findViewById(R.id.courseName);
         createDate = findViewById(R.id.createDate);
+        publishedDate = findViewById(R.id.publishDate);
+        closeDate = findViewById(R.id.closeDate);
         duration = findViewById(R.id.duration);
         noQuestions = findViewById(R.id.noQuestions);
+
+        BtnSchedl = findViewById(R.id.scheduleBtn);
 
         quizName.setText(qName);
         courseName.setText(cName);
@@ -61,11 +66,13 @@ public class LecViewQuizDetails extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
 
-                    String cDate="", dur="", nofQues="";
+                    String cDate="", pubDate="", clsDate="", dur="", nofQues="";
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
                         cDate = jsonObject.getString("create_date");
+                        pubDate = jsonObject.getString("published_date");
+                        clsDate = jsonObject.getString("close_date");
                         dur = jsonObject.getString("duration");
                         nofQues = jsonObject.getString("count");
                     }
@@ -73,6 +80,12 @@ public class LecViewQuizDetails extends AppCompatActivity {
                     createDate.setText(cDate);
                     duration.setText(dur);
                     noQuestions.setText(nofQues);
+
+                    if(!(pubDate.equals("null"))){
+                        publishedDate.setText(pubDate);
+                        closeDate.setText(clsDate);
+                        BtnSchedl.setText("Re-Schedule");
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -134,12 +147,14 @@ public class LecViewQuizDetails extends AppCompatActivity {
     }
 
     public void ScheduleQuiz(View view){
-        //Intent intent = new Intent(this,LecAddNewTopic.class);
+        Intent LecScheduleQuiz = new Intent(this,LecScheduleQuiz.class);
+        LecScheduleQuiz.putExtra("qID",qID);
+        LecScheduleQuiz.putExtra("qName",qName);
+        LecScheduleQuiz.putExtra("qDuHr",duration.getText());
         //intent.putExtra("cName",cName);
         //intent.putExtra("cID",cID);
         //intent.putExtra("User_ID",User_ID);
-        //startActivity(intent);
-        finish();
+        startActivity(LecScheduleQuiz);
     }
 
 }

@@ -20,7 +20,7 @@ import java.net.URL;
 
 public class LecViewQuizDetailsDraft extends AppCompatActivity {
 
-    String qID,qName,cName;
+    String qID,qName,cID,cName;
     String cDate="", dur="", nofQues="";
     TextView quizName, courseName, createDate, duration, noQuestions;
 
@@ -34,6 +34,7 @@ public class LecViewQuizDetailsDraft extends AppCompatActivity {
         Intent intent =getIntent();
         qID = intent.getStringExtra("qID");
         qName = intent.getStringExtra("qName");
+        cID = intent.getStringExtra("cID");
         cName = intent.getStringExtra("cName");
 
         quizName = findViewById(R.id.quizName);
@@ -116,7 +117,11 @@ public class LecViewQuizDetailsDraft extends AppCompatActivity {
         LecAddQuizQuestion.putExtra("qDuration",dur);
         startActivity(LecAddQuizQuestion);
     }
-    public void PrewQuiz(View view) {
-        finish();
+    public void DeleteQuiz(View view) {
+        Intent LecQuizDeletePop2 = new Intent(this,LecQuizDeletePop2.class);
+        LecQuizDeletePop2.putExtra("qID",qID);
+        LecQuizDeletePop2.putExtra("cID",cID);
+        LecQuizDeletePop2.putExtra("cName",cName);
+        startActivity(LecQuizDeletePop2);
     }
 }
