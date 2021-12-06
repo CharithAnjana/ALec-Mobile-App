@@ -29,7 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class LecViewDraftQuiz extends AppCompatActivity {
+public class LecViewDraftQuiz extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String course, cID, tId;
     Spinner spTopic;
@@ -51,6 +51,9 @@ public class LecViewDraftQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lec_view_draft_quiz);
 
+        BackTopic bt = new BackTopic();
+        bt.execute();
+
         Intent intent = getIntent();
 
         course = intent.getStringExtra("course");
@@ -66,9 +69,21 @@ public class LecViewDraftQuiz extends AppCompatActivity {
         topicAdapter = new ArrayAdapter<String>(this, R.layout.spinner_layout_topic,
                 R.id.spntxt, topicList);
         spTopic.setAdapter(topicAdapter);
+        spTopic.setOnItemSelectedListener(this);
+
+    }
 
 
-        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID=" + tId + "&type=Draft";
+    public void Back(View view) {
+        finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        id = spTopic.getSelectedItemId();
+        String tID = topicIDList.get((int) id);
+
+        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlist.php?topic_ID=" + tID + "&type=Draft";
         quizListView = (ListView) findViewById(R.id.quizList);
         fetch_data_into_array(quizListView);
 
@@ -78,48 +93,16 @@ public class LecViewDraftQuiz extends AppCompatActivity {
                 Intent LecViewQuizDetailsDraft = new Intent(getApplicationContext(), LecViewQuizDetailsDraft.class);
                 LecViewQuizDetailsDraft.putExtra("qID",qID[i]);
                 LecViewQuizDetailsDraft.putExtra("qName",qName[i]);
+                LecViewQuizDetailsDraft.putExtra("cID",cID);
                 LecViewQuizDetailsDraft.putExtra("cName",course);
                 startActivity(LecViewQuizDetailsDraft);
             }
         });
-
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        BackTopic bt = new BackTopic();
-        bt.execute();
-    }
+    public void onNothingSelected(AdapterView<?> parent) {
 
-    public void Back(View view) {
-        finish();
-    }
-
-    public void GetQuiz(View view) {
-        if (validateTopic(topicList)) {
-            long id = spTopic.getSelectedItemId();
-            String tID = topicIDList.get((int) id);
-
-            Intent LecViewDraftQuiz = new Intent(this, LecViewDraftQuiz.class);
-            LecViewDraftQuiz.putExtra("course", course);
-            ;
-            LecViewDraftQuiz.putExtra("courseId", cID);
-            LecViewDraftQuiz.putExtra("topicId", tID);
-            LecViewDraftQuiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(LecViewDraftQuiz);
-            finish();
-        }
-    }
-
-    //validations
-    private boolean validateTopic(ArrayList<String> Topics) {
-        if (!Topics.isEmpty()) {
-            return true;
-        } else {
-            Toast.makeText(this, "No Topics Available", Toast.LENGTH_LONG).show();
-            return false;
-        }
     }
 
 

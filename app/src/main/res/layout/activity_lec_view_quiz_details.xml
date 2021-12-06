@@ -62,15 +62,15 @@
         android:id="@+id/quizName"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="47dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="fill_vertical"
         android:text="Quiz Name"
         android:textColor="#305890"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -167,35 +167,87 @@
         app:layout_constraintTop_toTopOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/button3"
+    <TextView
+        android:id="@+id/textViewPub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="140dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Publish Date :"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/publishDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="N/A"
+        android:textColor="#305890"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPub"
+        app:layout_constraintStart_toEndOf="@+id/textViewPub"
+        app:layout_constraintTop_toTopOf="@+id/textViewPub" />
+
+    <TextView
+        android:id="@+id/textViewClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Close Date : "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPub" />
+
+    <TextView
+        android:id="@+id/closeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="N/A"
+        android:textColor="#305890"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewClose"
+        app:layout_constraintStart_toEndOf="@+id/textViewClose"
+        app:layout_constraintTop_toTopOf="@+id/textViewClose" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
         android:onClick="PrewQuiz"
         android:text="Preview Quiz"
         android:textColor="#ffffff"
         android:textSize="13dp"
-        app:backgroundTint="#305890"
+        app:backgroundTint="#1976d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintTop_toTopOf="@+id/scheduleBtn" />
 
     <Button
-        android:id="@+id/schedule"
-        android:layout_width="185dp"
+        android:id="@+id/scheduleBtn"
+        android:layout_width="170dp"
         android:layout_height="70dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="644dp"
-        android:layout_marginEnd="158dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/poppins_medium"
         android:onClick="ScheduleQuiz"
         android:text="SCHEDULE QUIZ"
+        android:textSize="13dp"
         app:backgroundTint="#305890"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewClose"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

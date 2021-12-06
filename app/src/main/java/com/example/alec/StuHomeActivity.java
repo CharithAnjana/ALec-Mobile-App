@@ -21,7 +21,7 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button BtnAtmptQu,BtnMyCour,BtnMyAct,BtnForum;
+    Button BtnAtmptQu,BtnMyCour,BtnMyAct,BtnForum,BtnSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,23 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         navigationView = findViewById(R.id.nav_bar_stu);
         toolbar = findViewById(R.id.toolbar_stu);
         BtnMyCour = findViewById(R.id.BtnMyCour);
+
+        BtnAtmptQu = findViewById(R.id.BtnAtmptQu);
+        BtnMyAct = findViewById(R.id.BtnMyAct);
+        //BtnForum = findViewById(R.id.BtnForum);
+        BtnSession = findViewById(R.id.BtnSess);
+
+        BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent StuActiveQuiz = new Intent(StuHomeActivity.this, StuActiveQuiz.class);
+                startActivity(StuActiveQuiz);
+            }
+        });
+
         BtnForum = findViewById(R.id.StuBtnForum1);
+
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +65,30 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent StuForumCourseSelect = new Intent(StuHomeActivity.this,StuForumCourseSelect.class);
                 startActivity(StuForumCourseSelect);
+            }
+        });
+
+        BtnMyAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+        BtnForum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
+        BtnSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 
@@ -76,6 +116,12 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_dash:
+                break;
+            case R.id.nav_sess:
+                break;
+            case R.id.nav_Atquiz:
+                Intent StuActiveQuiz = new Intent(getApplicationContext(), StuActiveQuiz.class);
+                startActivity(StuActiveQuiz);
                 break;
             case R.id.nav_course:
                 Intent StuMyCourses = new Intent(getApplicationContext(), StuMyCourses.class);

@@ -15,7 +15,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header_1"
-        app:menu="@menu/main_menu_lec"/>
+        app:menu="@menu/main_menu_lec">
+
+    </com.google.android.material.navigation.NavigationView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +27,7 @@
             android:id="@+id/textView"
             android:layout_width="317dp"
             android:layout_height="101dp"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="112dp"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="Interactive Teaching And Learning Platform"
@@ -59,7 +61,7 @@
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintHorizontal_bias="0.831"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.456" />
@@ -73,10 +75,9 @@
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.146"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.673" />
+            app:layout_constraintVertical_bias="0.886" />
 
         <Button
             android:id="@+id/BtnMyCour"
@@ -87,7 +88,21 @@
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.831"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.673" />
+
+        <Button
+            android:id="@+id/BtnSession"
+            android:layout_width="132dp"
+            android:layout_height="91dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Sessions"
+            app:backgroundTint="#305890"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.146"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.456" />
