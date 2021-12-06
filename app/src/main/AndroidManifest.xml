@@ -12,7 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+      
         <activity android:name=".StuActiveQuiz"></activity>
+  
+        <activity
+            android:name=".StuForumCourseSelect"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_add_reply"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_add_new_disc_topic"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_topic_reply_list"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_disc_topic"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumAddReply"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumCourseSelect"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumTopicDeletePop"
+            android:theme="@style/Theme.ALec.PopUp"/>
+        <activity
+            android:name=".LecForumTopicReplyList"
+            android:exported="false" />
+  
         <activity android:name=".LecQuizQuestionDeletePop" />
         <activity android:name=".LecViewQuizDetailsDraft" />
         <activity android:name=".LecViewQuizDetails" />
@@ -42,7 +72,6 @@
             android:theme="@style/Theme.ALec.PopUp" />
         <activity android:name=".LecForumAddNewDiscTopic" />
         <activity android:name=".LecForumDiscTopic" />
-        <activity android:name=".LecForumCourseSelect" />
         <activity android:name=".LecViewQuiz" />
         <activity android:name=".LecEditTopic" />
         <activity

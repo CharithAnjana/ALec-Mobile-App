@@ -33,9 +33,10 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         navigationView = findViewById(R.id.nav_bar_stu);
         toolbar = findViewById(R.id.toolbar_stu);
         BtnMyCour = findViewById(R.id.BtnMyCour);
+
         BtnAtmptQu = findViewById(R.id.BtnAtmptQu);
         BtnMyAct = findViewById(R.id.BtnMyAct);
-        BtnForum = findViewById(R.id.BtnForum);
+        //BtnForum = findViewById(R.id.BtnForum);
         BtnSession = findViewById(R.id.BtnSess);
 
         BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
@@ -47,12 +48,23 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
+        BtnForum = findViewById(R.id.StuBtnForum1);
+
+
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent StuMyCourses = new Intent(StuHomeActivity.this, StuMyCourses.class);
                 startActivity(StuMyCourses);
+            }
+        });
+        BtnForum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent StuForumCourseSelect = new Intent(StuHomeActivity.this,StuForumCourseSelect.class);
+                startActivity(StuForumCourseSelect);
             }
         });
 
