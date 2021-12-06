@@ -21,7 +21,7 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button BtnAskQu,BtnMyCour,BtnReview,BtnForum;
+    Button BtnAskQu,BtnMyCour,BtnReview,BtnForum,BtnSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         BtnMyCour = findViewById(R.id.BtnMyCour);
         BtnAskQu = findViewById(R.id.BtnAskQu);
         BtnForum = findViewById(R.id.BtnForum);
+        BtnSession = findViewById(R.id.BtnSession);
+        BtnReview = findViewById(R.id.BtnReview);
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,24 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
+        BtnSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                //startActivity(LecMyCourses);
+            }
+        });
+
+        BtnSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
+                //startActivity(LecMyCourses);
+            }
+        });
+
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -87,6 +107,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_dash:
+                break;
+            case R.id.nav_sess:
                 break;
             case R.id.nav_ques:
                 Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
