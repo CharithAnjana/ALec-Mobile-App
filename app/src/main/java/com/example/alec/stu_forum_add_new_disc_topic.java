@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LecForumAddNewDiscTopic extends AppCompatActivity {
+public class stu_forum_add_new_disc_topic extends AppCompatActivity {
 
     String cID, cName, fID, uID;
     TextView course;
@@ -18,7 +18,7 @@ public class LecForumAddNewDiscTopic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_forum_add_new_disc_topic);
+        setContentView(R.layout.activity_stu_forum_add_new_disc_topic);
 
         Intent intent = getIntent();
         cID = intent.getStringExtra("cID");
@@ -55,13 +55,13 @@ public class LecForumAddNewDiscTopic extends AppCompatActivity {
 
                 if(result.equals("Success")){
 
-                    Intent LecForumDiscTopic = new Intent(this,LecForumDiscTopic.class);
-                    LecForumDiscTopic.putExtra("cID",cID);
-                    LecForumDiscTopic.putExtra("fID",fID);
-                    LecForumDiscTopic.putExtra("cName",cName);
-                    LecForumDiscTopic.putExtra("UserID",uID);
-                    LecForumDiscTopic.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(LecForumDiscTopic);
+                    Intent StuForumDiscTopic = new Intent(this,stu_forum_disc_topic.class);
+                    StuForumDiscTopic.putExtra("cID",cID);
+                    StuForumDiscTopic.putExtra("fID",fID);
+                    StuForumDiscTopic.putExtra("cName",cName);
+                    StuForumDiscTopic.putExtra("UserID",uID);
+                    StuForumDiscTopic.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(StuForumDiscTopic);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

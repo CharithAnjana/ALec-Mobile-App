@@ -11,6 +11,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,7 +51,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LecForumDiscTopic extends AppCompatActivity {
+public class stu_forum_disc_topic extends AppCompatActivity {
 
     String forumTopicURL = "http://10.0.2.2/ALec/public/api/V1/viewforumtopic.php";
     ListView ftopicListView;
@@ -42,7 +67,7 @@ public class LecForumDiscTopic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_forum_disc_topic);
+        setContentView(R.layout.activity_stu_forum_disc_topic);
 
         Intent intent =getIntent();
         cID = intent.getStringExtra("cID");
@@ -60,11 +85,7 @@ public class LecForumDiscTopic extends AppCompatActivity {
         ftopicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuForumTopicReplyList = new Intent(getApplicationContext(), LecForumTopicReplyList.class);
-                StuForumTopicReplyList.putExtra("fID",fID);
-                StuForumTopicReplyList.putExtra("cID",cID);
-                StuForumTopicReplyList.putExtra("cName",cName);
-                StuForumTopicReplyList.putExtra("User_ID",User_ID);
+                Intent StuForumTopicReplyList = new Intent(getApplicationContext(), stu_forum_topic_reply_list.class);
                 StuForumTopicReplyList.putExtra("tID",tID[i]);
                 StuForumTopicReplyList.putExtra("sName",sName[i]);
                 StuForumTopicReplyList.putExtra("uName",uName[i]);
@@ -74,7 +95,6 @@ public class LecForumDiscTopic extends AppCompatActivity {
             }
         });
     }
-
     private void fetch_data_into_array(ListView topicListView) {
         class dbManager extends AsyncTask<String,Void,String> {
 
@@ -180,12 +200,12 @@ public class LecForumDiscTopic extends AppCompatActivity {
     }
 
     public void NewDiscTopic(View view){
-        Intent StuorumAddNewDiscTopic = new Intent(this, LecForumAddNewDiscTopic.class);
-        StuorumAddNewDiscTopic.putExtra("cName",cName);
-        StuorumAddNewDiscTopic.putExtra("fID",fID);
-        StuorumAddNewDiscTopic.putExtra("cID",cID);
-        StuorumAddNewDiscTopic.putExtra("uID",User_ID);
-        startActivity(StuorumAddNewDiscTopic);
+        Intent StuForumAddNewDiscTopic = new Intent(this, stu_forum_add_new_disc_topic.class);
+        StuForumAddNewDiscTopic.putExtra("cName",cName);
+        StuForumAddNewDiscTopic.putExtra("fID",fID);
+        StuForumAddNewDiscTopic.putExtra("cID",cID);
+        StuForumAddNewDiscTopic.putExtra("uID",User_ID);
+        startActivity(StuForumAddNewDiscTopic);
     }
 
     public void Back(View view){
