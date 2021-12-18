@@ -9,6 +9,11 @@
             android:icon="@drawable/dashboard_icon"
             />
         <item
+            android:id="@+id/nav_sess"
+            android:title="Sessions"
+            android:icon="@drawable/ic_baseline_session"
+            />
+        <item
             android:id="@+id/nav_Atquiz"
             android:title="Attempt Quiz"
             android:icon="@drawable/question_icon"

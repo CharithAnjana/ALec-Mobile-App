@@ -8,8 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.VerifiedInputEvent;
 import android.view.View;
 
-public class LecQuizDeletePop extends AppCompatActivity {
-
+public class LecQuizDeletePop2 extends AppCompatActivity{
     String qID,tID,tName,cID,cName,User_ID;
 
     @Override
@@ -27,11 +26,8 @@ public class LecQuizDeletePop extends AppCompatActivity {
 
         Intent intent =getIntent();
         qID = intent.getStringExtra("qID");
-        tID = intent.getStringExtra("tID");
-        tName = intent.getStringExtra("tName");
         cID = intent.getStringExtra("cID");
         cName = intent.getStringExtra("cName");
-        User_ID = intent.getStringExtra("UserID");
     }
 
     public void Cancel(View view){
@@ -48,14 +44,12 @@ public class LecQuizDeletePop extends AppCompatActivity {
             result = backgroundWorkerQuiz.execute(type, quiz_ID).get();
 
             if(result.equals("Success")){
-                Intent LecQuizList = new Intent(this, LecQuizList.class);
-                LecQuizList.putExtra("tID", tID);
-                LecQuizList.putExtra("tName", tName);
-                LecQuizList.putExtra("cID", cID);
-                LecQuizList.putExtra("cName", cName);
-                LecQuizList.putExtra("UserID", User_ID);
-                LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(LecQuizList);
+                Intent LecViewDraftQuiz = new Intent(this, LecViewDraftQuiz.class);
+                LecViewDraftQuiz.putExtra("topicId", "");
+                LecViewDraftQuiz.putExtra("courseId", cID);
+                LecViewDraftQuiz.putExtra("course", cName);
+                LecViewDraftQuiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(LecViewDraftQuiz);
                 finish();
 
             }
