@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-      
-        <activity android:name=".StuActiveQuiz"></activity>
-  
+        <activity android:name=".StuActiveQuiz" />
         <activity
             android:name=".StuForumCourseSelect"
             android:exported="false" />
@@ -38,11 +36,10 @@
             android:exported="false" />
         <activity
             android:name=".LecForumTopicDeletePop"
-            android:theme="@style/Theme.ALec.PopUp"/>
+            android:theme="@style/Theme.ALec.PopUp" />
         <activity
             android:name=".LecForumTopicReplyList"
             android:exported="false" />
-  
         <activity android:name=".LecQuizQuestionDeletePop" />
         <activity android:name=".LecViewQuizDetailsDraft" />
         <activity android:name=".LecViewQuizDetails" />

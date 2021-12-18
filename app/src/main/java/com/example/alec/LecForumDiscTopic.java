@@ -36,6 +36,8 @@ public class LecForumDiscTopic extends AppCompatActivity {
     private static String[] tID;
     private static String[] sName;
     private static String[] uName;
+    private static String[] userType;
+    private static String[] points;
     private static String[] date;
     private static String[] ques;
 
@@ -70,6 +72,8 @@ public class LecForumDiscTopic extends AppCompatActivity {
                 StuForumTopicReplyList.putExtra("uName",uName[i]);
                 StuForumTopicReplyList.putExtra("date",date[i]);
                 StuForumTopicReplyList.putExtra("ques",ques[i]);
+                StuForumTopicReplyList.putExtra("point",points[i]);
+                StuForumTopicReplyList.putExtra("user_type",userType[i]);
                 startActivity(StuForumTopicReplyList);
             }
         });
@@ -85,6 +89,8 @@ public class LecForumDiscTopic extends AppCompatActivity {
                     tID = new String[jsonArray.length()];
                     sName = new String[jsonArray.length()];
                     uName = new String[jsonArray.length()];
+                    userType = new String[jsonArray.length()];
+                    points = new String[jsonArray.length()];
                     date = new String[jsonArray.length()];
                     ques = new String[jsonArray.length()];
 
@@ -92,13 +98,19 @@ public class LecForumDiscTopic extends AppCompatActivity {
                         jsonObject = jsonArray.getJSONObject(i);
                         tID[i] = jsonObject.getString("topic_id");
                         sName[i] = jsonObject.getString("subject");
+                        points[i] = jsonObject.getString("points");
                         ques[i] = jsonObject.getString("question");
+                        userType[i] = jsonObject.getString("user_type");
+                        if (userType[i].equals("lec")){
+                            points[i]="∞";
+                        }
                         uName[i] = jsonObject.getString("user_name");
                         date[i] = jsonObject.getString("post_time");
 
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),tID,sName,ques,uName,date);
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),tID,sName,ques,userType,
+                            points,uName,date);
                     topicListView.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -143,16 +155,21 @@ public class LecForumDiscTopic extends AppCompatActivity {
         String[] sName;
         String[] ques;
         String[] uName;
+        String[] userType;
+        String[] points;
         String[] date;
 
 
-        MyAdepter(Context context, String[] tID, String[] sName, String[] ques, String[] uName, String[] date) {
+        MyAdepter(Context context, String[] tID, String[] sName, String[] ques, String[] userType,
+                  String[] points, String[] uName,String[] date) {
             super(context, R.layout.layout_forum_topic,R.id.tvTI,tID);
             this.context = context;
             this.tID = tID;
             this.sName = sName;
             this.ques = ques;
             this.uName = uName;
+            this.userType = userType;
+            this.points = points;
             this.date = date;
         }
 
@@ -167,7 +184,10 @@ public class LecForumDiscTopic extends AppCompatActivity {
             TextView tvFS = row.findViewById(R.id.tvFS);
             TextView tvDT = row.findViewById(R.id.tvDT);
             TextView tvFQ = row.findViewById(R.id.tvFQ);
+            TextView tvPT = row.findViewById(R.id.points);
 
+
+            tvPT.setText(points[position]);
             tvTI.setText(tID[position]);
             tvUN.setText(uName[position]);
             tvFS.setText(sName[position]);
@@ -188,7 +208,17 @@ public class LecForumDiscTopic extends AppCompatActivity {
         startActivity(StuorumAddNewDiscTopic);
     }
 
-    public void Back(View view){
+    public void Back(View view) {
+        Intent LecForumCourseSelect = new Intent(this, LecForumCourseSelect.class);
+        startActivity(LecForumCourseSelect);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent LecForumCourseSelect = new Intent(this, LecForumCourseSelect.class);
+        startActivity(LecForumCourseSelect);
         finish();
     }
 }

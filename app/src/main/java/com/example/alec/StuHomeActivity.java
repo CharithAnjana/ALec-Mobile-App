@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
@@ -36,7 +35,7 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
         BtnAtmptQu = findViewById(R.id.BtnAtmptQu);
         BtnMyAct = findViewById(R.id.BtnMyAct);
-        //BtnForum = findViewById(R.id.BtnForum);
+        BtnForum = findViewById(R.id.BtnForum);
         BtnSession = findViewById(R.id.BtnSess);
 
         BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +47,7 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
-        BtnForum = findViewById(R.id.StuBtnForum1);
+        //BtnForum = findViewById(R.id.BtnForum);
 
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
@@ -76,13 +75,7 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
-        BtnForum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-            }
-        });
 
         BtnSession.setOnClickListener(new View.OnClickListener() {
             @Override
