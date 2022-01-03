@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".LecForumReplyDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecForumTopicReplyView"
+            android:exported="false" />
         <activity android:name=".StuActiveQuiz" />
         <activity
             android:name=".StuForumCourseSelect"
