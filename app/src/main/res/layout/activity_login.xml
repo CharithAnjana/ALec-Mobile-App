@@ -54,7 +54,7 @@
         app:layout_constraintVertical_bias="0.154" />
 
     <TextView
-        android:id="@+id/textViewPassword"
+        android:id="@+id/textViewCnfPassword"
         android:layout_width="137dp"
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.663"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCnfPassword"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCnfPassword"
         app:srcCompat="@drawable/ic_baseline_lock_24"
         tools:ignore="VectorDrawableCompat" />
 

@@ -4,10 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +36,19 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_lec_home);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel ch0 = new NotificationChannel("0", "Notification0",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel ch1 = new NotificationChannel("1", "Notification1",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel ch2 = new NotificationChannel("2", "Notification2",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(ch0);
+            manager.createNotificationChannel(ch1);
+            manager.createNotificationChannel(ch2);
+        }
 
         drawerLayout = findViewById(R.id.drawer_layout_lec);
         navigationView = findViewById(R.id.nav_bar_lec);
@@ -78,8 +99,6 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
 
-                //Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
-                //startActivity(LecMyCourses);
             }
         });
 
@@ -91,6 +110,20 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_dash);
+
+        startBackGroundProcessNotification();
+    }
+
+    //@SuppressLint("ShortAlarm") //ignore the warning
+    public void startBackGroundProcessNotification() {
+        Intent intent = new Intent(this, BackgroundNotification.class);
+        intent.setAction("BackgroundProcess");
+
+        //Set Repeated task
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+        AlarmManager alm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alm.setRepeating(AlarmManager.RTC_WAKEUP,0,60000,pendingIntent);
+
     }
 
     @Override

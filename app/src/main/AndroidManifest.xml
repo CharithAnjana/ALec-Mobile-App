@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+        <activity android:name=".InitPasswordChange"></activity>
+        <activity android:name=".Notification" />
         <activity android:name=".StuActiveQuiz" />
         <activity
             android:name=".StuForumCourseSelect"
@@ -90,6 +92,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".BackgroundNotification"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="BackgroundProcess" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"

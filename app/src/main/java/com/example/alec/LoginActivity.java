@@ -46,27 +46,38 @@ public class LoginActivity extends AppCompatActivity {
                 if(!(reg.equals("No Access"))) {
 
                     String[] val = reg.split(",");
-                    if (val[2].equals("stu")) {
+                    if (val[3].equals("0")) {
 
-                        UserClass userClass = new UserClass(val[2], val[1]);
-                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                        sessionManagement.saveSession(userClass);
-
-                        Intent StuHomeActivity = new Intent(LoginActivity.this, StuHomeActivity.class);
-                        StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(StuHomeActivity);
+                        Intent InitPasswordChange = new Intent(LoginActivity.this, InitPasswordChange.class);
+                        InitPasswordChange.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        InitPasswordChange.putExtra("User_ID",val[1]);
+                        startActivity(InitPasswordChange);
                     }
 
-                    if (val[2].equals("lec")) {
+                    if (val[3].equals("1")) {
+                        if (val[2].equals("stu")) {
 
-                        UserClass userClass = new UserClass(val[2], val[1]);
-                        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                        sessionManagement.saveSession(userClass);
+                            UserClass userClass = new UserClass(val[2], val[1]);
+                            SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                            sessionManagement.saveSession(userClass);
 
-                        Intent LecHomeActivity = new Intent(LoginActivity.this, LecHomeActivity.class);
-                        LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(LecHomeActivity);
+                            Intent StuHomeActivity = new Intent(LoginActivity.this, StuHomeActivity.class);
+                            StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(StuHomeActivity);
+                        }
+
+                        if (val[2].equals("lec")) {
+
+                            UserClass userClass = new UserClass(val[2], val[1]);
+                            SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                            sessionManagement.saveSession(userClass);
+
+                            Intent LecHomeActivity = new Intent(LoginActivity.this, LecHomeActivity.class);
+                            LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(LecHomeActivity);
+                        }
                     }
+
                 }
             }
         }

@@ -29,7 +29,8 @@ public class BackgroundWorkerLogin extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://10.0.2.2/ALec/public/api/V1/login.php";;
+        String login_url = "http://10.0.2.2/ALec/public/api/V1/login.php";
+        String passChange_url = "http://10.0.2.2/ALec/public/api/V1/changepass.php";
         if(type.equals("Login")){
             try {
                 String us_email = params[1];
@@ -46,6 +47,46 @@ public class BackgroundWorkerLogin extends AsyncTask<String, Void, String> {
 
                 String post_data = URLEncoder.encode("us_email", "UTF-8")+"="+URLEncoder.encode(us_email, "UTF-8")+"&"
                         +URLEncoder.encode("us_pass", "UTF-8")+"="+URLEncoder.encode(us_pass, "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null){
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(type.equals("InitChangePass")){
+            try {
+                String user_id = params[1];
+                String pass = params[2];
+
+                URL url = new URL(passChange_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("user_id", "UTF-8")+"="+URLEncoder.encode(user_id, "UTF-8")+"&"
+                        +URLEncoder.encode("pass", "UTF-8")+"="+URLEncoder.encode(pass, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();

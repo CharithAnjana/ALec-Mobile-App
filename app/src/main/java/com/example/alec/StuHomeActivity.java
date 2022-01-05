@@ -7,6 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -93,6 +97,19 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_dash);
+        startBackGroundProcessNotification();
+    }
+
+    @SuppressLint("ShortAlarm") //ignore the warning
+    public void startBackGroundProcessNotification() {
+        Intent notification = new Intent(this, BackgroundNotification.class);
+        notification.setAction("BackgroundProcess");
+
+        //Set Repeated task
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,notification,0);
+        AlarmManager alm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alm.setRepeating(AlarmManager.RTC_WAKEUP,0,3000,pendingIntent);
+
     }
 
     @Override
