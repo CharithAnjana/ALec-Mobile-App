@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InitPasswordChange"></activity>
+        <activity android:name=".StuSessionSelect"></activity>
+        <activity android:name=".InitPasswordChange" />
         <activity android:name=".Notification" />
         <activity android:name=".StuActiveQuiz" />
         <activity

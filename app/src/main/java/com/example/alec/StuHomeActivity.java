@@ -45,7 +45,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent StuActiveQuiz = new Intent(StuHomeActivity.this, StuActiveQuiz.class);
                 startActivity(StuActiveQuiz);
             }
@@ -57,7 +56,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent StuMyCourses = new Intent(StuHomeActivity.this, StuMyCourses.class);
                 startActivity(StuMyCourses);
             }
@@ -65,7 +63,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         BtnForum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent StuForumCourseSelect = new Intent(StuHomeActivity.this,StuForumCourseSelect.class);
                 startActivity(StuForumCourseSelect);
             }
@@ -84,8 +81,8 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         BtnSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                Intent StuSessionSelect = new Intent(StuHomeActivity.this,StuSessionSelect.class);
+                startActivity(StuSessionSelect);
             }
         });
 
