@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StuSessionSelect"></activity>
+        <activity android:name=".StuSessionLiveForumAddQuestion"></activity>
+        <activity android:name=".StuSessionLiveForum" />
+        <activity android:name=".StuSessionPolls" />
+        <activity android:name=".StuSessionSelect" />
         <activity android:name=".InitPasswordChange" />
         <activity android:name=".Notification" />
         <activity android:name=".StuActiveQuiz" />

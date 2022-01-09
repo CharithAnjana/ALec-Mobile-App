@@ -33,6 +33,7 @@ public class StuSessionSelect extends AppCompatActivity {
 
     private static String[] cID;
     private static String[] sID;
+    private static String[] sName;
     private static String[] cName;
 
     @Override
@@ -50,12 +51,14 @@ public class StuSessionSelect extends AppCompatActivity {
         courseSessionLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuForumDiscTopic = new Intent(getApplicationContext(), stu_forum_disc_topic.class);
-                StuForumDiscTopic.putExtra("cID",cID[i]);
-                StuForumDiscTopic.putExtra("sID",sID[i]);
-                StuForumDiscTopic.putExtra("cName",cName[i]);
-                StuForumDiscTopic.putExtra("UserID",user_ID);
-                startActivity(StuForumDiscTopic);
+                Intent StuSessionPolls = new Intent(getApplicationContext(), StuSessionPolls.class);
+                StuSessionPolls.putExtra("cID",cID[i]);
+                StuSessionPolls.putExtra("sID",sID[i]);
+                StuSessionPolls.putExtra("sName",sName[i]);
+                StuSessionPolls.putExtra("cName",cName[i]);
+                StuSessionPolls.putExtra("UserID",user_ID);
+                startActivity(StuSessionPolls);
+                overridePendingTransition(0, 0);
             }
         });
     }
@@ -71,16 +74,17 @@ public class StuSessionSelect extends AppCompatActivity {
                     cID = new String[jsonArray.length()];
                     cName = new String[jsonArray.length()];
                     sID = new String[jsonArray.length()];
+                    sName = new String[jsonArray.length()];
 
                     for (int i=0; i<jsonArray.length(); i++){
                         jsonObject = jsonArray.getJSONObject(i);
                         cID[i] = jsonObject.getString("course_id");
                         cName[i] = jsonObject.getString("course_name");
-                        //sID[i] = jsonObject.getString("forum_id");
-
+                        sID[i] = jsonObject.getString("session_id");
+                        sName[i] = jsonObject.getString("session_name");
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),cID,sID,cName);
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),cID,sID,cName,sName);
                     courseSessionLV.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -124,13 +128,15 @@ public class StuSessionSelect extends AppCompatActivity {
         String[] cID;
         String[] sID;
         String[] cName;
+        String[] sName;
 
-        MyAdepter(Context context, String[] cID, String[] sID, String[] cName) {
+        MyAdepter(Context context, String[] cID, String[] sID, String[] cName, String[] sName) {
             super(context, R.layout.layout_forum_course,R.id.tvCI,cID);
             this.context = context;
             this.cID = cID;
             this.sID = sID;
             this.cName = cName;
+            this.sName = sName;
         }
 
         @NonNull
