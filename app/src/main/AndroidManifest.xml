@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StuSessionLiveForumAddQuestion"></activity>
+        <activity android:name=".StuSessionPollsShortResults"></activity>
+        <activity android:name=".StuSessionPollsMCQResults" />
+        <activity android:name=".StuSessionPollsAttemptShort" />
+        <activity android:name=".StuSessionPollsAttemptMCQ" />
+        <activity android:name=".StuSessionLiveForumAddQuestion" />
         <activity android:name=".StuSessionLiveForum" />
         <activity android:name=".StuSessionPolls" />
         <activity android:name=".StuSessionSelect" />
@@ -46,7 +50,9 @@
         <activity
             android:name=".LecForumTopicReplyList"
             android:exported="false" />
-        <activity android:name=".LecQuizQuestionDeletePop" />
+        <activity
+            android:name=".LecQuizQuestionDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
         <activity android:name=".LecViewQuizDetailsDraft" />
         <activity android:name=".LecViewQuizDetails" />
         <activity

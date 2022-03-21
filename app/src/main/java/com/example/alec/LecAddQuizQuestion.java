@@ -87,7 +87,10 @@ public class LecAddQuizQuestion extends AppCompatActivity {
                 int count = Integer.parseInt(chCount[i]);
                 if(count == 1){
                     Intent LecQuizQuestionEditShort = new Intent(getApplicationContext(), LecQuizQuestionEditShort.class);
+                    LecQuizQuestionEditShort.putExtra("quizID",quizID);
                     LecQuizQuestionEditShort.putExtra("quizName",quizName);
+                    LecQuizQuestionEditShort.putExtra("courseName",courseName);
+                    LecQuizQuestionEditShort.putExtra("qDuHr",qDuHr);
                     LecQuizQuestionEditShort.putExtra("qtID",qtID[i]);
                     LecQuizQuestionEditShort.putExtra("question",question[i]);
                     LecQuizQuestionEditShort.putExtra("chName1",chName1[i]);
@@ -96,7 +99,10 @@ public class LecAddQuizQuestion extends AppCompatActivity {
                 }
                 else {
                     Intent LecQuizQuestionEditMcq = new Intent(getApplicationContext(), LecQuizQuestionEditMcq.class);
+                    LecQuizQuestionEditMcq.putExtra("quizID",quizID);
                     LecQuizQuestionEditMcq.putExtra("quizName",quizName);
+                    LecQuizQuestionEditMcq.putExtra("courseName",courseName);
+                    LecQuizQuestionEditMcq.putExtra("qDuHr",qDuHr);
                     LecQuizQuestionEditMcq.putExtra("qtID",qtID[i]);
                     LecQuizQuestionEditMcq.putExtra("question",question[i]);
                     LecQuizQuestionEditMcq.putExtra("chName1",chName1[i]);

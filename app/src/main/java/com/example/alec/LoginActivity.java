@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 public class LoginActivity extends AppCompatActivity {
 
     EditText EmailEt,PassEt;
+    TextView ForgotPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         EmailEt = (EditText)findViewById(R.id.editTextTextEmailAddress);
         PassEt = (EditText)findViewById(R.id.editTextTextPassword);
+        ForgotPass = findViewById(R.id.textViewFP);
 
     }
 

@@ -2,18 +2,33 @@ package com.example.alec;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.text.InputType;
+import android.text.format.DateFormat;
+import android.text.style.CharacterStyle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class LecScheduleQuiz extends AppCompatActivity {
 
     String qID, quName, qDuHr;
-    TextView quizName;
-    EditText OpDate, OpTime, ClsDate, ClsTime, Dur;
+    TextView quizName, OpDate, OpTime, ClsDate, ClsTime;
+    EditText Dur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +51,67 @@ public class LecScheduleQuiz extends AppCompatActivity {
         Dur = findViewById(R.id.editTextDur);
         Dur.setText(qDuHr);
 
+
+        OpDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(OpDate);
+            }
+        });
+        OpTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimeDialog(OpTime);
+            }
+        });
+        ClsDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateDialog(ClsDate);
+            }
+        });
+        ClsTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimeDialog(ClsTime);
+            }
+        });
+
     }
+
+    private void showDateDialog(TextView Date) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                CharSequence date = DateFormat.format("yyyy-MM-dd",calendar);
+                Date.setText(date);
+            }
+        },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.show();
+    }
+
+    private void showTimeDialog(TextView Time) {
+        Calendar calendar = Calendar.getInstance();
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                calendar.set(Calendar.MINUTE,minute);
+                CharSequence time = DateFormat.format("HH:mm",calendar);
+                Time.setText(time);
+            }
+        },calendar.get(Calendar.HOUR),calendar.get(Calendar.MINUTE),true);
+        timePickerDialog.show();
+    }
+
+
+
+
 
     public void Back(View view){
         finish();
@@ -48,23 +123,115 @@ public class LecScheduleQuiz extends AppCompatActivity {
 
     public void Schedule(View view){
         if(ValidateDateTime(OpDate,OpTime,ClsDate,ClsTime,Dur)){
-            finish();
+            String quiz_id = qID;
+            String quiz_dur = Dur.getText().toString();
+            String pub_date = OpDate.getText().toString()+" "+OpTime.getText().toString()+":00";
+            String cls_date = ClsDate.getText().toString()+" "+ClsTime.getText().toString()+":00";
+            String type= "Schedule";
+            String St = "1";    //1 for Schedule and 0 for cancel
+
+            BackgroundWorkerQuiz backgroundWorkerQuiz = new BackgroundWorkerQuiz(this);
+            String result;
+            try {
+                result = backgroundWorkerQuiz.execute(type, quiz_id, pub_date, cls_date, quiz_dur, St).get();
+
+                if(result.equals("Success")){
+                    Intent LecAddQuizSelectOption = new Intent(this, LecAddQuizSelectOption.class);
+                    //LecQuizScheduleOption.putExtra("qID",qID);
+                    LecAddQuizSelectOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(LecAddQuizSelectOption);
+                    finish();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
 
-    private boolean ValidateDateTime(EditText ODate,EditText OTime,EditText CDate,EditText CTime,EditText Du){
-        String OD = ODate.getText().toString();
-        String OT = OTime.getText().toString();
-        String CD = CDate.getText().toString();
-        String CT = CTime.getText().toString();
-        String DU = Du.getText().toString();
-        if((!OD.isEmpty()) && (!OT.isEmpty()) && (!CD.isEmpty()) && (!CT.isEmpty()) && (!DU.isEmpty())){
+    private boolean ValidateDateTime(TextView ODate, TextView OTime, TextView CDate, TextView CTime, EditText Du){
+        int flag = 0;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+
+        Date OD = new Date();
+        Date CD = new Date();
+        Date OT = new Date();
+        Date CT = new Date();
+        Date DU = new Date();
+
+        //----Get Today Date & Time----
+        Date ValidDate = new Date();
+        String VD = dateFormat.format(ValidDate);
+        Date ValidTime = new Date();
+        String VT = timeFormat.format(ValidDate);
+        try {
+            ValidDate = dateFormat.parse(VD);
+            ValidTime = timeFormat.parse(VT);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //----------------------
+
+        //----Convert TextView To Date & Time----
+        try {
+            //Date
+            if(ODate.getText().toString().isEmpty()){
+                OD = null;
+            }
+            else { OD = dateFormat.parse(ODate.getText().toString());
+            }
+            if(CDate.getText().toString().isEmpty()){
+                CD = null;
+            }
+            else { CD = dateFormat.parse(CDate.getText().toString());
+            }
+            //Time
+            if(OTime.getText().toString().isEmpty()){
+                OT = null;
+            }
+            else { OT = timeFormat.parse(OTime.getText().toString());
+            }
+            if(CTime.getText().toString().isEmpty()){
+                CT = null;
+            }
+            else { CT = timeFormat.parse(CTime.getText().toString());
+            }
+            //Duration
+            if(Du.getText().toString().isEmpty()){
+                DU = null;
+            }
+            else { DU = timeFormat.parse(Du.getText().toString());
+            }
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //------------------------------------
+
+        if((OD!=null) && (OT!=null) && (CD!=null) && (CT!=null) && (DU!=null)){
+            flag++;
+            if(flag==1 && (ValidDate.before(OD) || ValidDate.equals(OD)) && (ValidDate.before(CD) || ValidDate.equals(CD)) && (OD.before(CD) || OD.equals(CD)) ){
+                flag++;
+            }
+            else { Toast.makeText(this, "Invalid Dates", Toast.LENGTH_LONG).show(); }
+        }
+        else { Toast.makeText(this, "All the inputs must be filed", Toast.LENGTH_LONG).show(); }
+
+
+        if(flag==2 && OD.equals(CD) ){
+            Boolean f = ValidTime.before(OT) && ValidTime.before(CT) && OT.before(CT);
+            if(f) {
+                flag++;
+            }
+            else{
+                flag--;
+                Toast.makeText(this, "Invalid Time", Toast.LENGTH_LONG).show();
+            }
+        }
+        if(flag>1){
             return true;
         }
-        else {
-            Toast.makeText(this, "All the inputs must be filed", Toast.LENGTH_LONG).show();
-            return false;
-        }
+        else { return false; }
     }
 }
