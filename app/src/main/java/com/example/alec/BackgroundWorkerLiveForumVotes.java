@@ -111,6 +111,45 @@ public class BackgroundWorkerLiveForumVotes extends AsyncTask<String, Void, Stri
                 e.printStackTrace();
             }
         }
+        if(type.equals("ManageResolve")) {
+            try {
+                String question_id = params[1];
+                String new_topic_URL = "http://10.0.2.2/ALec/public/api/V1/manageliveforumresolve.php";
+
+                URL url = new URL(new_topic_URL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("question_ID", "UTF-8") + "=" + URLEncoder.encode(question_id, "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return result;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         return null;
     }

@@ -29,7 +29,7 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button BtnAskQu,BtnMyCour,BtnReview,BtnForum,BtnSession;
+    Button BtnAskQu,BtnMyCour,BtnForum,BtnSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
         BtnAskQu = findViewById(R.id.BtnAskQu);
         BtnForum = findViewById(R.id.BtnForum);
         BtnSession = findViewById(R.id.BtnSession);
-        BtnReview = findViewById(R.id.BtnReview);
+
 
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,17 +90,11 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
 
-                //Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
-                //startActivity(LecMyCourses);
+                Intent LecSessions = new Intent(LecHomeActivity.this, LecSessions.class);
+                startActivity(LecSessions);
             }
         });
 
-        BtnSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         setSupportActionBar(toolbar);
         navigationView.bringToFront();
@@ -142,6 +136,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_dash:
                 break;
             case R.id.nav_sess:
+                Intent LecSessions = new Intent(LecHomeActivity.this, LecSessions.class);
+                startActivity(LecSessions);
                 break;
             case R.id.nav_ques:
                 Intent LecAddQuizSelectOption = new Intent(LecHomeActivity.this, LecAddQuizSelectOption.class);
@@ -150,8 +146,6 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_course:
                 Intent LecMyCourses = new Intent(LecHomeActivity.this, LecMyCourses.class);
                 startActivity(LecMyCourses);
-                break;
-            case R.id.nav_review:
                 break;
             case R.id.nav_forum:
                 Intent LecForumCourseSelect = new Intent(LecHomeActivity.this, LecForumCourseSelect.class);

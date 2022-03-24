@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                         InitPasswordChange.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         InitPasswordChange.putExtra("User_ID",val[1]);
                         startActivity(InitPasswordChange);
+                        overridePendingTransition(0, 0);
                     }
 
                     if (val[3].equals("1")) {
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent StuHomeActivity = new Intent(LoginActivity.this, StuHomeActivity.class);
                             StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(StuHomeActivity);
+                            overridePendingTransition(0, 0);
                         }
 
                         if (val[2].equals("lec")) {
@@ -78,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent LecHomeActivity = new Intent(LoginActivity.this, LecHomeActivity.class);
                             LecHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(LecHomeActivity);
+                            overridePendingTransition(0, 0);
                         }
                     }
 

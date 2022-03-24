@@ -12,7 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StuSessionPollsShortResults"></activity>
+        <activity
+            android:name=".LecQuizScheduleCancelPop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecSessionStopPop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecSessionViewLiveForum" />
+        <activity android:name=".LecSessionViewPollsShort" />
+        <activity android:name=".LecSessionViewPollsMcq" />
+        <activity android:name=".LecViewSession" />
+        <activity android:name=".LecSessions" />
+        <activity android:name=".LecAddQuizQuestionEdit" />
+        <activity android:name=".StuSessionPollsShortResults" />
         <activity android:name=".StuSessionPollsMCQResults" />
         <activity android:name=".StuSessionPollsAttemptShort" />
         <activity android:name=".StuSessionPollsAttemptMCQ" />

@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 if(us_type.equals("no")){
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                     finish();
                 }
 

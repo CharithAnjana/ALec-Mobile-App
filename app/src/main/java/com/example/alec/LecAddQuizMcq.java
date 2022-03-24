@@ -17,7 +17,7 @@ public class LecAddQuizMcq extends AppCompatActivity {
     Spinner sPoint1, sPoint2, sPoint3, sPoint4, sPoint5;
     EditText q, a1, a2, a3, a4, a5;
     CheckBox checkMulAns;
-    String quizID, quizName, course;
+    String quizID, quizName, course, back, qDuHr;
     TextView quname;
 
     @Override
@@ -29,6 +29,8 @@ public class LecAddQuizMcq extends AppCompatActivity {
         quizID = intent.getStringExtra("quizID");
         course = intent.getStringExtra("cName");
         quizName = intent.getStringExtra("quizName");
+        back = intent.getStringExtra("Back");
+        qDuHr = intent.getStringExtra("qDuHr");
 
         quname = findViewById(R.id.QuizName);
         quname.setText(quizName);
@@ -74,26 +76,26 @@ public class LecAddQuizMcq extends AppCompatActivity {
 
     }
 
-    public void Back(View view){
+    public void Back(View view) {
         finish();
     }
 
-    public void Create(View view){
-        if(validateQuestionAns(q, a1, a2)) {
+    public void Create(View view) {
+        if (validateQuestionAns(q, a1, a2)) {
             String ans_count = "2";
-            String ans1, ans2, ans3, ans4="", ans5="";
+            String ans1, ans2, ans3, ans4 = "", ans5 = "";
 
             String question = q.getText().toString();
             ans1 = a1.getText().toString();
             ans2 = a2.getText().toString();
             ans3 = a3.getText().toString();
-            if(!ans3.isEmpty()){
+            if (!ans3.isEmpty()) {
                 ans_count = "3";
                 ans4 = a4.getText().toString();
-                if(!ans4.isEmpty()){
+                if (!ans4.isEmpty()) {
                     ans_count = "4";
                     ans5 = a5.getText().toString();
-                    if(!ans5.isEmpty()){
+                    if (!ans5.isEmpty()) {
                         ans_count = "5";
                     }
                 }
@@ -106,9 +108,9 @@ public class LecAddQuizMcq extends AppCompatActivity {
             String pnt5 = sPoint5.getSelectedItem().toString();
 
             String qutype = "";
-            if(checkMulAns.isChecked()){
+            if (checkMulAns.isChecked()) {
                 qutype = "mcq-m";
-            }else {
+            } else {
                 qutype = "mcq-s";
             }
 
@@ -120,15 +122,26 @@ public class LecAddQuizMcq extends AppCompatActivity {
                 result = backgroundWorkerQuizQuestion.execute(type, quizID, question, qutype,
                         ans1, ans2, ans3, ans4, ans5, pnt1, pnt2, pnt3, pnt4, pnt5, ans_count).get();
 
-                if(result.equals("Success")){
+                if (result.equals("Success")) {
 
-                    Intent LecAddQuizQuestion = new Intent(this,LecAddQuizQuestion.class);
-                    LecAddQuizQuestion.putExtra("qID",quizID);
-                    LecAddQuizQuestion.putExtra("cName",course);
-                    LecAddQuizQuestion.putExtra("qName",quizName);
-                    LecAddQuizQuestion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(LecAddQuizQuestion);
-                    finish();
+                    if (back.equals("Add")) {
+                        Intent LecAddQuizQuestion = new Intent(this, LecAddQuizQuestion.class);
+                        LecAddQuizQuestion.putExtra("qID", quizID);
+                        LecAddQuizQuestion.putExtra("cName", course);
+                        LecAddQuizQuestion.putExtra("qName", quizName);
+                        LecAddQuizQuestion.putExtra("qDuration",qDuHr);
+                        LecAddQuizQuestion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(LecAddQuizQuestion);
+                        finish();
+                    } else {
+                        Intent LecAddQuizQuestionEdit = new Intent(this, LecAddQuizQuestionEdit.class);
+                        LecAddQuizQuestionEdit.putExtra("qID", quizID);
+                        LecAddQuizQuestionEdit.putExtra("cName", course);
+                        LecAddQuizQuestionEdit.putExtra("qName", quizName);
+                        LecAddQuizQuestionEdit.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(LecAddQuizQuestionEdit);
+                        finish();
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -136,24 +149,22 @@ public class LecAddQuizMcq extends AppCompatActivity {
         }
     }
 
-    public void Cancel(View view){
+    public void Cancel(View view) {
         finish();
     }
 
-    private boolean validateQuestionAns(EditText que, EditText ans1, EditText ans2){
+    private boolean validateQuestionAns(EditText que, EditText ans1, EditText ans2) {
         String ques = que.getText().toString();
         String an1 = ans1.getText().toString();
         String an2 = ans2.getText().toString();
-        if(!ques.isEmpty()){
-            if( (!an1.isEmpty()) && (!an2.isEmpty()) ){
+        if (!ques.isEmpty()) {
+            if ((!an1.isEmpty()) && (!an2.isEmpty())) {
                 return true;
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Invalid Answer Count", Toast.LENGTH_LONG).show();
                 return false;
             }
-        }
-        else {
+        } else {
             Toast.makeText(this, "Invalid Question", Toast.LENGTH_LONG).show();
             return false;
         }

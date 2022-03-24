@@ -107,7 +107,9 @@ public class BackgroundWorkerQuiz extends AsyncTask<String, Void, String> {
                 String quiz_dur = params[4];
                 String st = params[5];
                 String new_question_URL = "http://10.0.2.2/ALec/public/api/V1/schedulequiz.php";
-
+                if(st.equals("0")){
+                    new_question_URL = "http://10.0.2.2/ALec/public/api/V1/unschedulequiz.php";
+                }
                 URL url = new URL(new_question_URL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -120,8 +122,7 @@ public class BackgroundWorkerQuiz extends AsyncTask<String, Void, String> {
                 String post_data = URLEncoder.encode("quiz_ID", "UTF-8") + "=" + URLEncoder.encode(quiz_ID, "UTF-8")+ "&"
                         + URLEncoder.encode("pub_date", "UTF-8") + "=" + URLEncoder.encode(pub_date, "UTF-8") + "&"
                         + URLEncoder.encode("cls_date", "UTF-8") + "=" + URLEncoder.encode(cls_date, "UTF-8") + "&"
-                        + URLEncoder.encode("quiz_dur", "UTF-8") + "=" + URLEncoder.encode(quiz_dur, "UTF-8") + "&"
-                        + URLEncoder.encode("st", "UTF-8") + "=" + URLEncoder.encode(st, "UTF-8");;
+                        + URLEncoder.encode("quiz_dur", "UTF-8") + "=" + URLEncoder.encode(quiz_dur, "UTF-8") ;
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();

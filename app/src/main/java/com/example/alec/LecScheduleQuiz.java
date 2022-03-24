@@ -26,7 +26,7 @@ import java.util.Date;
 
 public class LecScheduleQuiz extends AppCompatActivity {
 
-    String qID, quName, qDuHr;
+    String qID, quName, qDuHr, Val, tID,tName,cID,cName,User_ID,qDuhr;
     TextView quizName, OpDate, OpTime, ClsDate, ClsTime;
     EditText Dur;
 
@@ -39,7 +39,12 @@ public class LecScheduleQuiz extends AppCompatActivity {
         qID = intent.getStringExtra("qID");
         quName = intent.getStringExtra("qName");
         qDuHr = intent.getStringExtra("qDuHr");
-
+        Val = intent.getStringExtra("Val");
+        tID = intent.getStringExtra("tID");
+        tName = intent.getStringExtra("tName");
+        cID = intent.getStringExtra("cID");
+        cName = intent.getStringExtra("cName");
+        User_ID = intent.getStringExtra("UserID");
         quizName = findViewById(R.id.qName);
         quizName.setText(quName);
 
@@ -136,11 +141,25 @@ public class LecScheduleQuiz extends AppCompatActivity {
                 result = backgroundWorkerQuiz.execute(type, quiz_id, pub_date, cls_date, quiz_dur, St).get();
 
                 if(result.equals("Success")){
-                    Intent LecAddQuizSelectOption = new Intent(this, LecAddQuizSelectOption.class);
-                    //LecQuizScheduleOption.putExtra("qID",qID);
-                    LecAddQuizSelectOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(LecAddQuizSelectOption);
-                    finish();
+                    if(Val.equals("Now")) {
+                        Intent LecAddQuizSelectOption = new Intent(this, LecAddQuizSelectOption.class);
+                        //LecQuizScheduleOption.putExtra("qID",qID);
+                        LecAddQuizSelectOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(LecAddQuizSelectOption);
+                        finish();
+                    }
+                    else{
+                        Intent LecViewQuizDetails = new Intent(this,LecViewQuizDetails.class);
+                        LecViewQuizDetails.putExtra("qID",qID);
+                        LecViewQuizDetails.putExtra("qName",quName);
+                        LecViewQuizDetails.putExtra("tID",tID);
+                        LecViewQuizDetails.putExtra("tName",tName);
+                        LecViewQuizDetails.putExtra("cID",cID);
+                        LecViewQuizDetails.putExtra("cName",cName);
+                        LecViewQuizDetails.putExtra("UserID",User_ID);
+                        LecViewQuizDetails.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(LecViewQuizDetails);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -219,14 +238,26 @@ public class LecScheduleQuiz extends AppCompatActivity {
         else { Toast.makeText(this, "All the inputs must be filed", Toast.LENGTH_LONG).show(); }
 
 
-        if(flag==2 && OD.equals(CD) ){
-            Boolean f = ValidTime.before(OT) && ValidTime.before(CT) && OT.before(CT);
-            if(f) {
-                flag++;
+        if(flag==2 && OD.equals(CD)){
+            if (OD.equals(ValidDate)){
+                Boolean f = ValidTime.before(OT) && ValidTime.before(CT) && OT.before(CT);
+                if(f) {
+                    flag++;
+                }
+                else{
+                    flag--;
+                    Toast.makeText(this, "Invalid Time", Toast.LENGTH_LONG).show();
+                }
             }
-            else{
-                flag--;
-                Toast.makeText(this, "Invalid Time", Toast.LENGTH_LONG).show();
+            else {
+                Boolean f = OT.before(CT);
+                if(f) {
+                    flag++;
+                }
+                else{
+                    flag--;
+                    Toast.makeText(this, "Invalid Time", Toast.LENGTH_LONG).show();
+                }
             }
         }
         if(flag>1){

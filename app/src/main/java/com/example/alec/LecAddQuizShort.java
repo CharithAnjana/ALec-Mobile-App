@@ -18,7 +18,7 @@ public class LecAddQuizShort extends AppCompatActivity {
 
     Spinner pointsSpinner;
     EditText q, a;
-    String quizID, quizName, course;
+    String quizID, quizName, course, back, qDuHr;
     TextView quname;
 
     @Override
@@ -30,6 +30,8 @@ public class LecAddQuizShort extends AppCompatActivity {
         quizID = intent.getStringExtra("quizID");
         course = intent.getStringExtra("cName");
         quizName = intent.getStringExtra("quizName");
+        back = intent.getStringExtra("Back");
+        qDuHr = intent.getStringExtra("qDuHr");
 
         q = findViewById(R.id.editTextTextMultiLine);
         a = findViewById(R.id.editTextAnswer);
@@ -62,13 +64,24 @@ public class LecAddQuizShort extends AppCompatActivity {
 
                 if(result.equals("Success")){
 
-                    Intent LecAddQuizQuestion = new Intent(this,LecAddQuizQuestion.class);
-                    LecAddQuizQuestion.putExtra("qID",quizID);
-                    LecAddQuizQuestion.putExtra("cName",course);
-                    LecAddQuizQuestion.putExtra("qName",quizName);
-                    LecAddQuizQuestion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(LecAddQuizQuestion);
-                    finish();
+                        if(back.equals("Add")){
+                            Intent LecAddQuizQuestion = new Intent(this,LecAddQuizQuestion.class);
+                            LecAddQuizQuestion.putExtra("qID",quizID);
+                            LecAddQuizQuestion.putExtra("cName",course);
+                            LecAddQuizQuestion.putExtra("qName",quizName);
+                            LecAddQuizQuestion.putExtra("qDuration",qDuHr);
+                            LecAddQuizQuestion.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(LecAddQuizQuestion);
+                            finish();
+                        }else {
+                            Intent LecAddQuizQuestionEdit = new Intent(this,LecAddQuizQuestionEdit.class);
+                            LecAddQuizQuestionEdit.putExtra("qID",quizID);
+                            LecAddQuizQuestionEdit.putExtra("cName",course);
+                            LecAddQuizQuestionEdit.putExtra("qName",quizName);
+                            LecAddQuizQuestionEdit.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(LecAddQuizQuestionEdit);
+                            finish();
+                        }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

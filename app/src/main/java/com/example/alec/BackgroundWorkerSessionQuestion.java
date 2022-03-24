@@ -3,6 +3,7 @@ package com.example.alec;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
@@ -102,6 +103,56 @@ public class BackgroundWorkerSessionQuestion extends AsyncTask<String, Void, Str
 
                 return result;
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(type.equals("sessionStatus")){
+            try {
+                String session_id = params[1];
+                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/managesession.php?session_id="+session_id;
+                URL url = new URL(delete_topic_URL);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+                //StringBuffer sb = new StringBuffer();
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedInputStream.close();
+                bufferedReader.close();
+                conn.disconnect();
+                //result = sb.toString();
+
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(type.equals("PollStatus")){
+            try {
+                String question_id = params[1];
+                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/managesessionpoll.php?question_id="+question_id;
+                URL url = new URL(delete_topic_URL);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+                //StringBuffer sb = new StringBuffer();
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedInputStream.close();
+                bufferedReader.close();
+                conn.disconnect();
+                //result = sb.toString();
+
+                return result;
             } catch (Exception e) {
                 e.printStackTrace();
             }

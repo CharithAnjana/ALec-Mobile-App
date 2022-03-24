@@ -15,20 +15,45 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class BackgroundWorkerCheckPoints extends AsyncTask<String, Void, String> {
-    Context context;
-    public BackgroundWorkerCheckPoints(Context ctx){
-        context = ctx;
-    }
+public class BackgroundWorkerManageSession extends AsyncTask<String, Void, String> {
 
+    AlertDialog alertDialog;
+    Context context;
+    public BackgroundWorkerManageSession(Context ctx){ context = ctx; }
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        if(type.equals("TopicPoint")){
+        if(type.equals("ManageStatus")){
             try {
-                String topic_ID = params[1];
-                String User_ID = params[2];
-                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/forumtopicpoints.php?topic_ID="+topic_ID+"&lecturer_ID="+User_ID;
+                String session_id = params[1];
+                String course_id = params[2];
+                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/startstopsession.php?course_id="+course_id+"&session_id="+session_id;
+                URL url = new URL(delete_topic_URL);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+                //StringBuffer sb = new StringBuffer();
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedInputStream.close();
+                bufferedReader.close();
+                conn.disconnect();
+                //result = sb.toString();
+
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(type.equals("ManagePollStatus")){
+            try {
+                String session_id = params[1];
+                String question_id = params[2];
+                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/startstoppollquestion.php?question_id="+question_id+"&session_id="+session_id;
                 URL url = new URL(delete_topic_URL);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
                 BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
@@ -93,39 +118,20 @@ public class BackgroundWorkerCheckPoints extends AsyncTask<String, Void, String>
                 e.printStackTrace();
             }
         }
-        else if(type.equals("MCQMul")){
-            try {
-                String ques_NO = params[1];
-                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/quizquestmcqmulans.php?question_no="+ques_NO;
-                URL url = new URL(delete_topic_URL);
-                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
-
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
-                //StringBuffer sb = new StringBuffer();
-                String line = "";
-                String result = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-                bufferedInputStream.close();
-                bufferedReader.close();
-                conn.disconnect();
-                //result = sb.toString();
-
-                return result;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
         return null;
     }
 
-    @Override
-    protected void onPreExecute() { }
 
     @Override
-    protected void onPostExecute(String result) { }
+    protected void onPreExecute() {
+        alertDialog = new AlertDialog.Builder(context).create();
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        alertDialog.setMessage(result);
+        alertDialog.show();
+    }
 
     @Override
     protected void onProgressUpdate(Void... values) {
