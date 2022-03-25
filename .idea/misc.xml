@@ -19,15 +19,41 @@
         <entry key="..\:/ALec-Mobile-App/app/src/main/res/layout/layout_forum_reply.xml" value="0.182518115942029" />
         <entry key="..\:/ALec-Mobile-App/app/src/main/res/layout/layout_forum_topic.xml" value="0.1" />
         <entry key="..\:/ALec-Mobile-App/app/src/main/res/layout/layout_my_courses.xml" value="0.15374873353596757" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_createnewtag.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_edit_profiledetails.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_edit_topic.xml" value="0.23072916666666668" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_add_new_disc_topic.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_disc_topic.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_reply_delete_pop.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_topic_delete_pop.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_topic_reply_list.xml" value="0.36614583333333334" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_forum_topic_reply_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_lec_quiz_delete_pop.xml" value="0.3625" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_forum_add_new_disc_topic.xml" value="0.22282608695652173" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_forum_add_reply.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_forum_course_select.xml" value="0.22282608695652173" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_forum_disc_topic.xml" value="0.17831813576494426" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_forum_topic_reply_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_stu_home.xml" value="0.22418478260869565" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_tagged_name.xml" value="0.35260416666666666" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_tagged_stu_forumreply_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_tagged_topic_discussion.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_tagged_topic_list.xml" value="0.25" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/activity_user_deatails.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_forum_reply.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_forum_topic.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_getuserdetails.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_my_courses.xml" value="0.2210144927536232" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_quiz_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layout_tagged_topic_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layouttaggedtopicdiscussion.xml" value="0.3569230769230769" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/layouttaggedtopiclist.xml" value="0.36666666666666664" />
         <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/layout/lec_delete_reply_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/menu/main_menu_lec.xml" value="0.36666666666666664" />
+        <entry key="..\:/alec/ALec-Mobile-App/app/src/main/res/menu/main_menu_stu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

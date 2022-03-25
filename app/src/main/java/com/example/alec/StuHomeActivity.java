@@ -71,6 +71,8 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             @Override
             public void onClick(View v) {
 
+                Intent TaggedTopicList = new Intent(StuHomeActivity.this,TaggedName.class);
+                startActivity(TaggedTopicList);
 
             }
         });
@@ -126,6 +128,10 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent logout = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(logout);
+
+            case R.id.nav_Profile:
+                Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);
+                startActivity(UserDeatails);
                 finish();
                 break;
         }
