@@ -130,6 +130,8 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent Logout = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(Logout);
+                finish();
+                break;
 
             case R.id.nav_Profilel:
                 Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);

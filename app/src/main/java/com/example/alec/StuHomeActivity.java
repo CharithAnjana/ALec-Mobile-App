@@ -128,6 +128,8 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
                 Intent logout = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(logout);
+                finish();
+                break;
 
             case R.id.nav_Profile:
                 Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);

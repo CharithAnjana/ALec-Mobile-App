@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Edit_Lecturer_Details"
+            android:exported="false" />
+        <activity
             android:name=".TaggedStuForumreplyList"
             android:exported="false" />
         <activity

@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class EditProfiledetails extends AppCompatActivity {
 
-    String Email,tName,User_ID,user_Type,user_ID,reg_no,first_name,last_name;
+    String Email,user_Type,user_ID,reg_no,first_name,last_name;
 
-    EditText email,fs,ls,rn;
+    EditText fs,ls,rn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
