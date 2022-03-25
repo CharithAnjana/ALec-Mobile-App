@@ -84,7 +84,7 @@ public class LecViewQuizDetails extends AppCompatActivity {
                     if(!(pubDate.equals("null"))){
                         publishedDate.setText(pubDate);
                         closeDate.setText(clsDate);
-                        BtnSchedl.setText("Re-Schedule");
+                        BtnSchedl.setText("Cancel-Schedule");
                     }
 
                 } catch (JSONException e) {
@@ -143,18 +143,37 @@ public class LecViewQuizDetails extends AppCompatActivity {
         LecViewQuiz.putExtra("cID",cID);
         LecViewQuiz.putExtra("cName",cName);
         LecViewQuiz.putExtra("UserID",User_ID);
+        LecViewQuiz.putExtra("qDuhr",duration.getText().toString());
         startActivity(LecViewQuiz);
     }
 
     public void ScheduleQuiz(View view){
-        Intent LecScheduleQuiz = new Intent(this,LecScheduleQuiz.class);
-        LecScheduleQuiz.putExtra("qID",qID);
-        LecScheduleQuiz.putExtra("qName",qName);
-        LecScheduleQuiz.putExtra("qDuHr",duration.getText());
-        //intent.putExtra("cName",cName);
-        //intent.putExtra("cID",cID);
-        //intent.putExtra("User_ID",User_ID);
-        startActivity(LecScheduleQuiz);
+        String val = BtnSchedl.getText().toString();
+        if(val.equals("Cancel-Schedule")){
+            Intent LecQuizScheduleCancelPop = new Intent(this,LecQuizScheduleCancelPop.class);
+            LecQuizScheduleCancelPop.putExtra("qID",qID);
+            LecQuizScheduleCancelPop.putExtra("qName",qName);
+            LecQuizScheduleCancelPop.putExtra("qDuHr",duration.getText());
+            LecQuizScheduleCancelPop.putExtra("tID",tID);
+            LecQuizScheduleCancelPop.putExtra("tName",tName);
+            LecQuizScheduleCancelPop.putExtra("cID",cID);
+            LecQuizScheduleCancelPop.putExtra("cName",cName);
+            LecQuizScheduleCancelPop.putExtra("UserID",User_ID);
+            startActivity(LecQuizScheduleCancelPop);
+        }
+        else{
+            Intent LecScheduleQuiz = new Intent(this,LecScheduleQuiz.class);
+            LecScheduleQuiz.putExtra("qID",qID);
+            LecScheduleQuiz.putExtra("qName",qName);
+            LecScheduleQuiz.putExtra("qDuHr",duration.getText());
+            LecScheduleQuiz.putExtra("Val","Later");
+            LecScheduleQuiz.putExtra("tID",tID);
+            LecScheduleQuiz.putExtra("tName",tName);
+            LecScheduleQuiz.putExtra("cID",cID);
+            LecScheduleQuiz.putExtra("cName",cName);
+            LecScheduleQuiz.putExtra("UserID",User_ID);
+            startActivity(LecScheduleQuiz);
+        }
     }
 
 }

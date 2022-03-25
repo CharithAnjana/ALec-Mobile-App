@@ -44,12 +44,12 @@ public class LecQuizDeletePop2 extends AppCompatActivity{
             result = backgroundWorkerQuiz.execute(type, quiz_ID).get();
 
             if(result.equals("Success")){
-                Intent LecViewDraftQuiz = new Intent(this, LecViewDraftQuiz.class);
-                LecViewDraftQuiz.putExtra("topicId", "");
-                LecViewDraftQuiz.putExtra("courseId", cID);
-                LecViewDraftQuiz.putExtra("course", cName);
-                LecViewDraftQuiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(LecViewDraftQuiz);
+                Intent LecAddQuizSelectOption = new Intent(this, LecAddQuizSelectOption.class);
+                //LecViewDraftQuiz.putExtra("topicId", "");
+                //LecViewDraftQuiz.putExtra("courseId", cID);
+                //LecViewDraftQuiz.putExtra("course", cName);
+                LecAddQuizSelectOption.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(LecAddQuizSelectOption);
                 finish();
 
             }

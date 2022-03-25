@@ -93,6 +93,31 @@ public class BackgroundWorkerCheckPoints extends AsyncTask<String, Void, String>
                 e.printStackTrace();
             }
         }
+        else if(type.equals("MCQMul")){
+            try {
+                String ques_NO = params[1];
+                String delete_topic_URL = "http://10.0.2.2/ALec/public/api/V1/quizquestmcqmulans.php?question_no="+ques_NO;
+                URL url = new URL(delete_topic_URL);
+                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+                //StringBuffer sb = new StringBuffer();
+                String line = "";
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedInputStream.close();
+                bufferedReader.close();
+                conn.disconnect();
+                //result = sb.toString();
+
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 
