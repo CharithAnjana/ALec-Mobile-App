@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class LecSessionViewPollsShort extends AppCompatActivity {
 
-    String qNo,qPubTime,question,qCnt, sID,sName,cID,cName;
-    TextView ques, count;
+    String qNo,qAns,question,qCnt, sID,sName,cID,cName;
+    TextView ques, count, answer;
     Button Poll;
 
     @Override
@@ -23,7 +23,7 @@ public class LecSessionViewPollsShort extends AppCompatActivity {
 
         Intent intent = getIntent();
         qNo = intent.getStringExtra("qNo");
-        //qPubTime = intent.getStringExtra("qPubTime");
+        qAns = intent.getStringExtra("qAns");
         question = intent.getStringExtra("question");
         qCnt = intent.getStringExtra("qCnt");
         sID = intent.getStringExtra("sID");
@@ -34,8 +34,10 @@ public class LecSessionViewPollsShort extends AppCompatActivity {
         ques = findViewById(R.id.textViewq);
         count = findViewById(R.id.textViewcount);
         Poll = findViewById(R.id.buttonSe);
+        answer = findViewById(R.id.openAnswer);
         ques.setText(question);
         count.setText(qCnt);
+        answer.setText(qAns);
 
         String type = "PollStatus";
         BackgroundWorkerSessionQuestion BgWCheckPoints = new BackgroundWorkerSessionQuestion(this);
@@ -73,6 +75,7 @@ public class LecSessionViewPollsShort extends AppCompatActivity {
         LecSessionViewPollsShort.putExtra("qNo",qNo);
         LecSessionViewPollsShort.putExtra("question",question);
         LecSessionViewPollsShort.putExtra("qCnt",qCnt);
+        LecSessionViewPollsShort.putExtra("qAns",qAns);
         LecSessionViewPollsShort.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(LecSessionViewPollsShort);
         overridePendingTransition(0, 0);
@@ -95,6 +98,7 @@ public class LecSessionViewPollsShort extends AppCompatActivity {
                 LecSessionViewPollsShort.putExtra("qNo",qNo);
                 LecSessionViewPollsShort.putExtra("question",question);
                 LecSessionViewPollsShort.putExtra("qCnt",qCnt);
+                LecSessionViewPollsShort.putExtra("qAns",qAns);
                 LecSessionViewPollsShort.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(LecSessionViewPollsShort);
                 overridePendingTransition(0, 0);

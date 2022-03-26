@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class StuViewAttemPollsQuesOpen extends AppCompatActivity {
 
-    String qNo,question,qCnt,qAns;
+    String qNo,question,qAns;
     TextView ques, answer;
 
     @Override
@@ -20,7 +20,6 @@ public class StuViewAttemPollsQuesOpen extends AppCompatActivity {
         Intent intent = getIntent();
         qNo = intent.getStringExtra("qNo");
         question = intent.getStringExtra("question");
-        qCnt = intent.getStringExtra("qCnt");
         qAns = intent.getStringExtra("qAns");
 
         ques = findViewById(R.id.textViewq);
