@@ -54,11 +54,11 @@ public class StuMyCourses extends AppCompatActivity {
         courseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuCourseTopics = new Intent(getApplicationContext(), StuCourseTopics.class);
-                StuCourseTopics.putExtra("ID",cID[i]);
-                StuCourseTopics.putExtra("Name",cName[i]);
-                StuCourseTopics.putExtra("UserID",user_ID);
-                startActivity(StuCourseTopics);
+                Intent StuMycourseSelectOption = new Intent(getApplicationContext(), StuMycourseSelectOption.class);
+                StuMycourseSelectOption.putExtra("cID",cID[i]);
+                StuMycourseSelectOption.putExtra("cName",cName[i]);
+                StuMycourseSelectOption.putExtra("UserID",user_ID);
+                startActivity(StuMycourseSelectOption);
             }
         });
 
@@ -151,8 +151,6 @@ public class StuMyCourses extends AppCompatActivity {
     }
 
     public void Back(View view){
-        Intent StuHomeActivity = new Intent(this,StuHomeActivity.class);
-        StuHomeActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(StuHomeActivity);
+       finish();
     }
 }

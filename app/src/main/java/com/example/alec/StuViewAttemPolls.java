@@ -26,67 +26,63 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class StuCourseTopics extends AppCompatActivity {
+public class StuViewAttemPolls extends AppCompatActivity {
 
-    String topicURL = "http://10.0.2.2/ALec/public/api/V1/coursetopic.php";
-    ListView topicListView;
+    String cID,cName,User_ID;
 
-    private static String[] tID;
-    private static String[] tName;
+    String courseURL = "http://10.0.2.2/ALec/public/api/V1/getmysession.php";
+    ListView sessionListViewLV;
 
-    TextView Topic;
+    private static String[] sID;
+    private static String[] sName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stu_course_topics);
-
-        Topic = findViewById(R.id.cTopic);
+        setContentView(R.layout.activity_stu_view_attem_polls);
 
         Intent intent =getIntent();
-        String cID = intent.getStringExtra("cID");
-        String cName = intent.getStringExtra("cName");
-        String User_ID = intent.getStringExtra("UserID");
-        Topic.setText(cName);
+        cID = intent.getStringExtra("cID");
+        cName = intent.getStringExtra("cName");
+        User_ID = intent.getStringExtra("UserID");
 
-        topicURL = "http://10.0.2.2/ALec/public/api/V1/coursetopic.php?course_ID="+cID;
-        topicListView = (ListView)findViewById(R.id.topicList);
-        fetch_data_into_array(topicListView);
+        courseURL = "http://10.0.2.2/ALec/public/api/V1/getmysession.php?course_ID="+cID;
 
-        topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sessionListViewLV = (ListView)findViewById(R.id.sessionList);
+        fetch_data_into_array(sessionListViewLV);
+
+        sessionListViewLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuViewQuizList = new Intent(getApplicationContext(), StuViewQuizList.class);
-                StuViewQuizList.putExtra("tID",tID[i]);
-                StuViewQuizList.putExtra("tName",tName[i]);
-                StuViewQuizList.putExtra("cID",cID);
-                StuViewQuizList.putExtra("cName",cName);
-                StuViewQuizList.putExtra("UserID",User_ID);
-                startActivity(StuViewQuizList);
-                //finish();
+                Intent StuViewAttemPollsQuestion = new Intent(getApplicationContext(), StuViewAttemPollsQuestion.class);
+                StuViewAttemPollsQuestion.putExtra("sID",sID[i]);
+                StuViewAttemPollsQuestion.putExtra("sName",sName[i]);
+                StuViewAttemPollsQuestion.putExtra("UserID",User_ID);
+                startActivity(StuViewAttemPollsQuestion);
             }
         });
     }
 
-    private void fetch_data_into_array(ListView topicListView) {
+    private void fetch_data_into_array(View View) {
+
         class dbManager extends AsyncTask<String,Void,String> {
 
             protected void onPostExecute(String data){
                 try {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
-                    tID = new String[jsonArray.length()];
-                    tName = new String[jsonArray.length()];
+                    sID = new String[jsonArray.length()];
+                    sName = new String[jsonArray.length()];
 
                     for (int i=0; i<jsonArray.length(); i++){
                         jsonObject = jsonArray.getJSONObject(i);
-                        tID[i] = jsonObject.getString("topic_id");
-                        tName[i] = jsonObject.getString("topic_name");
+                        sID[i] = jsonObject.getString("session_id");
+                        sName[i] = jsonObject.getString("session_name");
 
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),tID,tName);
-                    topicListView.setAdapter(myAdepter);
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),sID,sName);
+                    sessionListViewLV.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -119,34 +115,34 @@ public class StuCourseTopics extends AppCompatActivity {
             }
         }
         dbManager dbManager = new dbManager();
-        dbManager.execute(topicURL);
-
+        dbManager.execute(courseURL);
     }
+
 
     class MyAdepter extends ArrayAdapter<String> {
 
         Context context;
-        String[] tID;
-        String[] tName;
+        String[] cID;
+        String[] cName;
 
-        MyAdepter(Context context, String[] tID, String[] tName) {
-            super(context, R.layout.layout_course_topic,R.id.tvTI,tID);
+        MyAdepter(Context context, String[] cID, String[] cName) {
+            super(context, R.layout.layout_my_courses,R.id.tvCI,cID);
             this.context = context;
-            this.tID = tID;
-            this.tName = tName;
+            this.cID = cID;
+            this.cName = cName;
         }
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent){
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.layout_course_topic,parent,false);;
+            View row = inflater.inflate(R.layout.layout_my_courses,parent,false);;
 
-            TextView tvTI = row.findViewById(R.id.tvTI);
-            TextView tvTN = row.findViewById(R.id.tvTN);
+            TextView tvCI = row.findViewById(R.id.tvCI);
+            TextView tvCN = row.findViewById(R.id.tvCN);
 
-            tvTI.setText(tID[position]);
-            tvTN.setText(tName[position]);
+            tvCI.setText(cID[position]);
+            tvCN.setText(cName[position]);
 
             return row;
         }
@@ -154,6 +150,6 @@ public class StuCourseTopics extends AppCompatActivity {
     }
 
     public void Back(View view){
-       finish();
+        finish();
     }
 }

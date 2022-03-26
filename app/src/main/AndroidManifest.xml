@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+        <activity android:name=".StuViewAttemPollsQuesOpen"></activity>
+        <activity android:name=".StuViewAttemPollsQuesMcq" />
+        <activity android:name=".StuViewAttemPollsQuestion" />
+        <activity android:name=".StuViewAttemPolls" />
+        <activity android:name=".StuPrewQuiz" />
+        <activity android:name=".StuViewQuizDetails" />
+        <activity android:name=".StuViewQuizList" />
+        <activity android:name=".StuMycourseSelectOption" />
         <activity
             android:name=".LecQuizScheduleCancelPop"
             android:theme="@style/Theme.ALec.PopUp" />

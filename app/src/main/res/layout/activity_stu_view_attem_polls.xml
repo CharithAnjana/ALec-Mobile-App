@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StuMyCourses">
+    tools:context=".StuViewAttemPolls">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,10 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Select Courses"
+            android:fontFamily="@font/poppins_light"
+            android:text="Select Session"
             android:textColor="#1B3B56"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -68,7 +68,7 @@
 
 
     <ListView
-        android:id="@+id/courseList"
+        android:id="@+id/sessionList"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -77,6 +77,5 @@
         android:layout_marginBottom="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
-
 
 </LinearLayout>

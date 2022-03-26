@@ -60,7 +60,7 @@ public class LecSessionViewPollsShort extends AppCompatActivity {
         n.putExtra("cName",cName);
         n.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(n);
-        finish();finish();
+        finish();
     }
 
     public void Refresh(View view){
