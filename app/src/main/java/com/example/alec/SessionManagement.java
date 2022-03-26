@@ -14,7 +14,7 @@ public class SessionManagement {
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
-
+//ToSave session
     public void saveSession(UserClass userClass){
         String type = userClass.getType();
         String id = userClass.getId();
