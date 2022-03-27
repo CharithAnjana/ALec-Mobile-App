@@ -56,10 +56,10 @@ public class EditProfiledetails extends AppCompatActivity {
 
 
 
-            BackgroundWorkerEditEmail backgroundWorkerEditEmail = new BackgroundWorkerEditEmail(this);
+        BackgroundWorkerEditDetails backgroundWorkerEditDetails = new BackgroundWorkerEditDetails(this);
             String result;
             try {
-                result = backgroundWorkerEditEmail.execute(type,FS,LN,RN,user_ID,user_Type).get();
+                result = backgroundWorkerEditDetails.execute(type,FS,LN,RN,user_ID,user_Type).get();
 
                 if (result.equals("Success")) {
                     Intent UserDeatails = new Intent(this, UserDeatails.class);

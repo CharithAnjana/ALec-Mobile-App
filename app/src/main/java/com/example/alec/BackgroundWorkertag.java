@@ -35,6 +35,7 @@ public class BackgroundWorkertag extends AsyncTask<String, Void, String> {
                 String tag_name = params[2];
 
 
+
                 String new_tag_URL = "http://10.0.2.2/ALec/public/api/V1/addnewtag.php";
 
                 URL url = new URL(new_tag_URL);

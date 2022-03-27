@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,7 +33,7 @@ public class TaggedTopicList extends AppCompatActivity {
     String  student_id,tag_name,tag_id;
     TextView TagName;
     ListView TaggedTopicList;
-
+  Button btn;
     private static String[] topic_id;
     private static String[] subject;
     private static String[] post_time;
@@ -47,6 +48,9 @@ public class TaggedTopicList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagged_topic_list);
+
+
+
 
         Intent intent =getIntent();
         student_id = intent.getStringExtra("student_id");
@@ -73,7 +77,9 @@ public class TaggedTopicList extends AppCompatActivity {
             }
         });
 
+
     }
+
     private void fetch_data_into_array(ListView view) {
         class dbManager extends AsyncTask<String,Void,String> {
 
@@ -182,7 +188,7 @@ public class TaggedTopicList extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent){
             LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.layouttaggedtopiclist,parent,false);;
+            View row = inflater.inflate(R.layout.layouttaggedtopiclist,parent,false);
 
             TextView tvFS = row.findViewById(R.id.tvFS);
             TextView courseName = row.findViewById(R.id.courseName);
@@ -212,30 +218,38 @@ public class TaggedTopicList extends AppCompatActivity {
 
     }
 
+    //public void deletetag(View view) {
+
+     //   String Tag_id = tag_id;
+     //   String type = "Deletetag";
+
+      //  BackgroundWorkertag backgroundWorkertag = new BackgroundWorkertag(this);
+     //   String result;
+     //   try {
+     //       result = backgroundWorkertag.execute(type, Tag_id).get();
+
+         //   if(result.equals("Success")){
+//                LecQuizList.putExtra("Student_id", student_id);
+
+              //  LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+              //  startActivity(LecQuizList);
+            //    finish();
+
+         //   }
+    //    } catch (Exception e) {
+         //   e.printStackTrace();
+      //  }
+
+   // }
+
     public void deletetag(View view) {
-
-        String Tag_id = tag_id;
-        String type = "Deletetag";
-
-        BackgroundWorkertag backgroundWorkertag = new BackgroundWorkertag(this);
-        String result;
-        try {
-            result = backgroundWorkertag.execute(type, Tag_id).get();
-
-            if(result.equals("Success")){
-                Intent LecQuizList = new Intent(this, TaggedName.class);
-                LecQuizList.putExtra("Student_id", student_id);
-
-                LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(LecQuizList);
-                finish();
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Intent TagDeletePop = new Intent(this, TagDeletePop.class);
+        TagDeletePop.putExtra("student_id",student_id);
+        TagDeletePop.putExtra("tag_name",tag_name);
+        TagDeletePop.putExtra("tag_id",tag_id);
+        startActivity(TagDeletePop);
     }
+
 
 
     public void Back(View view){

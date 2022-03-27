@@ -14,11 +14,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class BackgroundWorkerEditEmail extends AsyncTask<String, Void, String> {
+public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String> {
 
     AlertDialog alertDialog;
     Context context;
-    public BackgroundWorkerEditEmail(Context ctx){
+    public BackgroundWorkerEditDetails(Context ctx){
         context = ctx;
     }
 
@@ -35,8 +35,8 @@ public class BackgroundWorkerEditEmail extends AsyncTask<String, Void, String> {
                 String lastname = params[2];
                 String regno = params[3];
                 String user_ID = params[4];
-                String user_Type = params[5];
-                String Email = params[6];
+               String user_Type = params[5];
+               // String Email = params[6];
 
 
 
@@ -55,9 +55,10 @@ public class BackgroundWorkerEditEmail extends AsyncTask<String, Void, String> {
                 String post_data = URLEncoder.encode("fName", "UTF-8") + "=" + URLEncoder.encode(firstname, "UTF-8")+ "&"
                         + URLEncoder.encode("lName", "UTF-8") + "=" + URLEncoder.encode(lastname, "UTF-8") + "&"
                         + URLEncoder.encode("regNo", "UTF-8") + "=" + URLEncoder.encode(regno, "UTF-8")+ "&"
-                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_ID, "UTF-8") + "&"
-                        + URLEncoder.encode("user_Type", "UTF-8") + "=" + URLEncoder.encode(user_Type, "UTF-8")
-                      + "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8")  ;
+                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_ID, "UTF-8")
+                        + "&"
+                        + URLEncoder.encode("user_Type", "UTF-8") + "=" + URLEncoder.encode(user_Type, "UTF-8");
+                   //   + "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8")  ;
 
 
                 bufferedWriter.write(post_data);

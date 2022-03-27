@@ -28,7 +28,7 @@ import java.net.URL;
 public class UserDeatails extends AppCompatActivity {
 
     String profileURL = "http://10.0.2.2/ALec/public/api/V1/getuserdetails.php";
-    String user_ID,user_Type,e_mail ;
+    String user_ID,user_Type ;
     ListView  profileListView;
     private static String[] user_id;
     private static String[] user_type;
@@ -172,7 +172,7 @@ public class UserDeatails extends AppCompatActivity {
         }
 
     }
-    public void EditProfile(View view){
+    public void Editprofile(View view){
         Intent EditProfiledetails = new Intent(this, EditProfiledetails.class);
         EditProfiledetails.putExtra("email",email);
         EditProfiledetails.putExtra("user_ID",user_ID);

@@ -198,30 +198,37 @@ public class TaggedTopicDiscussion extends AppCompatActivity {
 
     }
 
-    public void deletetag(View view) {
+  //  public void deletetag(View view) {
 
-        String Tag_id = tag_id;
-        String type = "Deletetag";
+   //     String Tag_id = tag_id;
+   //     String type = "Deletetag";
 
-        BackgroundWorkertag backgroundWorkertag = new BackgroundWorkertag(this);
-        String result;
-        try {
-            result = backgroundWorkertag.execute(type, Tag_id).get();
+   //     BackgroundWorkertag backgroundWorkertag = new BackgroundWorkertag(this);
+   //     String result;
+     //   try {
+          //  result = backgroundWorkertag.execute(type, Tag_id).get();
 
-            if(result.equals("Success")){
-                Intent LecQuizList = new Intent(this, TaggedName.class);
-                LecQuizList.putExtra("Student_id", student_id);
+        //    if(result.equals("Success")){
+         //       Intent LecQuizList = new Intent(this, TaggedName.class);
+         //       LecQuizList.putExtra("Student_id", student_id);
 
-                LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(LecQuizList);
-                finish();
+         //       LecQuizList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+          //      startActivity(LecQuizList);
+          //      finish();
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+         //   }
+       // } catch (Exception e) {
+       //     e.printStackTrace();
+      //  }
 
-    }
+  //  }
+  public void deletetag(View view) {
+      Intent TagDeletePop = new Intent(this, TagDeletePop.class);
+      TagDeletePop.putExtra("student_id",student_id);
+      TagDeletePop.putExtra("tag_name",tag_name);
+      TagDeletePop.putExtra("tag_id",tag_id);
+      startActivity(TagDeletePop);
+  }
 
 
     public void Back(View view){
