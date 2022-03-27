@@ -3,15 +3,27 @@ package com.example.alec;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,14 +31,18 @@ import java.util.Date;
 public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
 
     boolean doubleBackToExitPressedOnce = false;
-
     private CountDownTimer countDownTimer;
     private long timeLeft, initTime;
 
-    String qNo,question,qPubTime,qDur,userID,sessionID;
-    TextView Question,qTime;
-    Long ih,im,is,lh,lm,ls,h,m,s;
+    RadioGroup radioGroup;
+    RadioButton a1, a2, a3, a4, a5, radioButton;
+
+    String qNo, question, qPubTime, qDur, userID, sessionID;
+    TextView Question, qTime;
+    Long ih, im, is, lh, lm, ls, h, m, s;
     EditText Ans;
+
+    String pollMcqStuURL = "http://10.0.2.2/ALec/public/api/V1/pollmcqansstu.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +56,13 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
         qPubTime = intent.getStringExtra("qPubTime");
         qDur = intent.getStringExtra("qDur");
         sessionID = intent.getStringExtra("sID");
+
+        radioGroup = findViewById(R.id.radioGroup);
+        a1 = findViewById(R.id.radioButton1);
+        a2 = findViewById(R.id.radioButton2);
+        a3 = findViewById(R.id.radioButton3);
+        a4 = findViewById(R.id.radioButton4);
+        a5 = findViewById(R.id.radioButton5);
 
         String[] DateTime = qPubTime.split(" ");
         String[] Time = DateTime[1].split(":");
@@ -62,12 +85,12 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
         String Now = timeFormat.format(today);
         try {
             today = timeFormat.parse(Now);
-            last = timeFormat.parse(lh+":"+lm+":"+ls);
+            last = timeFormat.parse(lh + ":" + lm + ":" + ls);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        if (today.after(last)){
+        if (today.after(last)) {
             Intent polls = new Intent(getApplicationContext(), StuSessionPolls.class);
             polls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             polls.putExtra("sID", sessionID);
@@ -76,8 +99,7 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
             overridePendingTransition(0, 0);
             Toast.makeText(this, "Question Timeout..", Toast.LENGTH_SHORT).show();
             finish();
-        }
-        else {
+        } else {
 
             String[] NowTime = Now.split(":");
             ih = Long.parseLong(NowTime[0]);
@@ -100,65 +122,144 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    Intent polls = new Intent(getApplicationContext(), StuSessionPolls.class);
-                    polls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    polls.putExtra("sID", sessionID);
-                    polls.putExtra("UserID", userID);
-                    startActivity(polls);
-                    overridePendingTransition(0, 0);
-                    finish();
+                    int id = radioGroup.getCheckedRadioButtonId();
+                    radioButton = findViewById(id);
+                    String a = (String) radioButton.getText();
+                    if(a.isEmpty()){
+                        Intent polls = new Intent(getApplicationContext(), StuSessionPolls.class);
+                        polls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        polls.putExtra("sID", sessionID);
+                        polls.putExtra("UserID", userID);
+                        startActivity(polls);
+                        overridePendingTransition(0, 0);
+                        finish();
+                    }
+                    else{
+                        submit(a);
+                    }
                 }
             }.start();
         }
 
+        pollMcqStuURL = "http://10.0.2.2/ALec/public/api/V1/pollmcqansstu.php?ques_ID=" + qNo;
+        fetch_data_into_textviews();
+
     }
 
-    public void updateTime(){
+    private void fetch_data_into_textviews() {
+        class dbManager extends AsyncTask<String, Void, String> {
+
+            protected void onPostExecute(String data) {
+                try {
+                    JSONArray jsonArray = new JSONArray(data);
+                    JSONObject jsonObject = null;
+
+                    String[] Ans = new String[jsonArray.length()];
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jsonObject = jsonArray.getJSONObject(i);
+                        Ans[i] = jsonObject.getString("choice_name");
+
+                        if (i == 2) {
+                            a3.setVisibility(View.VISIBLE);
+                        }
+                        if (i == 3) {
+                            a4.setVisibility(View.VISIBLE);
+                        }
+                        if (i == 4) {
+                            a5.setVisibility(View.VISIBLE);
+                        }
+                        ((RadioButton) radioGroup.getChildAt(i)).setText(Ans[i]);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            protected String doInBackground(String... strings) {
+                try {
+                    URL url = new URL(strings[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
+
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+                    StringBuffer sb = new StringBuffer();
+                    String line = null;
+                    String result = null;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line + "\n");
+                    }
+                    bufferedInputStream.close();
+                    result = sb.toString();
+
+                    return result;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        }
+        dbManager dbManager = new dbManager();
+        dbManager.execute(pollMcqStuURL);
+    }
+
+    public void updateTime() {
         int hr = (int) timeLeft / 3600000;
         int min = (int) (timeLeft % 3600000) / 60000;
         int sec = (int) (timeLeft % 60000) / 1000;
 
         String timeLeft;
         timeLeft = hr + " : " + min + " : ";
-        if(sec < 10){
+        if (sec < 10) {
             timeLeft += "0";
         }
         timeLeft += sec;
         qTime.setText(timeLeft);
     }
 
-    public void Submit(View view){
-        if(ValidateAns(Ans)) {
-            String qno = qNo;
-            String userId = userID;
-            String ans = Ans.getText().toString();
-            String type = "ShortAns";
-
-            BackgroundWorkerSessionQuestion backgroundWorkerSessionQuestion = new BackgroundWorkerSessionQuestion(this);
-            String result;
-            try {
-                result = backgroundWorkerSessionQuestion.execute(type, qno, userId, ans).get();
-
-                if (result.equals("Success")) {
-                    Intent StuSessionPolls = new Intent(this, StuSessionPolls.class);
-                    StuSessionPolls.putExtra("qID", userID);
-                    StuSessionPolls.putExtra("qID", sessionID);
-                    StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(StuSessionPolls);
-                    finish();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public void Submit(View view) {
+        int id = radioGroup.getCheckedRadioButtonId();
+        if (ValidateAns(id)) {
+            radioButton = findViewById(id);
+            String a = (String) radioButton.getText();
+            submit(a);
         }
     }
 
-    private boolean ValidateAns(EditText ans){
-        String a = ans.getText().toString();
-        if(a.isEmpty()){
-            Toast.makeText(this, "Please enter an Answer", Toast.LENGTH_SHORT).show();
-            return false;}
-        else {return true;}
+    private void submit(String ans) {
+        String qno = qNo;
+        String userId = userID;
+        String type = "McqAnsAtmp";
+
+        BackgroundWorkerSessionQuestion backgroundWorkerSessionQuestion = new BackgroundWorkerSessionQuestion(this);
+        String result;
+        try {
+            result = backgroundWorkerSessionQuestion.execute(type, qno, userId, ans).get();
+
+            if (result.equals("Success")) {
+                Intent StuSessionPolls = new Intent(this, StuSessionPolls.class);
+                StuSessionPolls.putExtra("UserID", userID);
+                StuSessionPolls.putExtra("sID", sessionID);
+                StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(StuSessionPolls);
+                finish();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean ValidateAns(int id) {
+        if (id<0) {
+            Toast.makeText(this, "Please Select an Answer", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -166,14 +267,20 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
     public void onBackPressed() {
         TwoBack();
     }
-    public void Back(View view){
+
+    public void Back(View view) {
         TwoBack();
     }
 
-    public void TwoBack(){
+    public void TwoBack() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
+            Intent StuSessionPolls = new Intent(getApplicationContext(), StuSessionPolls.class);
+            StuSessionPolls.putExtra("sID", sessionID);
+            StuSessionPolls.putExtra("UserID", userID);
+            StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(StuSessionPolls);
+            overridePendingTransition(0, 0);
+            finish();
         }
 
         this.doubleBackToExitPressedOnce = true;
@@ -183,7 +290,7 @@ public class StuSessionPollsAttemptMCQ extends AppCompatActivity {
 
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }

@@ -298,14 +298,14 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="44dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Answer :"
+            android:text="Correct Answer :"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/e" />
 
         <TextView
             android:id="@+id/mcqAnswer"
-            android:layout_width="230dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:fontFamily="@font/poppins_medium"

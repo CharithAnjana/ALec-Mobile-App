@@ -24,7 +24,7 @@ public class StuSessionPollsShortResults extends AppCompatActivity {
         question = intent.getStringExtra("question");
         userID = intent.getStringExtra("userID");
 
-        Question = findViewById(R.id.shortQuestion);
+        Question = findViewById(R.id.textViewq);
         Question.setText(question);
     }
 

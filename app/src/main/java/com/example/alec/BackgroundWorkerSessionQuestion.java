@@ -157,6 +157,90 @@ public class BackgroundWorkerSessionQuestion extends AsyncTask<String, Void, Str
                 e.printStackTrace();
             }
         }
+        else if(type.equals("ShortAnsAtmp")){
+            try {
+                String question_id = params[1];
+                String user_id = params[2];
+                String ans = params[3];
+                String attempt_poll_URL = "http://10.0.2.2/ALec/public/api/V1/attemptsessionpoll.php?question_id="+question_id;
+                URL url = new URL(attempt_poll_URL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_id, "UTF-8") + "&"
+                        + URLEncoder.encode("question_id", "UTF-8") + "=" + URLEncoder.encode(question_id, "UTF-8") + "&"
+                        + URLEncoder.encode("ans", "UTF-8") + "=" + URLEncoder.encode(ans, "UTF-8") + "&"
+                        + URLEncoder.encode("f", "UTF-8") + "=" + URLEncoder.encode("open", "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if(type.equals("McqAnsAtmp")){
+            try {
+                String question_id = params[1];
+                String user_id = params[2];
+                String ans = params[3];
+                String attempt_poll_URL = "http://10.0.2.2/ALec/public/api/V1/attemptsessionpoll.php?question_id="+question_id;
+                URL url = new URL(attempt_poll_URL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_id, "UTF-8") + "&"
+                        + URLEncoder.encode("question_id", "UTF-8") + "=" + URLEncoder.encode(question_id, "UTF-8") + "&"
+                        + URLEncoder.encode("ans", "UTF-8") + "=" + URLEncoder.encode(ans, "UTF-8") + "&"
+                        + URLEncoder.encode("f", "UTF-8") + "=" + URLEncoder.encode("mcq", "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }
 

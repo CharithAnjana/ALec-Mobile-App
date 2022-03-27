@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StuViewAttemPollsQuesOpen"></activity>
+        <activity android:name=".StuAttemptQuizDetails"></activity>
+        <activity android:name=".StuViewAttemPollsQuesOpen" />
         <activity android:name=".StuViewAttemPollsQuesMcq" />
         <activity android:name=".StuViewAttemPollsQuestion" />
         <activity android:name=".StuViewAttemPolls" />
