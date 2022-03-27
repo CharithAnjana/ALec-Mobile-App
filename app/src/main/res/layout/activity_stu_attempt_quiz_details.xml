@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserDeatails">
+    tools:context=".StuAttemptQuizDetails">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_lec"
@@ -32,6 +32,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
+    <TextView
+        android:id="@+id/Stu"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins"
+        android:text="Student"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <TextView
         android:id="@+id/courseName"
@@ -40,7 +51,7 @@
         android:layout_marginTop="74dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Profile Details"
+        android:text="Course Name"
         android:textColor="#305890"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +59,18 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:id="@+id/quizName"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="First Name :"
-        android:textSize="18sp"
+        android:gravity="fill_vertical"
+        android:text="Quiz Name"
+        android:textColor="#305890"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/courseName" />
 
@@ -65,71 +80,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:text="Last Name : "
+        android:text="Duration : "
         android:textSize="18sp"
         android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/quizName" />
+
 
     <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Reg No : "
-        android:textSize="18sp"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/RegNo"
+        android:id="@+id/duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="19000000"
-        android:textColor="#305890"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Email :"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppins_medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/FirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Lec"
-        android:textColor="#305890"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/LastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Alec"
+        android:text="00:30:00"
         android:textColor="#305890"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
@@ -137,19 +101,6 @@
         app:layout_constraintTop_toTopOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="lec@gmail.com"
-        android:textColor="#305890"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewPub"
@@ -158,13 +109,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Telephone :"
+        android:text="Publish Date :"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/TP"
+        android:id="@+id/publishDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -176,20 +127,43 @@
         app:layout_constraintStart_toEndOf="@+id/textViewPub"
         app:layout_constraintTop_toTopOf="@+id/textViewPub" />
 
+    <TextView
+        android:id="@+id/textViewClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Close Date : "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPub" />
+
+    <TextView
+        android:id="@+id/closeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="N/A"
+        android:textColor="#305890"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewClose"
+        app:layout_constraintStart_toEndOf="@+id/textViewClose"
+        app:layout_constraintTop_toTopOf="@+id/textViewClose" />
 
     <Button
         android:id="@+id/scheduleBtn"
         android:layout_width="170dp"
         android:layout_height="70dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins_medium"
-        android:onClick="EditProfile"
-        android:text="Edit Profile"
+        android:onClick="AttemptQuiz"
+        android:text="Attempt QUIZ"
         android:textSize="13dp"
         app:backgroundTint="#305890"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPub" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewClose" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

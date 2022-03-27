@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StuActiveQuiz">
+    tools:context=".StuViewAttemPolls">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="142dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_stu"
@@ -30,10 +30,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Active Quizzes"
+            android:fontFamily="@font/poppins_light"
+            android:text="Select Session"
             android:textColor="#1B3B56"
-            android:textSize="25sp"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,32 +68,14 @@
 
 
     <ListView
-        android:id="@+id/quizList"
+        android:id="@+id/sessionList"
         android:layout_width="wrap_content"
-        android:layout_height="493dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginBottom="8dp"
-            android:onClick="Refresh"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/refresh_ic1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

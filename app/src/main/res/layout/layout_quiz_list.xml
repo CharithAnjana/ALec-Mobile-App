@@ -45,6 +45,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvQN"
             tools:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tvQDur"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="dur"
+            android:textSize="1dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQN"
+            tools:visibility="invisible" />
+        <TextView
+            android:id="@+id/tvQAt"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="dur"
+            android:textSize="1dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQN"
+            tools:visibility="invisible" />
+        <TextView
+            android:id="@+id/tvQMks"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="dur"
+            android:textSize="1dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQN"
+            tools:visibility="invisible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

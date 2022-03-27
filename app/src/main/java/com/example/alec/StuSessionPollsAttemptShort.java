@@ -103,13 +103,19 @@ public class StuSessionPollsAttemptShort extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    Intent polls = new Intent(getApplicationContext(), StuSessionPolls.class);
-                    polls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    polls.putExtra("sID", sessionID);
-                    polls.putExtra("UserID", userID);
-                    startActivity(polls);
-                    overridePendingTransition(0, 0);
-                    finish();
+                    String a = Ans.getText().toString();
+                    if(a.isEmpty()){
+                        Intent polls = new Intent(getApplicationContext(), StuSessionPolls.class);
+                        polls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        polls.putExtra("sID", sessionID);
+                        polls.putExtra("UserID", userID);
+                        startActivity(polls);
+                        overridePendingTransition(0, 0);
+                        finish();
+                    }
+                    else{
+                        submit(a);
+                    }
                 }
             }.start();
         }
@@ -131,27 +137,8 @@ public class StuSessionPollsAttemptShort extends AppCompatActivity {
 
     public void Submit(View view){
         if(ValidateAns(Ans)) {
-            String qno = qNo;
-            String userId = userID;
             String ans = Ans.getText().toString();
-            String type = "ShortAns";
-
-            BackgroundWorkerSessionQuestion backgroundWorkerSessionQuestion = new BackgroundWorkerSessionQuestion(this);
-            String result;
-            try {
-                result = backgroundWorkerSessionQuestion.execute(type, qno, userId, ans).get();
-
-                if (result.equals("Success")) {
-                    Intent StuSessionPolls = new Intent(this, StuSessionPolls.class);
-                    StuSessionPolls.putExtra("qID", userID);
-                    StuSessionPolls.putExtra("qID", sessionID);
-                    StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(StuSessionPolls);
-                    finish();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            submit(ans);
         }
     }
 
@@ -171,10 +158,38 @@ public class StuSessionPollsAttemptShort extends AppCompatActivity {
         TwoBack();
     }
 
+    private void submit(String ans){
+        String qno = qNo;
+        String userId = userID;
+        String type = "ShortAnsAtmp";
+
+        BackgroundWorkerSessionQuestion backgroundWorkerSessionQuestion = new BackgroundWorkerSessionQuestion(this);
+        String result;
+        try {
+            result = backgroundWorkerSessionQuestion.execute(type, qno, userId, ans).get();
+
+            if (result.equals("Success")) {
+                Intent StuSessionPolls = new Intent(this, StuSessionPolls.class);
+                StuSessionPolls.putExtra("UserID", userID);
+                StuSessionPolls.putExtra("sID", sessionID);
+                StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(StuSessionPolls);
+                finish();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void TwoBack(){
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
+            Intent StuSessionPolls = new Intent(getApplicationContext(), StuSessionPolls.class);
+            StuSessionPolls.putExtra("sID",sessionID);
+            StuSessionPolls.putExtra("UserID",userID);
+            StuSessionPolls.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(StuSessionPolls);
+            overridePendingTransition(0, 0);
+            finish();
         }
 
         this.doubleBackToExitPressedOnce = true;

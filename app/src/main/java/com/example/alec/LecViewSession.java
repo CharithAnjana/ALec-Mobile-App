@@ -49,6 +49,7 @@ public class LecViewSession extends AppCompatActivity {
     private static String[] question;
     private static String[] Status;
     private static String[] qCnt;
+    private static String[] ans;
 
     private static String[] qNof;
     private static String[] stIdf;
@@ -115,7 +116,7 @@ public class LecViewSession extends AppCompatActivity {
                     LecSessionViewPollsMcq.putExtra("cID", cID);
                     LecSessionViewPollsMcq.putExtra("cName", cName);
                     LecSessionViewPollsMcq.putExtra("qNo", qNo[i]);
-                    //LecSessionViewPollsMcq.putExtra("qType",qType[i]);
+                    LecSessionViewPollsMcq.putExtra("qAns",ans[i]);
                     LecSessionViewPollsMcq.putExtra("question", question[i]);
                     LecSessionViewPollsMcq.putExtra("qCnt", qCnt[i]);
                     //LecSessionViewPollsMcq.putExtra("qPubTime",qPubTime[i]);
@@ -129,7 +130,7 @@ public class LecViewSession extends AppCompatActivity {
                     LecSessionViewPollsShort.putExtra("cID", cID);
                     LecSessionViewPollsShort.putExtra("cName", cName);
                     LecSessionViewPollsShort.putExtra("qNo", qNo[i]);
-                    //LecSessionViewPollsShort.putExtra("qType",qType[i]);
+                    LecSessionViewPollsShort.putExtra("qAns",ans[i]);
                     LecSessionViewPollsShort.putExtra("question", question[i]);
                     LecSessionViewPollsShort.putExtra("qCnt", qCnt[i]);
                     //LecSessionViewPollsShort.putExtra("qPubTime",qPubTime[i]);
@@ -171,6 +172,7 @@ public class LecViewSession extends AppCompatActivity {
                     question = new String[jsonArray.length()];
                     Status = new String[jsonArray.length()];
                     qCnt = new String[jsonArray.length()];
+                    ans = new String[jsonArray.length()];
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
@@ -179,6 +181,7 @@ public class LecViewSession extends AppCompatActivity {
                         question[i] = jsonObject.getString("question");
                         Status[i] = jsonObject.getString("status");
                         qCnt[i] = jsonObject.getString("question_count");
+                        ans[i] = jsonObject.getString("answer");
 
                         if (Status[i].equals("T")) {
                             Status[i] = "\uD83D\uDC41";
@@ -188,7 +191,7 @@ public class LecViewSession extends AppCompatActivity {
                     }
 
                     MyAdepter1 myAdepter = new MyAdepter1(getApplicationContext(), qNo, qType, question
-                            , Status, qCnt);
+                            , Status, qCnt, ans);
                     sessionPollsLV.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -307,9 +310,10 @@ public class LecViewSession extends AppCompatActivity {
         String[] question;
         String[] Status;
         String[] qDur;
+        String[] ans;
 
         MyAdepter1(Context context, String[] qNo, String[] qType, String[] question, String[] Status
-                , String[] qDur) {
+                , String[] qDur, String[] ans) {
             super(context, R.layout.layout_lec_session_polls, R.id.tvQNO, qNo);
             this.context = context;
             this.qNo = qNo;
@@ -317,6 +321,7 @@ public class LecViewSession extends AppCompatActivity {
             this.qType = qType;
             this.Status = Status;
             this.qDur = qDur;
+            this.ans = ans;
         }
 
         @NonNull
@@ -331,14 +336,14 @@ public class LecViewSession extends AppCompatActivity {
             TextView qt = row.findViewById(R.id.tvQT);
             TextView qP = row.findViewById(R.id.points);
             TextView qD = row.findViewById(R.id.tvQDU);
-
+            TextView an = row.findViewById(R.id.tvQPT);
 
             qt.setText(qType[position]);
             qP.setText(Status[position]);
             qD.setText(qDur[position]);
             qno.setText(qNo[position]);
             ques.setText(question[position]);
-
+            an.setText(ans[position]);
 
             return row;
         }
