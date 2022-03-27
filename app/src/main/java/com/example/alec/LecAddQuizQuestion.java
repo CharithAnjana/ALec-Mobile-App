@@ -30,7 +30,7 @@ import java.net.URL;
 public class LecAddQuizQuestion extends AppCompatActivity {
 
     TextView qID, cName, quizname;
-    String quizID, quizName, courseName, qtCount, qDuHr;
+    String quizID, quizName, courseName, qtCount, qDuHr, cID;
     ListView quizListView;
     String questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php";
 
@@ -71,6 +71,7 @@ public class LecAddQuizQuestion extends AppCompatActivity {
 
         Intent intent =getIntent();
         quizID = intent.getStringExtra("qID");
+        cID = intent.getStringExtra("cID");
         courseName = intent.getStringExtra("cName");
         quizName = intent.getStringExtra("qName");
         qDuHr = intent.getStringExtra("qDuration");
@@ -87,20 +88,36 @@ public class LecAddQuizQuestion extends AppCompatActivity {
                 int count = Integer.parseInt(chCount[i]);
                 if(count == 1){
                     Intent LecQuizQuestionEditShort = new Intent(getApplicationContext(), LecQuizQuestionEditShort.class);
+                    LecQuizQuestionEditShort.putExtra("quizID",quizID);
                     LecQuizQuestionEditShort.putExtra("quizName",quizName);
+                    LecQuizQuestionEditShort.putExtra("courseName",courseName);
+                    LecQuizQuestionEditShort.putExtra("qDuHr",qDuHr);
                     LecQuizQuestionEditShort.putExtra("qtID",qtID[i]);
                     LecQuizQuestionEditShort.putExtra("question",question[i]);
                     LecQuizQuestionEditShort.putExtra("chName1",chName1[i]);
                     LecQuizQuestionEditShort.putExtra("chPoint1",chPoint1[i]);
+                    LecQuizQuestionEditShort.putExtra("Back","Add");
                     startActivity(LecQuizQuestionEditShort);
                 }
                 else {
                     Intent LecQuizQuestionEditMcq = new Intent(getApplicationContext(), LecQuizQuestionEditMcq.class);
+                    LecQuizQuestionEditMcq.putExtra("quizID",quizID);
                     LecQuizQuestionEditMcq.putExtra("quizName",quizName);
+                    LecQuizQuestionEditMcq.putExtra("courseName",courseName);
+                    LecQuizQuestionEditMcq.putExtra("qDuHr",qDuHr);
                     LecQuizQuestionEditMcq.putExtra("qtID",qtID[i]);
                     LecQuizQuestionEditMcq.putExtra("question",question[i]);
                     LecQuizQuestionEditMcq.putExtra("chName1",chName1[i]);
                     LecQuizQuestionEditMcq.putExtra("chPoint1",chPoint1[i]);
+                    LecQuizQuestionEditMcq.putExtra("chName2",chName2[i]);
+                    LecQuizQuestionEditMcq.putExtra("chPoint2",chPoint2[i]);
+                    LecQuizQuestionEditMcq.putExtra("chName3",chName3[i]);
+                    LecQuizQuestionEditMcq.putExtra("chPoint3",chPoint3[i]);
+                    LecQuizQuestionEditMcq.putExtra("chName4",chName4[i]);
+                    LecQuizQuestionEditMcq.putExtra("chPoint4",chPoint4[i]);
+                    LecQuizQuestionEditMcq.putExtra("chName5",chName5[i]);
+                    LecQuizQuestionEditMcq.putExtra("chPoint5",chPoint5[i]);
+                    LecQuizQuestionEditMcq.putExtra("Back","Add");
                     startActivity(LecQuizQuestionEditMcq);
                 }
             }
@@ -108,6 +125,13 @@ public class LecAddQuizQuestion extends AppCompatActivity {
     }
 
     public void Back(View view){
+        Intent LecViewQuiz = new Intent(this,LecViewQuizDetailsDraft.class);
+        LecViewQuiz.putExtra("qID",quizID);
+        LecViewQuiz.putExtra("qName",quizName);
+        LecViewQuiz.putExtra("cID",cID);
+        LecViewQuiz.putExtra("cName",courseName);
+        LecViewQuiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(LecViewQuiz);
         finish();
     }
 
@@ -116,6 +140,8 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         LecAddQuizMcq.putExtra("quizID",quizID);
         LecAddQuizMcq.putExtra("cName",courseName);
         LecAddQuizMcq.putExtra("quizName",quizName);
+        LecAddQuizMcq.putExtra("qDuHr",qDuHr);
+        LecAddQuizMcq.putExtra("Back","Add");
         startActivity(LecAddQuizMcq);
     }
 
@@ -124,6 +150,8 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         LecAddQuizShort.putExtra("quizID",quizID);
         LecAddQuizShort.putExtra("cName",courseName);
         LecAddQuizShort.putExtra("quizName",quizName);
+        LecAddQuizShort.putExtra("qDuHr",qDuHr);
+        LecAddQuizShort.putExtra("Back","Add");
         startActivity(LecAddQuizShort);
     }
 
@@ -137,7 +165,6 @@ public class LecAddQuizQuestion extends AppCompatActivity {
         }
     }
 
-
     public Boolean ValidateQuiz(ListView listView){
         int c = listView.getAdapter().getCount();
         if(c>0){
@@ -148,9 +175,6 @@ public class LecAddQuizQuestion extends AppCompatActivity {
             return false;
         }
     }
-
-
-
 
     //load quiz question to the list view
     private void fetch_data_into_array(ListView topicListView) {

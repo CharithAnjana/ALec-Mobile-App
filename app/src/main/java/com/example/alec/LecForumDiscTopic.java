@@ -102,7 +102,7 @@ public class LecForumDiscTopic extends AppCompatActivity {
                         ques[i] = jsonObject.getString("question");
                         userType[i] = jsonObject.getString("user_type");
                         if (userType[i].equals("lec")){
-                            points[i]="∞";
+                            points[i]="-";
                         }
                         uName[i] = jsonObject.getString("user_name");
                         date[i] = jsonObject.getString("post_time");

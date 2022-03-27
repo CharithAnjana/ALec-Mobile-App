@@ -24,11 +24,6 @@
             android:icon="@drawable/course_icon"
             />
         <item
-            android:id="@+id/nav_review"
-            android:title="Review"
-            android:icon="@drawable/review_icon"
-            />
-        <item
             android:id="@+id/nav_forum"
             android:title="Forum"
             android:icon="@drawable/forum_icon"

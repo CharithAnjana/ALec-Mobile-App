@@ -60,6 +60,7 @@ public class LecQuizScheduleOption extends AppCompatActivity {
         LecScheduleQuiz.putExtra("qID",qID);
         LecScheduleQuiz.putExtra("qName",qName);
         LecScheduleQuiz.putExtra("qDuHr",qDuHr);
+        LecScheduleQuiz.putExtra("Val","Now");
         startActivity(LecScheduleQuiz);
     }
 

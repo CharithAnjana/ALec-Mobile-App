@@ -30,7 +30,7 @@ public class LecViewQuiz extends AppCompatActivity {
 
     String questionURL = "http://10.0.2.2/ALec/public/api/V1/viewquizquestion.php";
 
-    String qID,qName,cID,cName,User_ID,tID,tName,qtCount;
+    String qID,qName,cID,cName,User_ID,tID,tName,qtCount,qDuhr;
     TextView Quiz;
     ListView qQuestionListView;
 
@@ -74,6 +74,7 @@ public class LecViewQuiz extends AppCompatActivity {
         cID = intent.getStringExtra("cID");
         cName = intent.getStringExtra("cName");
         User_ID = intent.getStringExtra("UserID");
+        qDuhr = intent.getStringExtra("qDuhr");
 
         Quiz.setText(qName);
 
@@ -351,6 +352,20 @@ public class LecViewQuiz extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent LecViewQuizDetails = new Intent(this,LecViewQuizDetails.class);
+        LecViewQuizDetails.putExtra("qID",qID);
+        LecViewQuizDetails.putExtra("qName",qName);
+        LecViewQuizDetails.putExtra("tID",tID);
+        LecViewQuizDetails.putExtra("tName",tName);
+        LecViewQuizDetails.putExtra("cID",cID);
+        LecViewQuizDetails.putExtra("cName",cName);
+        LecViewQuizDetails.putExtra("UserID",User_ID);
+        LecViewQuizDetails.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(LecViewQuizDetails);
+    }
+
     public void Back(View view){
         Intent LecViewQuizDetails = new Intent(this,LecViewQuizDetails.class);
         LecViewQuizDetails.putExtra("qID",qID);
@@ -376,6 +391,15 @@ public class LecViewQuiz extends AppCompatActivity {
     }
 
     public void EditQuiz(View view){
-
+        Intent LecAddQuizQuestionEdit = new Intent(this,LecAddQuizQuestionEdit.class);
+        LecAddQuizQuestionEdit.putExtra("qID",qID);
+        LecAddQuizQuestionEdit.putExtra("qName",qName);
+        LecAddQuizQuestionEdit.putExtra("cID",cID);
+        LecAddQuizQuestionEdit.putExtra("cName",cName);
+        LecAddQuizQuestionEdit.putExtra("tID",tID);
+        LecAddQuizQuestionEdit.putExtra("tName",tName);
+        LecAddQuizQuestionEdit.putExtra("UserID",User_ID);
+        LecAddQuizQuestionEdit.putExtra("qDuration",qDuhr);
+        startActivity(LecAddQuizQuestionEdit);
     }
 }
