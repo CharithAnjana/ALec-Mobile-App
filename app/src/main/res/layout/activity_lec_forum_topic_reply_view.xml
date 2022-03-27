@@ -189,17 +189,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <TextView
                 android:id="@+id/Reply"
-                android:layout_width="wrap_content"
+                android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:text="reply"
-                android:textColor="@color/black"/>
-
-
-
+                android:textColor="@color/black"
+                android:textSize="19sp" />
 
             <Button
                 android:id="@+id/deleter"

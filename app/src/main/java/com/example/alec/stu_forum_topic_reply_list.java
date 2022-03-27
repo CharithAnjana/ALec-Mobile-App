@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -65,6 +66,19 @@ public class stu_forum_topic_reply_list extends AppCompatActivity {
         questionListView = (ListView)findViewById(R.id.replyList);
         forumReplyURL = "http://10.0.2.2/ALec/public/api/V1/viewforumreply.php?topic_ID="+tID;
         fetch_data_into_array(questionListView);
+
+        questionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent StuForumReplyView = new Intent(getApplicationContext(), StuForumReplyView.class);
+                StuForumReplyView.putExtra("fName", sName);
+                StuForumReplyView.putExtra("uName", uName);
+                StuForumReplyView.putExtra("date", date);
+                StuForumReplyView.putExtra("ques", ques);
+                StuForumReplyView.putExtra("reply", reply[i]);
+                startActivity(StuForumReplyView);
+            }
+        });
     }
 
 
