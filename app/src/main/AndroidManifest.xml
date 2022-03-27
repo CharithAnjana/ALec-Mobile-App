@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StuAttemptQuizDetails"></activity>
+        <activity android:name=".StuQuizAttemptResult"></activity>
+        <activity
+            android:name=".StuAttemptQuizConfirmPopup"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".StuAttemptQuizDetails" />
         <activity android:name=".StuViewAttemPollsQuesOpen" />
         <activity android:name=".StuViewAttemPollsQuesMcq" />
         <activity android:name=".StuViewAttemPollsQuestion" />
@@ -22,7 +26,6 @@
         <activity android:name=".StuViewQuizList" />
         <activity android:name=".StuMycourseSelectOption" />
         <activity
-
             android:name=".TagDeletePop"
             android:theme="@style/Theme.ALec.PopUp" />
         <activity
@@ -80,7 +83,6 @@
         <activity android:name=".StuSessionSelect" />
         <activity android:name=".InitPasswordChange" />
         <activity android:name=".Notification" />
-
         <activity android:name=".StuActiveQuiz" />
         <activity
             android:name=".StuForumCourseSelect"

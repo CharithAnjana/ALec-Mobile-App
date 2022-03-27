@@ -35,20 +35,20 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         drawerLayout = findViewById(R.id.drawer_layout_stu);
         navigationView = findViewById(R.id.nav_bar_stu);
         toolbar = findViewById(R.id.toolbar_stu);
-        BtnMyCour = findViewById(R.id.BtnMyCour);
 
-        BtnAtmptQu = findViewById(R.id.BtnAtmptQu);
+        BtnMyCour = findViewById(R.id.BtnMyCour);
+        //BtnAtmptQu = findViewById(R.id.BtnAtmptQu);
         BtnMyAct = findViewById(R.id.BtnMyAct);
         BtnForum = findViewById(R.id.BtnForum);
         BtnSession = findViewById(R.id.BtnSess);
 
-        BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent StuActiveQuiz = new Intent(StuHomeActivity.this, StuActiveQuiz.class);
-                startActivity(StuActiveQuiz);
-            }
-        });
+        //BtnAtmptQu.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View v) {
+                //Intent StuActiveQuiz = new Intent(StuHomeActivity.this, StuActiveQuiz.class);
+                //startActivity(StuActiveQuiz);
+            //}
+        //});
 
         //BtnForum = findViewById(R.id.BtnForum);
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +124,10 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
                 Intent StuSessionSelect = new Intent(StuHomeActivity.this,StuSessionSelect.class);
                 startActivity(StuSessionSelect);
                 break;
-            case R.id.nav_Atquiz:
-                Intent StuActiveQuiz = new Intent(getApplicationContext(), StuActiveQuiz.class);
-                startActivity(StuActiveQuiz);
-                break;
+            //case R.id.nav_Atquiz:
+                //Intent StuActiveQuiz = new Intent(getApplicationContext(), StuActiveQuiz.class);
+                //startActivity(StuActiveQuiz);
+                //break;
             case R.id.nav_course:
                 Intent StuMyCourses = new Intent(StuHomeActivity.this, StuMyCourses.class);
                 startActivity(StuMyCourses);
