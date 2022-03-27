@@ -22,6 +22,43 @@
         <activity android:name=".StuViewQuizList" />
         <activity android:name=".StuMycourseSelectOption" />
         <activity
+
+            android:name=".TagDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".Edit_Lecturer_Details"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedStuForumreplyList"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedTopicDiscussion"
+            android:exported="false" />
+        <activity
+            android:name=".Createnewtag"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedTopicList"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedName"
+            android:exported="false" />
+        <activity
+            android:name=".LecDetails"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfiledetails"
+            android:exported="false" />
+        <activity
+            android:name=".UserDeatails"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumReplyDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecForumTopicReplyView"
+            android:exported="false" />
+        <activity
             android:name=".LecQuizScheduleCancelPop"
             android:theme="@style/Theme.ALec.PopUp" />
         <activity
@@ -43,6 +80,7 @@
         <activity android:name=".StuSessionSelect" />
         <activity android:name=".InitPasswordChange" />
         <activity android:name=".Notification" />
+
         <activity android:name=".StuActiveQuiz" />
         <activity
             android:name=".StuForumCourseSelect"

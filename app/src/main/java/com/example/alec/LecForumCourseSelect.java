@@ -155,6 +155,8 @@ public class LecForumCourseSelect extends AppCompatActivity {
     }
 
     public void Back(View view){
+        Intent LecHomeActivity = new Intent(this, LecHomeActivity.class);
+        startActivity(LecHomeActivity);
         finish();
     }
 }

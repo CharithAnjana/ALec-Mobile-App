@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-public class LecForumTopicDeletePop extends AppCompatActivity {
-    String tID,sName,date,uName,ques, result, cID,fID,cName,User_ID;;
+public class LecForumReplyDeletePop extends AppCompatActivity {
+    String tID,sName,date,uName,ques, result, cID,fID,cName,User_ID,rID,point,ustype,reply;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_forum_topic_delete_pop);
+        setContentView(R.layout.activity_lec_forum_reply_delete_pop);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -26,35 +26,52 @@ public class LecForumTopicDeletePop extends AppCompatActivity {
         // params.y = -20;
 
         // getWindow().setAttributes(params);
-        Intent intent =getIntent();
 
+
+        Intent intent = getIntent();
+        rID = intent.getStringExtra("rID");
         tID = intent.getStringExtra("tID");
         sName = intent.getStringExtra("sName");
-        date= intent.getStringExtra("date");
         uName = intent.getStringExtra("uName");
+        date = intent.getStringExtra("date");
         ques = intent.getStringExtra("ques");
         cID = intent.getStringExtra("cID");
         fID = intent.getStringExtra("fID");
         cName = intent.getStringExtra("cName");
         User_ID = intent.getStringExtra("User_ID");
+        point = intent.getStringExtra("point");
+        ustype = intent.getStringExtra("ustype");
+        reply = intent.getStringExtra("reply");
     }
     public void DeleteConfirm(View view){
-        String topic_ID = tID;
-        String type = "DeleteTopic";
+        String reply_id = rID;
+        String type = "DeleteReply";
 
         BackgroundWorkerForum backgroundWorkerForum  = new  BackgroundWorkerForum(this);
         String result;
         try {
-            result = backgroundWorkerForum.execute(type, topic_ID).get();
+            result = backgroundWorkerForum.execute(type, reply_id).get();
 
             if(result.equals("Success")){
-                Intent LecCourseTopics = new Intent(this,LecForumDiscTopic.class);
-                LecCourseTopics.putExtra("fID",fID);
-                LecCourseTopics.putExtra("cID",cID);
-                LecCourseTopics.putExtra("cName",cName);
-                LecCourseTopics.putExtra("UserID",User_ID);
-                LecCourseTopics.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(LecCourseTopics);
+                Intent LecForumTopicReplyView = new Intent(this,LecForumTopicReplyList.class);
+
+                LecForumTopicReplyView.putExtra("tID",rID);
+                LecForumTopicReplyView.putExtra("tID",tID);
+                LecForumTopicReplyView.putExtra("sName",sName);
+                LecForumTopicReplyView.putExtra("uName",uName);
+                LecForumTopicReplyView.putExtra("date",date);
+                LecForumTopicReplyView.putExtra("ques",ques);
+                LecForumTopicReplyView.putExtra("cID",cID);
+                LecForumTopicReplyView.putExtra("cName",cName);
+                LecForumTopicReplyView.putExtra("User_ID",User_ID);
+                LecForumTopicReplyView.putExtra("point",point);
+                LecForumTopicReplyView.putExtra("ustype",ustype);
+               // LecForumTopicReplyView.putExtra("reply",reply);
+
+
+
+
+                startActivity(LecForumTopicReplyView);
                 finish();
             }
         } catch (Exception e) {
