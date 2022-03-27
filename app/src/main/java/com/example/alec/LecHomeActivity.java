@@ -159,6 +159,12 @@ public class LecHomeActivity extends AppCompatActivity implements NavigationView
                 startActivity(Logout);
                 finish();
                 break;
+
+            case R.id.nav_Profilel:
+                Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);
+                startActivity(UserDeatails);
+                finish();
+                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

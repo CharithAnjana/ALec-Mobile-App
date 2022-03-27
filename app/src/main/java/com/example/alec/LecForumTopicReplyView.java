@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -27,29 +26,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class LecForumTopicReplyList extends AppCompatActivity {
+public class LecForumTopicReplyView extends AppCompatActivity {
+    String forumReplyURL = "http://10.0.2.2/ALec/public/api/V1/reply.php";
 
-    String forumReplyURL = "http://10.0.2.2/ALec/public/api/V1/viewforumreply.php";
-    String forumReplypointURL = "http://10.0.2.2/ALec/public/api/V1/stureplypoint.php";
-
-    ListView questionListView;
-    String tID,sName,uName,date,ques;
-    TextView FTopic, textViewDate, textViewUserName, textViewQuestion, textviewPoints;
-    Button btn,btnPoint;
+    String tID,sName,uName,date,ques,reply,rID;
     String cID,fID,cName,User_ID,point,ustype,flag = "1";
-
-    private static String[] rID;
-    private static String[] reply;
-    private static String[] userName;
-    private static String[] userType;
+    TextView Username,Date,Question,ForumTopic,Reply,x;
+    TextView FTopic,textViewDate,textViewUserName,textviewPoints;
+    Button btn,btnPoint;
+    ListView replyListView;
+    private static String[] topic_id;
+    private static String[] reply_id;
     private static String[] points;
+    private static String[] post_time;
+    private static String[] user_id;
+    private static String[] Reply1;
+    private static String[] RID;
+    private static String[] Usertype;
+    private static String[] userName;
     private static String[] postDate;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lec_forum_topic_reply_list);
-        btn=findViewById(R.id.delete);
+        setContentView(R.layout.activity_lec_forum_topic_reply_view);
+
+        btn = findViewById(R.id.deleter);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +62,10 @@ public class LecForumTopicReplyList extends AppCompatActivity {
             }
         });
 
-        Intent intent =getIntent();
+
+
+        Intent intent = getIntent();
+        rID = intent.getStringExtra("rID");
         tID = intent.getStringExtra("tID");
         sName = intent.getStringExtra("sName");
         uName = intent.getStringExtra("uName");
@@ -69,38 +76,43 @@ public class LecForumTopicReplyList extends AppCompatActivity {
         cName = intent.getStringExtra("cName");
         User_ID = intent.getStringExtra("User_ID");
         point = intent.getStringExtra("point");
-        ustype = intent.getStringExtra("user_type");
+        ustype = intent.getStringExtra("ustype");
+        reply = intent.getStringExtra("reply");
 
-        FTopic = findViewById(R.id.ForumTopic);
-        textViewDate = findViewById(R.id.date);
-        textViewUserName = findViewById(R.id.userName);
-        textViewQuestion = findViewById(R.id.ForumQuestion);
-        textviewPoints = findViewById(R.id.points);
-        btnPoint =findViewById(R.id.addPoints);
+        Username = findViewById(R.id.userName);
+        Username.setText(uName);
 
+        Date = findViewById(R.id.date);
+        Date.setText(date);
+
+        Question = findViewById(R.id.ForumQuestion);
+        Question.setText(ques);
+
+        ForumTopic = findViewById(R.id.ForumTopic);
+        ForumTopic.setText(sName);
+
+         Reply=findViewById(R.id.Reply);
+        Reply.setText(reply);
+
+        btnPoint=findViewById(R.id.addPoints);
+       // btnPoint.setText(point);
+
+        x=findViewById(R.id.points);
+        x.setText(point);
         //To disable point button
-        if(ustype.equals("lec")){
-            btnPoint.setEnabled(false);
-        }
-
-        FTopic.setText(sName);
-        textViewDate.setText(date);
-        textViewUserName.setText(uName);
-        textViewQuestion.setText(ques);
-        textviewPoints.setText(point);
-
-        questionListView = (ListView)findViewById(R.id.replyList);
-        forumReplyURL = "http://10.0.2.2/ALec/public/api/V1/viewforumreply.php?topic_ID="+tID;
-       // forumReplypointURL = "http://10.0.2.2/ALec/public/api/V1/stureplypoint.php?topic_ID="+tID+"user_type="+ustype;
-        fetch_data_into_array(questionListView);
+        //if(ustype.equals("lec")){
+       // btnPoint.setEnabled(false);
+      // }
 
 
-        //To check user given points
+
+
+
         String type = "TopicPoint";
-        BackgroundWorkerCheckPoints BgWCheckPoints = new BackgroundWorkerCheckPoints(this);
+        BackgroundWorkerReplyCheckPoints BgWCheckPoints = new BackgroundWorkerReplyCheckPoints(this);
         String result;
         try {
-            result = BgWCheckPoints.execute(type, tID, User_ID).get();
+            result = BgWCheckPoints.execute(type, rID, User_ID).get();
 
             if(result.equals("point")){
                 flag = "0";
@@ -110,44 +122,30 @@ public class LecForumTopicReplyList extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        questionListView .setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuForumTopicReplyList = new Intent(getApplicationContext(), LecForumTopicReplyView.class);
-                StuForumTopicReplyList.putExtra("tID",tID);
-                StuForumTopicReplyList.putExtra("sName",sName);
-                StuForumTopicReplyList.putExtra("uName",uName);
-                StuForumTopicReplyList.putExtra("date",date);
-                StuForumTopicReplyList.putExtra("ques",ques);
-                StuForumTopicReplyList.putExtra("cID",cID);
-                StuForumTopicReplyList.putExtra("fID",fID);
-                StuForumTopicReplyList.putExtra("cName",cName);
-                StuForumTopicReplyList.putExtra("User_ID",User_ID);
-                StuForumTopicReplyList.putExtra("point",point);
-                StuForumTopicReplyList.putExtra("ustype",ustype);
-                StuForumTopicReplyList.putExtra("reply",reply[i]);
-                StuForumTopicReplyList.putExtra("rID",rID[i]);
 
 
-                startActivity(StuForumTopicReplyList);
-            }
-        });
     }
     private void openpopupwindow(){
-        Intent openpopupwindow = new Intent(LecForumTopicReplyList.this, LecForumTopicDeletePop.class);
+        Intent openpopupwindow = new Intent(LecForumTopicReplyView.this, LecForumReplyDeletePop.class);
 
+        openpopupwindow.putExtra("rID",rID);
         openpopupwindow.putExtra("tID",tID);
-        openpopupwindow.putExtra("sName",sName);
-        openpopupwindow.putExtra("uName",uName);
-        openpopupwindow.putExtra("fID",fID);
+       openpopupwindow.putExtra("sName",sName);
+       openpopupwindow.putExtra("date",date);
+        openpopupwindow.putExtra("ques",ques);
         openpopupwindow.putExtra("cID",cID);
-        openpopupwindow.putExtra("cName",cName);
+       openpopupwindow.putExtra("fID",fID);
         openpopupwindow.putExtra("User_ID",User_ID);
+        openpopupwindow.putExtra("point",point);
+        openpopupwindow.putExtra("ustype",ustype);
+        openpopupwindow.putExtra("reply",reply);
+        openpopupwindow.putExtra("uName",uName);
+        openpopupwindow.putExtra("cName",cName);
+
 
 
         startActivity(openpopupwindow);
     }
-
     private void fetch_data_into_array(ListView topicListView) {
         class dbManager extends AsyncTask<String,Void,String> {
 
@@ -155,25 +153,25 @@ public class LecForumTopicReplyList extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
-                    rID = new String[jsonArray.length()];
-                    reply = new String[jsonArray.length()];
-                    userType = new String[jsonArray.length()];
+                    RID = new String[jsonArray.length()];
+                    Reply1 = new String[jsonArray.length()];
+                    Usertype = new String[jsonArray.length()];
                     points = new String[jsonArray.length()];
                     userName = new String[jsonArray.length()];
                     postDate = new String[jsonArray.length()];
 
                     for (int i=0; i<jsonArray.length(); i++){
                         jsonObject = jsonArray.getJSONObject(i);
-                        rID[i] = jsonObject.getString("reply_id");
-                        reply[i] = jsonObject.getString("reply");
-                        userType[i] = jsonObject.getString("user_type");
+                        RID[i] = jsonObject.getString("reply_id");
+                        Reply1[i] = jsonObject.getString("reply");
+                        Usertype[i] = jsonObject.getString("user_type");
                         points[i] = jsonObject.getString("points");
                         userName[i] = jsonObject.getString("name");
                         postDate[i] = jsonObject.getString("post_time");
 
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),rID,reply,userType,
+                    LecForumTopicReplyView.MyAdepter myAdepter = new MyAdepter(getApplicationContext(),RID,Reply1,Usertype,
                             points,userName,postDate);
                     topicListView.setAdapter(myAdepter);
 
@@ -281,33 +279,33 @@ public class LecForumTopicReplyList extends AppCompatActivity {
 
     public void ManagePoints(View view){
         String type = "ManagePoints";
-        BackgroundWorkerCheckPoints BgWCheckPoints = new BackgroundWorkerCheckPoints(this);
+        BackgroundWorkerReplyCheckPoints BgWCheckPoints = new BackgroundWorkerReplyCheckPoints(this);
         String result;
         try {
-            result = BgWCheckPoints.execute(type, tID, User_ID,flag).get();
+            result = BgWCheckPoints.execute(type, rID, User_ID,flag).get();
 
             //if(result.equals("Success")){
-                if(flag.equals("0")){
-                    point=Integer.toString(Integer.parseInt(point)-1);
-                }
-                else {
-                    point=Integer.toString(Integer.parseInt(point)+1);
-                }
-                Intent LecForumTopicReplyList = new Intent(getApplicationContext(), LecForumTopicReplyList.class);
-                finish();
-                LecForumTopicReplyList.putExtra("fID",fID);
-                LecForumTopicReplyList.putExtra("cID",cID);
-                LecForumTopicReplyList.putExtra("cName",cName);
-                LecForumTopicReplyList.putExtra("User_ID",User_ID);
-                LecForumTopicReplyList.putExtra("tID",tID);
-                LecForumTopicReplyList.putExtra("sName",sName);
-                LecForumTopicReplyList.putExtra("uName",uName);
-                LecForumTopicReplyList.putExtra("date",date);
-                LecForumTopicReplyList.putExtra("ques",ques);
-                LecForumTopicReplyList.putExtra("point",point);
-                LecForumTopicReplyList.putExtra("user_type",ustype);
-                startActivity(LecForumTopicReplyList);
-                overridePendingTransition(0, 0);
+            if(flag.equals("0")){
+                point=Integer.toString(Integer.parseInt(point)-1);
+            }
+            else {
+                point=Integer.toString(Integer.parseInt(point)+1);
+            }
+            Intent LecForumTopicReplyList = new Intent(getApplicationContext(), LecForumTopicReplyView.class);
+            finish();
+            LecForumTopicReplyList.putExtra("fID",fID);
+            LecForumTopicReplyList.putExtra("cID",cID);
+            LecForumTopicReplyList.putExtra("cName",cName);
+            LecForumTopicReplyList.putExtra("User_ID",User_ID);
+            LecForumTopicReplyList.putExtra("tID",tID);
+            LecForumTopicReplyList.putExtra("sName",sName);
+            LecForumTopicReplyList.putExtra("uName",uName);
+            LecForumTopicReplyList.putExtra("date",date);
+            LecForumTopicReplyList.putExtra("ques",ques);
+            LecForumTopicReplyList.putExtra("point",point);
+            LecForumTopicReplyList.putExtra("ustype",ustype);
+            startActivity(LecForumTopicReplyList);
+            overridePendingTransition(0, 0);
             //}
         } catch (Exception e) {
             e.printStackTrace();
@@ -315,12 +313,19 @@ public class LecForumTopicReplyList extends AppCompatActivity {
     }
 
     public void Back(View view){
-        Intent LecForumDiscTopic = new Intent(getApplicationContext(), LecForumDiscTopic.class);
-        LecForumDiscTopic.putExtra("cID",cID);
-        LecForumDiscTopic.putExtra("fID",fID);
-        LecForumDiscTopic.putExtra("cName",cName);
-        LecForumDiscTopic.putExtra("UserID",User_ID);
-        startActivity(LecForumDiscTopic);
+        Intent StuForumTopicReplyList = new Intent(getApplicationContext(), LecForumTopicReplyList.class);
+        StuForumTopicReplyList.putExtra("fID",fID);
+        StuForumTopicReplyList.putExtra("cID",cID);
+        StuForumTopicReplyList.putExtra("cName",cName);
+        StuForumTopicReplyList.putExtra("User_ID",User_ID);
+        StuForumTopicReplyList.putExtra("tID",tID);
+        StuForumTopicReplyList.putExtra("sName",sName);
+        StuForumTopicReplyList.putExtra("uName",uName);
+        StuForumTopicReplyList.putExtra("date",date);
+        StuForumTopicReplyList.putExtra("ques",ques);
+        StuForumTopicReplyList.putExtra("point",points);
+        StuForumTopicReplyList.putExtra("user_type",ustype);
+        startActivity(StuForumTopicReplyList);
         finish();
         //overridePendingTransition(0, 0);
     }

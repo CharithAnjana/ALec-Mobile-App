@@ -29,6 +29,11 @@
             android:icon="@drawable/forum_icon"
             />
         <item
+            android:id="@+id/nav_Profilel"
+            android:title="Profile Details"
+            android:icon="@drawable/forum_icon"
+            />
+        <item
             android:id="@+id/nav_lgout"
             android:title="Logout"
             android:icon="@drawable/logout_icon"

@@ -13,10 +13,10 @@
 
         <TextView
             android:id="@+id/userName"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
+            android:layout_width="144dp"
+            android:layout_height="24dp"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="10dp"
             android:autoSizeTextType="uniform"
@@ -32,9 +32,45 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/tvFS"
-            android:layout_width="350dp"
+            android:id="@+id/tvP"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:backgroundTint="#43A047"
+
+            app:layout_constraintEnd_toStartOf="@+id/tvFS"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pts"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:text="pts"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            app:backgroundTint="#43A047"
+            app:layout_constraintEnd_toEndOf="@+id/tvP"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvP"
+            app:layout_constraintTop_toBottomOf="@+id/tvP" />
+
+        <TextView
+            android:id="@+id/tvFS"
+            android:layout_width="287dp"
+            android:layout_height="27dp"
             android:layout_gravity="center"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
@@ -47,6 +83,7 @@
             android:visibility="visible"
             app:backgroundTint="#43A047"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />

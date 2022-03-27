@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".StuForumCourseSelect">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,6 +25,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Profile"
+            android:textColor="#1B3B56"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -41,39 +54,23 @@
             android:layout_height="27dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/poppins"
-            android:text="Student"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.571" />
 
-        <TextView
-            android:id="@+id/ForumTopic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Discussion Forum"
-            android:textColor="#1B3B56"
-            android:textSize="21sp"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/topicList"
+        android:id="@+id/Userd"
         android:layout_width="wrap_content"
-        android:layout_height="456dp"
+        android:layout_height="400dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="81dp" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -87,13 +84,16 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="158dp"
             android:fontFamily="@font/poppins_medium"
-            android:onClick="NewDiscTopic"
-            android:text="Add New Topic"
+            android:onClick="Editprofile"
+            android:text="Edit Profile"
             app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="OnClick" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </LinearLayout>

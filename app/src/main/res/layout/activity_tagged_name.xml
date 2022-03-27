@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Discussion Forum"
+            android:text="Tags"
             android:textColor="#1B3B56"
             android:textSize="21sp"
             android:gravity="center"
@@ -65,7 +65,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/topicList"
+        android:id="@+id/tagList"
         android:layout_width="wrap_content"
         android:layout_height="456dp"
         android:layout_marginLeft="20dp"
@@ -88,7 +88,7 @@
             android:layout_marginEnd="158dp"
             android:fontFamily="@font/poppins_medium"
             android:onClick="NewDiscTopic"
-            android:text="Add New Topic"
+            android:text="Add New Tag"
             app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
