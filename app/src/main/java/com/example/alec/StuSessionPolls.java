@@ -44,6 +44,7 @@ public class StuSessionPolls extends AppCompatActivity {
     private static String[] qNo2;
     private static String[] qType2;
     private static String[] question2;
+    private static String[] ans2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,19 +98,19 @@ public class StuSessionPolls extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(qType2[i].equals("mcq-tf")|| qType2[i].equals("mcq")){
-                    Intent StuSessionPollsMCQResults = new Intent(getApplicationContext(), StuSessionPollsMCQResults.class);
-                    StuSessionPollsMCQResults.putExtra("qNo",qNo2[i]);
-                    StuSessionPollsMCQResults.putExtra("question",question2[i]);
-                    StuSessionPollsMCQResults.putExtra("userID",userID);
-                    startActivity(StuSessionPollsMCQResults);
+                    Intent StuViewAttemPollsQuesMcq = new Intent(getApplicationContext(), StuViewAttemPollsQuesMcq.class);
+                    StuViewAttemPollsQuesMcq.putExtra("qNo",qNo2[i]);
+                    StuViewAttemPollsQuesMcq.putExtra("question",question2[i]);
+                    StuViewAttemPollsQuesMcq.putExtra("qAns",ans2[i]);
+                    startActivity(StuViewAttemPollsQuesMcq);
                     overridePendingTransition(0, 0);
                 }
                 if(qType2[i].equals("open")){
-                    Intent StuSessionPollsShortResults = new Intent(getApplicationContext(), StuSessionPollsShortResults.class);
-                    StuSessionPollsShortResults.putExtra("qNo",qNo2[i]);
-                    StuSessionPollsShortResults.putExtra("question",question2[i]);
-                    StuSessionPollsShortResults.putExtra("userID",userID);
-                    startActivity(StuSessionPollsShortResults);
+                    Intent StuViewAttemPollsQuesOpen = new Intent(getApplicationContext(), StuViewAttemPollsQuesOpen.class);
+                    StuViewAttemPollsQuesOpen.putExtra("qNo",qNo2[i]);
+                    StuViewAttemPollsQuesOpen.putExtra("question",question2[i]);
+                    StuViewAttemPollsQuesOpen.putExtra("qAns",ans2[i]);
+                    startActivity(StuViewAttemPollsQuesOpen);
                     overridePendingTransition(0, 0);
                 }
             }
@@ -188,15 +189,17 @@ public class StuSessionPolls extends AppCompatActivity {
                     qNo2 = new String[jsonArray.length()];
                     qType2 = new String[jsonArray.length()];
                     question2 = new String[jsonArray.length()];
+                    ans2 = new String[jsonArray.length()];
 
                     for (int i=0; i<jsonArray.length(); i++){
                         jsonObject = jsonArray.getJSONObject(i);
                         qNo2[i] = jsonObject.getString("question_no");
                         qType2[i] = jsonObject.getString("question_type");
                         question2[i] = jsonObject.getString("question");
+                        ans2[i] = jsonObject.getString("answer");
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qNo2,qType2,question2);
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qNo2,qType2,question2,ans2);
                     atPollsLV.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -282,13 +285,15 @@ public class StuSessionPolls extends AppCompatActivity {
         String[] qNo;
         String[] qType;
         String[] question;
+        String[] ans;
 
-        MyAdepter(Context context, String[] qNo, String[] qType, String[] question) {
+        MyAdepter(Context context, String[] qNo, String[] qType, String[] question, String[] ans) {
             super(context, R.layout.layout_session_polls,R.id.tvQNO,qNo);
             this.context = context;
             this.qNo = qNo;
             this.qType = qType;
             this.question = question;
+            this.ans = ans;
         }
 
         @NonNull
@@ -300,10 +305,12 @@ public class StuSessionPolls extends AppCompatActivity {
             TextView qu = row.findViewById(R.id.tvQ);
             TextView qNO = row.findViewById(R.id.tvQNO);
             TextView qt = row.findViewById(R.id.tvQT);
+            TextView an = row.findViewById(R.id.tvQPT);
 
             qNO.setText(qNo[position]);
             qt.setText(qType[position]);
             qu.setText(question[position]);
+            an.setText(ans[position]);
 
             return row;
         }

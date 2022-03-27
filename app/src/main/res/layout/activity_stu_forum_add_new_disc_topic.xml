@@ -64,27 +64,29 @@
         android:id="@+id/create"
         android:layout_width="120dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginTop="32dp"
         android:onClick="Create"
         android:text="CREATE"
         app:backgroundTint="#00BFA5"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.783"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <Button
         android:id="@+id/cancel"
         android:layout_width="130dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="61dp"
         android:onClick="Cancel"
         android:text="CANCEL"
         app:backgroundTint="#EC407A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.227"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -162,4 +164,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.571" />
 
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Stay Anonymous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 </androidx.constraintlayout.widget.ConstraintLayout>

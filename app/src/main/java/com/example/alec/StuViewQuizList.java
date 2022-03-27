@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.http.SslCertificate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,71 +26,78 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class StuActiveQuiz extends AppCompatActivity {
+public class StuViewQuizList extends AppCompatActivity {
 
-    String quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlistpublish.php";
+    String quizURL = "http://10.0.2.2/ALec/public/api/V1/quizliststu.php";
     ListView quizListView;
 
     private static String[] qID;
     private static String[] qName;
-    private static String[] pubDate;
-    private static String[] clsDate;
     private static String[] dur;
+    private static String[] qAtm;
+    private static String[] mks;
 
     TextView Topic;
-    String tID, tName, cID, cName, User_ID;
+    String tID,tName,cID,cName,User_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stu_active_quiz);
+        setContentView(R.layout.activity_stu_view_quiz_list);
 
-        SessionManagement se = new SessionManagement(this);
-        User_ID = se.getSessionId();
+        Intent intent =getIntent();
+        tID = intent.getStringExtra("tID");
+        tName = intent.getStringExtra("tName");
+        cID = intent.getStringExtra("cID");
+        cName = intent.getStringExtra("cName");
+        User_ID = intent.getStringExtra("UserID");
 
-        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizlistpublish.php?user_ID=" + User_ID;
-        quizListView = (ListView) findViewById(R.id.quizList);
+        Topic = findViewById(R.id.qList);
+        Topic.setText("Quiz - "+tName);
+
+        quizURL = "http://10.0.2.2/ALec/public/api/V1/quizliststu.php?topic_ID="+tID+"&user_ID="+User_ID;
+        quizListView = (ListView)findViewById(R.id.quizListStu);
         fetch_data_into_array(quizListView);
 
         quizListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent StuAttemptQuizDetails = new Intent(getApplicationContext(), StuAttemptQuizDetails.class);
-                StuAttemptQuizDetails.putExtra("qID", qID[i]);
-                StuAttemptQuizDetails.putExtra("qName", qName[i]);
-                StuAttemptQuizDetails.putExtra("pubDate", pubDate[i]);
-                StuAttemptQuizDetails.putExtra("clsDate", clsDate[i]);
-                StuAttemptQuizDetails.putExtra("userID", User_ID);
-                StuAttemptQuizDetails.putExtra("dur", dur[i]);
-                startActivity(StuAttemptQuizDetails);
-                overridePendingTransition(0, 0);
+                Intent StuViewQuizDetails = new Intent(getApplicationContext(), StuViewQuizDetails.class);
+                StuViewQuizDetails.putExtra("qID",qID[i]);
+                StuViewQuizDetails.putExtra("qName",qName[i]);
+                StuViewQuizDetails.putExtra("dur",dur[i]);
+                StuViewQuizDetails.putExtra("qAtm",qAtm[i]);
+                StuViewQuizDetails.putExtra("mks",mks[i]);
+                StuViewQuizDetails.putExtra("cName",cName);
+                //StuViewQuizDetails.putExtra("UserID",User_ID);
+                startActivity(StuViewQuizDetails);
             }
         });
     }
 
     private void fetch_data_into_array(ListView topicListView) {
-        class dbManager extends AsyncTask<String, Void, String> {
+        class dbManager extends AsyncTask<String,Void,String> {
 
-            protected void onPostExecute(String data) {
+            protected void onPostExecute(String data){
                 try {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
                     qID = new String[jsonArray.length()];
                     qName = new String[jsonArray.length()];
-                    pubDate = new String[jsonArray.length()];
-                    clsDate = new String[jsonArray.length()];
                     dur = new String[jsonArray.length()];
+                    qAtm = new String[jsonArray.length()];
+                    mks = new String[jsonArray.length()];
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                    for (int i=0; i<jsonArray.length(); i++){
                         jsonObject = jsonArray.getJSONObject(i);
                         qID[i] = jsonObject.getString("quiz_id");
                         qName[i] = jsonObject.getString("quiz_name");
-                        pubDate[i] = jsonObject.getString("published_date");
-                        clsDate[i] = jsonObject.getString("close_date");
                         dur[i] = jsonObject.getString("duration");
+                        qAtm[i] = jsonObject.getString("attempt_time");
+                        mks[i] = jsonObject.getString("marks");
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(), qID,qName,pubDate,clsDate,dur);
+                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(),qID,qName,dur,qAtm,mks);
                     topicListView.setAdapter(myAdepter);
 
                 } catch (JSONException e) {
@@ -105,15 +110,15 @@ public class StuActiveQuiz extends AppCompatActivity {
             protected String doInBackground(String... strings) {
                 try {
                     URL url = new URL(strings[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
                     BufferedInputStream bufferedInputStream = new BufferedInputStream(conn.getInputStream());
 
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
                     StringBuffer sb = new StringBuffer();
                     String line = null;
                     String result = null;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        sb.append(line + "\n");
+                    while ((line = bufferedReader.readLine()) != null){
+                        sb.append(line+"\n");
                     }
                     bufferedInputStream.close();
                     result = sb.toString();
@@ -135,55 +140,44 @@ public class StuActiveQuiz extends AppCompatActivity {
         Context context;
         String[] qID;
         String[] qName;
-        String[] pubDate;
-        String[] clsDate;
-        String[] dur;
+        String[] qDu;
+        String[] qAt;
+        String[] qM;
 
-        MyAdepter(Context context, String[] qID, String[] qName, String[] pubDate, String[] clsDate,
-                  String[] dur) {
-            super(context, R.layout.layout_quiz_list, R.id.tvQI, qID);
+        MyAdepter(Context context, String[] qID, String[] qName,String[] qDu, String[] qAt,String[] qM) {
+            super(context, R.layout.layout_quiz_list,R.id.tvQI,qID);
             this.context = context;
             this.qID = qID;
             this.qName = qName;
-            this.pubDate = pubDate;
-            this.clsDate = clsDate;
-            this.dur = dur;
+            this.qDu = qDu;
+            this.qAt = qAt;
+            this.qM = qM;
         }
 
         @NonNull
         @Override
-        public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.layout_quiz_active, parent, false);
-            ;
+        public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent){
+            LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = inflater.inflate(R.layout.layout_quiz_list,parent,false);;
 
             TextView tvQI = row.findViewById(R.id.tvQI);
             TextView tvQN = row.findViewById(R.id.tvQN);
-            TextView tvQPD = row.findViewById(R.id.tvQPD);
-            TextView tvQCD = row.findViewById(R.id.tvQCD);
-            TextView tvQD = row.findViewById(R.id.tvQDur);
+            TextView tvQDur = row.findViewById(R.id.tvQDur);
+            TextView tvQAt = row.findViewById(R.id.tvQAt);
+            TextView tvQMk = row.findViewById(R.id.tvQMks);
 
             tvQI.setText(qID[position]);
             tvQN.setText(qName[position]);
-            tvQPD.setText(pubDate[position]);
-            tvQCD.setText(clsDate[position]);
-            tvQD.setText(dur[position]);
+            tvQDur.setText(qDu[position]);
+            tvQAt.setText(qAt[position]);
+            tvQMk.setText(qM[position]);
 
             return row;
         }
 
     }
 
-    public void Back(View view) {
-        finish();
-    }
-
-    public void Refresh(View view) {
-        Toast.makeText(this, "Refreshing..", Toast.LENGTH_SHORT).show();
-        Intent ActQuiz = new Intent(getApplicationContext(), StuActiveQuiz.class);
-        ActQuiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(ActQuiz);
-        overridePendingTransition(0, 0);
+    public void Back(View view){
         finish();
     }
 

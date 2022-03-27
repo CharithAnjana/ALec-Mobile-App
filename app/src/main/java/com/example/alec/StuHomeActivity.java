@@ -51,8 +51,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
         });
 
         //BtnForum = findViewById(R.id.BtnForum);
-
-
         BtnMyCour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +65,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
                 startActivity(StuForumCourseSelect);
             }
         });
-
         BtnMyAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,9 +74,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
 
             }
         });
-
-
-
         BtnSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,13 +121,15 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_dash:
                 break;
             case R.id.nav_sess:
+                Intent StuSessionSelect = new Intent(StuHomeActivity.this,StuSessionSelect.class);
+                startActivity(StuSessionSelect);
                 break;
             case R.id.nav_Atquiz:
                 Intent StuActiveQuiz = new Intent(getApplicationContext(), StuActiveQuiz.class);
                 startActivity(StuActiveQuiz);
                 break;
             case R.id.nav_course:
-                Intent StuMyCourses = new Intent(getApplicationContext(), StuMyCourses.class);
+                Intent StuMyCourses = new Intent(StuHomeActivity.this, StuMyCourses.class);
                 startActivity(StuMyCourses);
                 break;
             case R.id.nav_lgout:
@@ -148,7 +144,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_Profile:
                 Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);
                 startActivity(UserDeatails);
-                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

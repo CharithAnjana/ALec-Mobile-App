@@ -28,14 +28,17 @@ import java.net.URL;
 public class UserDeatails extends AppCompatActivity {
 
     String profileURL = "http://10.0.2.2/ALec/public/api/V1/getuserdetails.php";
-    String user_ID,user_Type ;
-    ListView  profileListView;
+    String user_ID, user_Type;
+
+    String User_ID, tID, tName;
+    TextView FirstName, LastName, TP, Email, RegNo;
+
     private static String[] user_id;
-    private static String[] user_type;
     private static String[] email;
-    private static String[] reg_no;
+    private static String[] telephone_no;
     private static String[] first_name;
     private static String[] last_name;
+    private static String[] reg_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +46,22 @@ public class UserDeatails extends AppCompatActivity {
         setContentView(R.layout.activity_user_deatails);
 
         SessionManagement sessionManagement = new SessionManagement(this);
-         user_ID = sessionManagement.getSessionId();
-         user_Type = sessionManagement.getSessionKey();
-         //e_mail = sessionManagement.getSessionKey();
+        user_ID = sessionManagement.getSessionId();
+        user_Type = sessionManagement.getSessionKey();
+
+        FirstName = findViewById(R.id.FirstName);
+        LastName = findViewById(R.id.LastName);
+        Email = findViewById(R.id.Email);
+        TP = findViewById(R.id.TP);
+        RegNo = findViewById(R.id.RegNo);
 
 
-
-
-        profileListView = (ListView)findViewById(R.id.Userd);
-        profileURL = "http://10.0.2.2/ALec/public/api/V1/getuserdetails.php?user_ID="+user_ID+"&user_Type="+user_Type;
-        fetch_data_into_array(profileListView);
+        profileURL = "http://10.0.2.2/ALec/public/api/V1/getuserdetails.php?user_ID=" + user_ID + "&user_Type=" + user_Type;
+        fetch_data_into_textviews();
 
     }
 
-    private void fetch_data_into_array(ListView topicListView) {
+    private void fetch_data_into_textviews() {
         class dbManager extends AsyncTask<String, Void, String> {
 
             protected void onPostExecute(String data) {
@@ -64,26 +69,31 @@ public class UserDeatails extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(data);
                     JSONObject jsonObject = null;
                     user_id = new String[jsonArray.length()];
-                    user_type = new String[jsonArray.length()];
                     email = new String[jsonArray.length()];
-                    reg_no = new String[jsonArray.length()];
+                    telephone_no = new String[jsonArray.length()];
                     first_name = new String[jsonArray.length()];
                     last_name = new String[jsonArray.length()];
+                    reg_no = new String[jsonArray.length()];
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         jsonObject = jsonArray.getJSONObject(i);
                         user_id[i] = jsonObject.getString("user_id");
-                        user_type[i] = jsonObject.getString("user_type");
                         email[i] = jsonObject.getString("email");
-                        reg_no[i] = jsonObject.getString("reg_no");
+                        telephone_no[i] = jsonObject.getString("tele");
                         first_name[i] = jsonObject.getString("first_name");
                         last_name[i] = jsonObject.getString("last_name");
-
-
+                        reg_no[i] = jsonObject.getString("reg_no");
                     }
 
-                    MyAdepter myAdepter = new MyAdepter(getApplicationContext(), user_id, user_type, email, reg_no, first_name,last_name);
-                    topicListView.setAdapter(myAdepter);
+                    FirstName.setText(first_name[0]);
+                    LastName.setText(last_name[0]);
+                    RegNo.setText(reg_no[0]);
+                    Email.setText(email[0]);
+                    User_ID = user_id[0];
+                    if(!(telephone_no[0].equals(""))){
+                        TP.setText(telephone_no[0]);
+                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -120,76 +130,18 @@ public class UserDeatails extends AppCompatActivity {
 
     }
 
-    class MyAdepter extends ArrayAdapter<String> {
 
-        Context context;
-        String[] user_id;
-        String[] user_type;
-        String[] email;
-        String[] reg_no;
-        String[] first_name;
-        String[] last_name;
-
-
-
-        MyAdepter(Context context, String[] user_id, String[] user_type, String[] email, String[] reg_no, String[] first_name,String[] last_name) {
-            super(context, R.layout.layout_getuserdetails, R.id.tvUI, user_id);
-            this.context = context;
-            this.user_id = user_id;
-            this.user_type = user_type;
-            this.email = email;
-            this.reg_no = reg_no;
-            this.first_name = first_name;
-            this.last_name=last_name;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.layout_getuserdetails, parent, false);
-            ;
-
-            TextView tvUI = row.findViewById(R.id.tvUI);
-            TextView tvUT = row.findViewById(R.id.tvUT);
-            TextView tvEM = row.findViewById(R.id.tvEM);
-            TextView tvRN = row.findViewById(R.id.tvRN);
-            TextView tvFN = row.findViewById(R.id.tvFN);
-            TextView tvLN = row.findViewById(R.id.tvLN);
-
-
-
-            tvUI.setText(user_id[position]);
-            tvUT.setText(user_type[position]);
-            tvEM.setText(email[position]);
-            tvRN.setText(reg_no[position]);
-            tvFN.setText(first_name[position]);
-            tvLN.setText(last_name[position]);
-
-
-
-            return row;
-        }
-
-    }
-    public void Editprofile(View view){
+    public void EditProfile(View view) {
         Intent EditProfiledetails = new Intent(this, EditProfiledetails.class);
-        EditProfiledetails.putExtra("email",email);
-        EditProfiledetails.putExtra("user_ID",user_ID);
-        EditProfiledetails.putExtra("user_Type",user_Type);
-        EditProfiledetails.putExtra("reg_no",reg_no);
-        EditProfiledetails.putExtra("first_name",first_name);
-        EditProfiledetails.putExtra("last_name",last_name);
-
-
-
+        EditProfiledetails.putExtra("user_ID", User_ID);
+        EditProfiledetails.putExtra("telephone_no", telephone_no[0]);
+        EditProfiledetails.putExtra("first_name", first_name[0]);
+        EditProfiledetails.putExtra("last_name", last_name[0]);
         startActivity(EditProfiledetails);
     }
 
 
-
-
-    public void Back(View view){
+    public void Back(View view) {
         finish();
     }
 }

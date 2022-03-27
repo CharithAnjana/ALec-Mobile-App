@@ -18,7 +18,8 @@ public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String>
 
     AlertDialog alertDialog;
     Context context;
-    public BackgroundWorkerEditDetails(Context ctx){
+
+    public BackgroundWorkerEditDetails(Context ctx) {
         context = ctx;
     }
 
@@ -26,20 +27,12 @@ public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String>
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-
-        if(type.equals("Editemail")) {
+        if (type.equals("Editemail")) {
             try {
-
-
-                String firstname = params[1] ;
+                String firstname = params[1];
                 String lastname = params[2];
-                String regno = params[3];
+                String tp = params[3];
                 String user_ID = params[4];
-               String user_Type = params[5];
-               // String Email = params[6];
-
-
-
 
                 String edit_topic_URL = "http://10.0.2.2/ALec/public/api/V1/edituserdetails.php";
 
@@ -52,14 +45,10 @@ public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String>
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("fName", "UTF-8") + "=" + URLEncoder.encode(firstname, "UTF-8")+ "&"
+                String post_data = URLEncoder.encode("fName", "UTF-8") + "=" + URLEncoder.encode(firstname, "UTF-8") + "&"
                         + URLEncoder.encode("lName", "UTF-8") + "=" + URLEncoder.encode(lastname, "UTF-8") + "&"
-                        + URLEncoder.encode("regNo", "UTF-8") + "=" + URLEncoder.encode(regno, "UTF-8")+ "&"
-                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_ID, "UTF-8")
-                        + "&"
-                        + URLEncoder.encode("user_Type", "UTF-8") + "=" + URLEncoder.encode(user_Type, "UTF-8");
-                   //   + "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(Email, "UTF-8")  ;
-
+                        + URLEncoder.encode("tp", "UTF-8") + "=" + URLEncoder.encode(tp, "UTF-8") + "&"
+                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(user_ID, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -87,6 +76,7 @@ public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String>
 
         return null;
     }
+
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
@@ -97,6 +87,7 @@ public class BackgroundWorkerEditDetails extends AsyncTask<String, Void, String>
         alertDialog.setMessage(result);
         alertDialog.show();
     }
+
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);
