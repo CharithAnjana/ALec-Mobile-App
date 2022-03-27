@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="158dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_lec"
+            android:layout_width="412dp"
+            android:layout_height="50dp"
+            android:background="#9fa8da"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="Back"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="61dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poppins"
+            android:text="Student"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.571" />
+
+        <TextView
+            android:id="@+id/ForumTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="Discussion Forum"
+            android:textColor="#1B3B56"
+            android:textSize="21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/topicList"
+        android:layout_width="wrap_content"
+        android:layout_height="428dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="81dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:layout_width="185dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="159dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="158dp"
+            android:fontFamily="@font/poppins_medium"
+            android:onClick="NewDiscTopic"
+            android:text="Add New Topic"
+            app:backgroundTint="#305890"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

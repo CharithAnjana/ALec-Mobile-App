@@ -12,6 +12,147 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ALec"
         android:usesCleartextTraffic="true">
+        <activity android:name=".StuQuizAttemptResult"></activity>
+        <activity
+            android:name=".StuAttemptQuizConfirmPopup"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".StuAttemptQuizDetails" />
+        <activity android:name=".StuViewAttemPollsQuesOpen" />
+        <activity android:name=".StuViewAttemPollsQuesMcq" />
+        <activity android:name=".StuViewAttemPollsQuestion" />
+        <activity android:name=".StuViewAttemPolls" />
+        <activity android:name=".StuPrewQuiz" />
+        <activity android:name=".StuViewQuizDetails" />
+        <activity android:name=".StuViewQuizList" />
+        <activity android:name=".StuMycourseSelectOption" />
+        <activity
+            android:name=".TagDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".Edit_Lecturer_Details"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedStuForumreplyList"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedTopicDiscussion"
+            android:exported="false" />
+        <activity
+            android:name=".Createnewtag"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedTopicList"
+            android:exported="false" />
+        <activity
+            android:name=".TaggedName"
+            android:exported="false" />
+        <activity
+            android:name=".LecDetails"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfiledetails"
+            android:exported="false" />
+        <activity
+            android:name=".UserDeatails"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumReplyDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecForumTopicReplyView"
+            android:exported="false" />
+        <activity
+            android:name=".LecQuizScheduleCancelPop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecSessionStopPop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecSessionViewLiveForum" />
+        <activity android:name=".LecSessionViewPollsShort" />
+        <activity android:name=".LecSessionViewPollsMcq" />
+        <activity android:name=".LecViewSession" />
+        <activity android:name=".LecSessions" />
+        <activity android:name=".LecAddQuizQuestionEdit" />
+        <activity android:name=".StuSessionPollsShortResults" />
+        <activity android:name=".StuSessionPollsMCQResults" />
+        <activity android:name=".StuSessionPollsAttemptShort" />
+        <activity android:name=".StuSessionPollsAttemptMCQ" />
+        <activity android:name=".StuSessionLiveForumAddQuestion" />
+        <activity android:name=".StuSessionLiveForum" />
+        <activity android:name=".StuSessionPolls" />
+        <activity android:name=".StuSessionSelect" />
+        <activity android:name=".InitPasswordChange" />
+        <activity android:name=".Notification" />
+        <activity android:name=".StuActiveQuiz" />
+        <activity
+            android:name=".StuForumCourseSelect"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_add_reply"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_add_new_disc_topic"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_topic_reply_list"
+            android:exported="false" />
+        <activity
+            android:name=".stu_forum_disc_topic"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumAddReply"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumCourseSelect"
+            android:exported="false" />
+        <activity
+            android:name=".LecForumTopicDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecForumTopicReplyList"
+            android:exported="false" />
+        <activity
+            android:name=".LecQuizQuestionDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecViewQuizDetailsDraft" />
+        <activity android:name=".LecViewQuizDetails" />
+        <activity
+            android:name=".LecQuizDeletePop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity
+            android:name=".LecQuizDeletePop2"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecQuizQuestionEditMcq" />
+        <activity android:name=".LecQuizQuestionEditShort" />
+        <activity android:name=".LecScheduleQuiz" />
+        <activity
+            android:name=".LecQuizScheduleOption"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecViewDraftQuiz" />
+        <activity
+            android:name=".LecAddQuizDraftSelectCurs"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecAddQuizSelectOption" />
+        <activity android:name=".LecAddQuizMcq" />
+        <activity android:name=".LecAddQuizShort" />
+        <activity android:name=".LecAddQuizQuestion" />
+        <activity android:name=".LecAddQuizSetDetails" />
+        <activity
+            android:name=".LecAddQuizNewSeltCurs"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecForumAddNewDiscTopic" />
+        <activity android:name=".LecForumDiscTopic" />
+        <activity android:name=".LecViewQuiz" />
+        <activity android:name=".LecEditTopic" />
+        <activity
+            android:name=".LecDeleteTopicPop"
+            android:theme="@style/Theme.ALec.PopUp" />
+        <activity android:name=".LecAddNewTopic" />
+        <activity android:name=".LecQuizList" />
+        <activity android:name=".LecCourseTopics" />
+        <activity android:name=".LecMyCourses" />
+        <activity android:name=".StuCourseTopics" />
+        <activity android:name=".StuMyCourses" />
         <activity android:name=".LecHomeActivity" />
         <activity android:name=".StuHomeActivity" />
         <activity android:name=".LoginActivity" />
@@ -22,6 +163,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".BackgroundNotification"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="BackgroundProcess" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"

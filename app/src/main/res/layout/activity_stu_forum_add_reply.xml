@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".stu_forum_add_reply">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_lec"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        android:background="#9fa8da"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Stu"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins"
+        android:text="Student"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_medium"
+        android:justificationMode="inter_word"
+        android:text="Subject"
+        android:textColor="#008799"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_lec" />
+
+    <EditText
+        android:id="@+id/edtReply"
+        android:layout_width="282dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Enter Reply Here.."
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.356"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetails" />
+
+    <TextView
+        android:id="@+id/textViewDetails"
+        android:layout_width="169dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Reply"
+        android:textColor="#131313"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subject" />
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="120dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="95dp"
+        android:onClick="ReplySubmit"
+        android:text="SUBMIT"
+        app:backgroundTint="#00BFA5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="130dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="95dp"
+        android:onClick="Cancel"
+        android:text="CANCEL"
+        app:backgroundTint="#EC407A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Stay Anonymous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtReply" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

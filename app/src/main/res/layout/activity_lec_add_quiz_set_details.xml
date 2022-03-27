@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LecAddQuizSetDetails">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_lec"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        android:background="#9fa8da"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="Back"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <TextView
+        android:id="@+id/Stu"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins"
+        android:text="Lecturer"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
+    <TextView
+        android:id="@+id/NewTopic"
+        android:layout_width="232dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Add New Quiz"
+        android:textColor="#1B3B56"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
+
+    <TextView
+        android:id="@+id/cName"
+        android:layout_width="297dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Course Name"
+        android:textColor="#1B3B56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewTopic" />
+
+    <TextView
+        android:id="@+id/stopic"
+        android:layout_width="236dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="left"
+        android:text="Select Topic"
+        android:textColor="#1B3B56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cName" />
+
+    <Spinner
+        android:id="@+id/spTopic"
+        android:layout_width="320dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stopic" />
+
+    <TextView
+        android:id="@+id/qName"
+        android:layout_width="236dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="left"
+        android:text="Quiz Name"
+        android:textColor="#1B3B56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spTopic" />
+
+    <EditText
+        android:id="@+id/quizName"
+        android:layout_width="320dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter quiz name here.."
+        android:inputType="textPersonName"
+        android:textColorHint="#90a4ae"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qName" />
+
+    <TextView
+        android:id="@+id/quizDur"
+        android:layout_width="236dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="left"
+        android:text="Quiz Duration"
+        android:textColor="#1B3B56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quizName" />
+
+    <EditText
+        android:id="@+id/qTimeHr"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="hr:min:sec"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quizDur" />
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="120dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="64dp"
+        android:onClick="Next"
+        android:text="NEXT"
+        app:backgroundTint="#00BFA5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quizDur"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="130dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="64dp"
+        android:onClick="Back"
+        android:text="BACK"
+        app:backgroundTint="#EC407A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/create"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quizDur"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

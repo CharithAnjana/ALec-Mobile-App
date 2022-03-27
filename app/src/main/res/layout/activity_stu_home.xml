@@ -26,7 +26,7 @@
             android:id="@+id/textView"
             android:layout_width="317dp"
             android:layout_height="101dp"
-            android:layout_marginTop="124dp"
+            android:layout_marginTop="112dp"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="Interactive Teaching And Learning Platform"
@@ -42,63 +42,73 @@
             android:id="@+id/BtnMyCour"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif-medium"
             android:text="My Courses"
-            app:backgroundTint="#1EBB7F"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:backgroundTint="#305890"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.175"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtnSess" />
+
+        <Button
+            android:id="@+id/BtnMyAct"
+            android:layout_width="132dp"
+            android:layout_height="91dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Tag Search"
+            app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.845"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.434" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
             android:id="@+id/BtnAtmptQu"
             android:layout_width="132dp"
             android:layout_height="91dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Attempt Quiz"
-            app:backgroundTint="#1EBB7F"
+            android:text="At QU"
+            app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.435" />
+            android:visibility="gone"
+            app:layout_constraintVertical_bias="0.887" />
 
         <Button
-            android:id="@+id/BtnMyAct"
+            android:id="@+id/BtnSess"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="80dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Tag Search"
-            app:backgroundTint="#1EBB7F"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Sessions"
+            app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.657" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
             android:id="@+id/BtnForum"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif-medium"
             android:text="Forum"
-            app:backgroundTint="#1EBB7F"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:backgroundTint="#305890"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.845"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.657" />
+            app:layout_constraintTop_toBottomOf="@+id/BtnMyAct" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_stu"
             android:layout_width="412dp"
             android:layout_height="50dp"
-            android:background="#FFFFFF"
+            android:background="#9fa8da"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -107,6 +117,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/Stu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poppins"
+            android:text="Student"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_stu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.571" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

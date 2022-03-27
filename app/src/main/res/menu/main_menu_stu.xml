@@ -9,10 +9,16 @@
             android:icon="@drawable/dashboard_icon"
             />
         <item
+            android:id="@+id/nav_sess"
+            android:title="Sessions"
+            android:icon="@drawable/ic_baseline_session"
+            />
+        <!--Your
+        <item
             android:id="@+id/nav_Atquiz"
             android:title="Attempt Quiz"
             android:icon="@drawable/question_icon"
-            />
+            />comment-->
         <item
             android:id="@+id/nav_course"
             android:title="My Courses"
@@ -22,6 +28,11 @@
             android:id="@+id/nav_forum"
             android:title="Forum"
             android:icon="@drawable/forum_icon"
+            />
+        <item
+            android:id="@+id/nav_Profile"
+            android:title="Profile Details"
+            android:icon="@drawable/profile"
             />
         <item
             android:id="@+id/nav_lgout"

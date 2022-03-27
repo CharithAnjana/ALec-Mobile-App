@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LecSessionViewPollsMcq">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_lec"
+            android:layout_width="412dp"
+            android:layout_height="50dp"
+            android:background="#9fa8da"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="800"
+            android:textColor="#1B3B56"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <Button
+            android:id="@+id/buttonSe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:onClick="ManagePollMcq"
+            android:text="Enable"
+            app:backgroundTint="#305890"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewcount"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/textViewq"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Poll Question mcq"
+            android:textColor="#1B3B56"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSe" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="Back"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:layout_width="61dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poppins"
+            android:text="Lecturer"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.571" />
+
+
+
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="a :"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewq" />
+
+        <TextView
+            android:id="@+id/ansA"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Ans A"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/a"
+            app:layout_constraintStart_toEndOf="@+id/a"
+            app:layout_constraintTop_toTopOf="@+id/a"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/ap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0%"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewq" />
+
+        <TextView
+            android:id="@+id/b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="b :"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a" />
+
+        <TextView
+            android:id="@+id/ansB"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Ans B"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/b"
+            app:layout_constraintStart_toEndOf="@+id/b"
+            app:layout_constraintTop_toTopOf="@+id/b"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/bp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0%"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a" />
+
+        <TextView
+            android:id="@+id/c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:visibility="gone"
+            android:text="c :"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b" />
+
+        <TextView
+            android:id="@+id/ansC"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Ans C"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/c"
+            app:layout_constraintStart_toEndOf="@+id/c"
+            app:layout_constraintTop_toTopOf="@+id/c"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/cp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0%"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b" />
+
+        <TextView
+            android:id="@+id/d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="d :"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/c" />
+
+        <TextView
+            android:id="@+id/ansD"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Ans D"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/d"
+            app:layout_constraintStart_toEndOf="@+id/d"
+            app:layout_constraintTop_toTopOf="@+id/d"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0%"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/c" />
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="e :"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d" />
+
+        <TextView
+            android:id="@+id/ansE"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Ans E"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/e"
+            app:layout_constraintStart_toEndOf="@+id/e"
+            app:layout_constraintTop_toTopOf="@+id/e"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/ep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0%"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/d" />
+
+
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Correct Answer :"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/e" />
+
+        <TextView
+            android:id="@+id/mcqAnswer"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Correct Ans"
+            android:textColor="#305890"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="Refresh"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.986"
+            app:srcCompat="@drawable/refresh_ic1" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_lec"
+            app:srcCompat="@drawable/ic_baseline_people_24"
+            tools:ignore="VectorDrawableCompat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

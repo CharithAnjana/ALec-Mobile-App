@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LecEditTopic">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_lec"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        android:background="#9fa8da"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
+
+    <TextView
+        android:id="@+id/NewTopic"
+        android:layout_width="232dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Edit profile"
+        android:textColor="#1B3B56"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_lec" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="Back"
+        app:srcCompat="?attr/homeAsUpIndicator" />
+
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="120dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="236dp"
+        android:onClick="Update"
+        android:text="UPDATE"
+        app:backgroundTint="#00BFA5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.776"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="130dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="236dp"
+        android:onClick="Cancel"
+        android:text="CANCEL"
+        app:backgroundTint="#EC407A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextemail"
+        android:layout_width="237dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="212dp"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textColor="#131313"
+        android:textColorHint="#8C8C8C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TvLN"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text=" Last Name "
+        android:textColor="#131313"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361" />
+
+    <EditText
+        android:id="@+id/editTextfirstname"
+        android:layout_width="237dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="212dp"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textColor="#131313"
+        android:textColorHint="#8C8C8C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/editTexLastname"
+        android:layout_width="237dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="288dp"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textColor="#131313"
+        android:textColorHint="#8C8C8C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TvRN"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text=" Reg No "
+        android:textColor="#131313"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469" />
+
+    <EditText
+        android:id="@+id/editTextRegname"
+        android:layout_width="237dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="356dp"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textColor="#131313"
+        android:textColorHint="#8C8C8C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TvFN"
+        android:layout_width="162dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text=" First Name "
+        android:textColor="#131313"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <TextView
+        android:id="@+id/Stu"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/poppins"
+        android:text="Lecturer"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_lec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
