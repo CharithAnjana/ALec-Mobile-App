@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class stu_forum_add_new_disc_topic extends AppCompatActivity {
 
-    String cID, cName, fID, uID;
+    String cID, cName, fID, uID,rst="F";
     TextView course;
     EditText sub, que;
 
@@ -32,6 +34,15 @@ public class stu_forum_add_new_disc_topic extends AppCompatActivity {
         sub = findViewById(R.id.editTextSubName);
         que = findViewById(R.id.editTextTextMultiLine);
 
+        Switch toggle = (Switch) findViewById(R.id.switch1);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    rst = "T";
+                }
+            }
+        });
+
     }
 
     public void Cancel(View view){
@@ -51,7 +62,7 @@ public class stu_forum_add_new_disc_topic extends AppCompatActivity {
             BackgroundWorkerForum backgroundWorkerForum = new BackgroundWorkerForum(this);
             String result;
             try {
-                result = backgroundWorkerForum.execute(type, Subject, Question, fID, uID).get();
+                result = backgroundWorkerForum.execute(type, Subject, Question, fID, uID, rst).get();
 
                 if(result.equals("Success")){
 
