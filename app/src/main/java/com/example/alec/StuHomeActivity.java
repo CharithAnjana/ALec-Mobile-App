@@ -144,7 +144,6 @@ public class StuHomeActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_Profile:
                 Intent UserDeatails = new Intent(getApplicationContext(), UserDeatails.class);
                 startActivity(UserDeatails);
-                finish();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

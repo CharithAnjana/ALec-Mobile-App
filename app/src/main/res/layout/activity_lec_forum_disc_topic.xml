@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="142dp">
+        android:layout_height="158dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_lec"
@@ -53,10 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
             android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
             android:text="Discussion Forum"
             android:textColor="#1B3B56"
             android:textSize="21sp"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
     <ListView
         android:id="@+id/topicList"
         android:layout_width="wrap_content"
-        android:layout_height="456dp"
+        android:layout_height="428dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"

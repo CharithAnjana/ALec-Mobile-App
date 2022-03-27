@@ -8,7 +8,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 public class LecForumReplyDeletePop extends AppCompatActivity {
-    String tID,sName,date,uName,ques, result, cID,fID,cName,User_ID,rID,point,ustype,reply;
+    String tID, sName, date, uName, ques, result, cID, fID, cName, User_ID, rID, point, ustype, reply;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,7 @@ public class LecForumReplyDeletePop extends AppCompatActivity {
         int width = dm.widthPixels;
         int hight = dm.heightPixels;
 
-        getWindow().setLayout((int)(width *.7),(int)(hight * .5));
+        getWindow().setLayout((int) (width * .7), (int) (hight * .5));
         // WindowManager.LayoutParams params = getWindow().getAttributes();
         // params.gravity = Gravity.CENTER;
         // params.x = 0;
@@ -43,33 +44,30 @@ public class LecForumReplyDeletePop extends AppCompatActivity {
         ustype = intent.getStringExtra("ustype");
         reply = intent.getStringExtra("reply");
     }
-    public void DeleteConfirm(View view){
+
+    public void DeleteConfirm(View view) {
         String reply_id = rID;
         String type = "DeleteReply";
 
-        BackgroundWorkerForum backgroundWorkerForum  = new  BackgroundWorkerForum(this);
+        BackgroundWorkerForum backgroundWorkerForum = new BackgroundWorkerForum(this);
         String result;
         try {
             result = backgroundWorkerForum.execute(type, reply_id).get();
 
-            if(result.equals("Success")){
-                Intent LecForumTopicReplyView = new Intent(this,LecForumTopicReplyList.class);
-
-                LecForumTopicReplyView.putExtra("tID",rID);
-                LecForumTopicReplyView.putExtra("tID",tID);
-                LecForumTopicReplyView.putExtra("sName",sName);
-                LecForumTopicReplyView.putExtra("uName",uName);
-                LecForumTopicReplyView.putExtra("date",date);
-                LecForumTopicReplyView.putExtra("ques",ques);
-                LecForumTopicReplyView.putExtra("cID",cID);
-                LecForumTopicReplyView.putExtra("cName",cName);
-                LecForumTopicReplyView.putExtra("User_ID",User_ID);
-                LecForumTopicReplyView.putExtra("point",point);
-                LecForumTopicReplyView.putExtra("ustype",ustype);
-               // LecForumTopicReplyView.putExtra("reply",reply);
-
-
-
+            if (result.equals("Success")) {
+                Intent LecForumTopicReplyView = new Intent(this, LecForumTopicReplyList.class);
+                LecForumTopicReplyView.putExtra("tID", rID);
+                LecForumTopicReplyView.putExtra("tID", tID);
+                LecForumTopicReplyView.putExtra("sName", sName);
+                LecForumTopicReplyView.putExtra("uName", uName);
+                LecForumTopicReplyView.putExtra("date", date);
+                LecForumTopicReplyView.putExtra("ques", ques);
+                LecForumTopicReplyView.putExtra("cID", cID);
+                LecForumTopicReplyView.putExtra("cName", cName);
+                LecForumTopicReplyView.putExtra("User_ID", User_ID);
+                LecForumTopicReplyView.putExtra("point", point);
+                LecForumTopicReplyView.putExtra("user_type", ustype);
+                LecForumTopicReplyView.putExtra("fID", fID);
 
                 startActivity(LecForumTopicReplyView);
                 finish();
@@ -78,7 +76,8 @@ public class LecForumReplyDeletePop extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void Cancel(View view){
+
+    public void Cancel(View view) {
         finish();
     }
 }

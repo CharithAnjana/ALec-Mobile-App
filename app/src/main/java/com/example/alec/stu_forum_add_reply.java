@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class stu_forum_add_reply extends AppCompatActivity {
 
-    String tID,sName,uName,date,ques;
+    String tID,sName,uName,date,ques,rst="F";
     EditText edtReply;
     TextView sub;
 
@@ -31,6 +33,14 @@ public class stu_forum_add_reply extends AppCompatActivity {
         sub = findViewById(R.id.subject);
         sub.setText(sName);
 
+        Switch toggle = (Switch) findViewById(R.id.switch1);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    rst = "T";
+                }
+            }
+        });
     }
 
     public void ReplySubmit(View view){
@@ -43,7 +53,7 @@ public class stu_forum_add_reply extends AppCompatActivity {
             BackgroundWorkerForum backgroundWorkerForum = new BackgroundWorkerForum(this);
             String result;
             try {
-                result = backgroundWorkerForum.execute(type, tID, reply, uID).get();
+                result = backgroundWorkerForum.execute(type, tID, reply, uID, rst).get();
 
                 if(result.equals("Success")){
 

@@ -76,6 +76,7 @@ public class BackgroundWorkerForum extends AsyncTask<String, Void, String> {
                 String tID = params[1];
                 String Reply = params[2];
                 String User_ID = params[3];
+                String rst = params[4];
                 String new_topic_URL = "http://10.0.2.2/ALec/public/api/V1/addnewforumreply.php";
 
                 URL url = new URL(new_topic_URL);
@@ -89,7 +90,8 @@ public class BackgroundWorkerForum extends AsyncTask<String, Void, String> {
 
                 String post_data = URLEncoder.encode("topic_ID", "UTF-8") + "=" + URLEncoder.encode(tID, "UTF-8") + "&"
                         + URLEncoder.encode("reply", "UTF-8") + "=" + URLEncoder.encode(Reply, "UTF-8") + "&"
-                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(User_ID, "UTF-8");
+                        + URLEncoder.encode("user_ID", "UTF-8") + "=" + URLEncoder.encode(User_ID, "UTF-8") + "&"
+                        + URLEncoder.encode("rst", "UTF-8") + "=" + URLEncoder.encode(rst, "UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();

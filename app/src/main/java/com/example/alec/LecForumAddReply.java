@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class LecForumAddReply extends AppCompatActivity {
 
-    String tID,sName,uName,date,ques;
+    String tID,sName,uName,date,ques,cID,fID,cName,User_ID,point,ustype;
     EditText edtReply;
     TextView sub;
 
@@ -26,6 +26,12 @@ public class LecForumAddReply extends AppCompatActivity {
         uName = intent.getStringExtra("uName");
         date = intent.getStringExtra("date");
         ques = intent.getStringExtra("ques");
+        cID = intent.getStringExtra("cID");
+        fID = intent.getStringExtra("fID");
+        cName = intent.getStringExtra("cName");
+        User_ID = intent.getStringExtra("User_ID");
+        point = intent.getStringExtra("point");
+        ustype = intent.getStringExtra("user_type");
 
         edtReply = findViewById(R.id.edtReply);
         sub = findViewById(R.id.subject);
@@ -53,6 +59,12 @@ public class LecForumAddReply extends AppCompatActivity {
                     LecForumTopicReplyList.putExtra("uName",uName);
                     LecForumTopicReplyList.putExtra("date",date);
                     LecForumTopicReplyList.putExtra("ques",ques);
+                    LecForumTopicReplyList.putExtra("cID", cID);
+                    LecForumTopicReplyList.putExtra("fID", fID);
+                    LecForumTopicReplyList.putExtra("cName", cName);
+                    LecForumTopicReplyList.putExtra("User_ID", User_ID);
+                    LecForumTopicReplyList.putExtra("point", point);
+                    LecForumTopicReplyList.putExtra("user_type", ustype);
                     LecForumTopicReplyList.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(LecForumTopicReplyList);
                 }
