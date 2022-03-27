@@ -42,70 +42,67 @@
             android:id="@+id/BtnMyCour"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif-medium"
             android:text="My Courses"
             app:backgroundTint="#305890"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.657" />
+            app:layout_constraintTop_toBottomOf="@+id/BtnSess" />
+
+        <Button
+            android:id="@+id/BtnMyAct"
+            android:layout_width="132dp"
+            android:layout_height="91dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Tag Search"
+            app:backgroundTint="#305890"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.845"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
             android:id="@+id/BtnAtmptQu"
             android:layout_width="132dp"
             android:layout_height="91dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Attempt Quiz"
-            app:backgroundTint="#305890"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.845"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.434" />
-
-        <Button
-            android:id="@+id/BtnMyAct"
-            android:layout_width="132dp"
-            android:layout_height="91dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Tag Search"
+            android:text="At QU"
             app:backgroundTint="#305890"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
             app:layout_constraintVertical_bias="0.887" />
 
         <Button
             android:id="@+id/BtnSess"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="80dp"
             android:fontFamily="sans-serif-medium"
             android:text="Sessions"
             app:backgroundTint="#305890"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.175"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.435" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
             android:id="@+id/BtnForum"
             android:layout_width="132dp"
             android:layout_height="91dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif-medium"
             android:text="Forum"
             app:backgroundTint="#305890"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.845"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.657" />
+            app:layout_constraintTop_toBottomOf="@+id/BtnMyAct" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_stu"
